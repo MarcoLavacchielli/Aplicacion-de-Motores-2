@@ -4,19 +4,28 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-    [SerializeField] private Transform shootControler;
+    [SerializeField] private Transform shootController;
     [SerializeField] private GameObject bullet;
+    [SerializeField] private float shootingCooldown = 0.5f;
+    [SerializeField] private float lastShootTime;
 
-    public void Update()
+    private void Start()
     {
-        if (Input.GetButtonDown("Fire1"))
+        lastShootTime = -shootingCooldown;
+    }
+
+    private void Update()
+    {
+        if (Time.time - lastShootTime >= shootingCooldown && Input.GetButtonDown("Fire1"))
         {
             Shoot();
+            lastShootTime = Time.time;
         }
     }
 
-    public void Shoot()
+    private void Shoot()
     {
-        Instantiate(bullet, shootControler.position, shootControler.rotation);
+        GameObject newBullet = Instantiate(bullet, shootController.position, shootController.rotation);
+        Destroy(newBullet, 3f);
     }
 }
