@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PLayerController : MonoBehaviour
 {
-    [SerializeField] private RightStick rightInput;
+
+    [SerializeField] private Player playerInput;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Vector3 playerVelocity;
     [SerializeField] private bool groundedPlayer;
@@ -14,25 +15,25 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        rightInput = new RightStick();
+        playerInput = new Player();
         rb = GetComponent<Rigidbody>();
     }
 
     private void OnEnable()
     {
-        rightInput.Enable();
+        playerInput.Enable();
     }
 
     private void OnDisable()
     {
-        rightInput.Disable();
+        playerInput.Disable();
     }
 
     private void FixedUpdate()
     {
         groundedPlayer = Physics.Raycast(transform.position, Vector3.down, 0.1f);
 
-        Vector2 movementInput = rightInput.Player.Move.ReadValue<Vector2>();
+        Vector2 movementInput = playerInput.PlayerMain.Move.ReadValue<Vector2>();
         Vector3 move = new Vector3(movementInput.x, 0f, movementInput.y).normalized;
 
         // Aplicamos la velocidad constante en la dirección del movimiento.

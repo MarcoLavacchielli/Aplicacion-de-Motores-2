@@ -1,14 +1,23 @@
 {
-    "name": "Shoot",
+    "name": "RightStick",
     "maps": [
         {
-            "name": "ShootMain",
-            "id": "e4cad7d4-2e5e-4ead-934d-f7a7628decd8",
+            "name": "Player",
+            "id": "fa80371d-1219-4413-913d-083d142bd27d",
             "actions": [
                 {
-                    "name": "Shoot",
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "14fce7e5-7c49-4c81-9cbb-de52cd068b13",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Look",
                     "type": "Button",
-                    "id": "4e4e3133-dcfb-452d-af81-7caf3987119b",
+                    "id": "3b91ee9b-36ab-48ef-a2f3-0098f294e732",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -18,69 +27,80 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "227f98a8-d96f-4d96-98f1-4afa9b5fddcd",
+                    "id": "defa65a1-e601-4fd5-bd45-b155f9d732bf",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Shoot",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "WASD",
-                    "id": "680abee8-4278-474f-9551-1280de7c8a72",
+                    "id": "e151c906-27cb-46c6-8fe1-d47247384dba",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Shoot",
+                    "action": "Move",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "up",
-                    "id": "e9ff3f6c-649d-4d0d-afa7-7def86a48b4e",
-                    "path": "<Keyboard>/upArrow",
+                    "id": "ad900822-a9a2-496c-aa28-0ca05e17f4d4",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Shoot",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "down",
-                    "id": "98fc6050-cea9-44d7-a315-02300158936f",
-                    "path": "<Keyboard>/downArrow",
+                    "id": "378c9615-9217-4951-8c71-a573c4eeef84",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Shoot",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "left",
-                    "id": "579b00ab-12e1-40c2-b43a-8429ddcf6b63",
-                    "path": "<Keyboard>/leftArrow",
+                    "id": "6f582315-4e1b-40dd-bdbb-e62e210d90ec",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Shoot",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "right",
-                    "id": "2b45b29f-0638-43ef-9b3d-32a1b3ddc5ba",
-                    "path": "<Keyboard>/rightArrow",
+                    "id": "32d89a08-3cd8-41dc-ae30-ac0b0e8916ae",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Shoot",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "54238db4-eb29-4609-bdab-d10e715498a0",
+                    "path": "<Gamepad>/rightStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
