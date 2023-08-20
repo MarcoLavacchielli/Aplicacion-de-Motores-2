@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Player playerInput;
-    private Rigidbody rb;
-    private Vector3 playerVelocity;
-    private bool groundedPlayer;
+    [SerializeField] private Player playerInput;
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private Vector3 playerVelocity;
+    [SerializeField] private bool groundedPlayer;
     [SerializeField] private float playerSpeed = 2.0f;
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
