@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         groundedPlayer = Physics.Raycast(transform.position, Vector3.down, 0.1f);
 
-        Vector2 movementInput = playerInput.PlayerMain.Look.ReadValue<Vector2>();
+        Vector2 movementInput = playerInput.PlayerMain.Move.ReadValue<Vector2>();
         Vector3 move = new Vector3(movementInput.x, 0f, movementInput.y).normalized;
 
         // Aplicamos la velocidad constante en la dirección del movimiento.
