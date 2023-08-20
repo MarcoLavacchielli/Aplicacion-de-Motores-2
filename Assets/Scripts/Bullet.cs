@@ -6,10 +6,12 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float velocity;
     [SerializeField] private float damage;
+    [SerializeField] private Rigidbody rb;
 
-    private void Update()
+    private void Start()
     {
-        transform.Translate(Vector3.forward * velocity * Time.deltaTime);
+        rb = GetComponent<Rigidbody>();
+        rb.velocity = transform.forward * velocity;
     }
 
     private void OnTriggerEnter(Collider other)
