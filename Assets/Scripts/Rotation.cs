@@ -16,6 +16,8 @@ public class Rotation : MonoBehaviour
     [SerializeField] private float shootingCooldown = 0.5f;
     [SerializeField] private float lastShootTime;
 
+    [SerializeField] private float anticipationTime = 1f; // Nuevo tiempo de anticipación
+
     private void Awake()
     {
         playerInput = new Player();
@@ -38,9 +40,13 @@ public class Rotation : MonoBehaviour
 
         if (movementInput.magnitude > 0.1f)
         {
-            shootingPriority = true;
+            if (!shootingPriority && Time.time - lastShootTime >= anticipationTime)
+            {
+                shootingPriority = true;
+                lastShootTime = Time.time; // Actualizar el tiempo de último movimiento
+            }
 
-           if (Time.time - lastShootTime >= shootingCooldown)
+            if (shootingPriority && Time.time - lastShootTime >= shootingCooldown)
             {
                 Shoot();
                 lastShootTime = Time.time;
