@@ -208,7 +208,6 @@ GameObject:
   - component: {fileID: 2735177610178625528}
   - component: {fileID: 2735177610178625532}
   - component: {fileID: 8964228003313113882}
-  - component: {fileID: 1180126655795958222}
   - component: {fileID: 2735177610178625534}
   m_Layer: 0
   m_Name: Player
@@ -276,23 +275,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37b907acc2552ec4f90aa38f8700204c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 0}
-  shootController: {fileID: 0}
-  rb: {fileID: 0}
---- !u!114 &1180126655795958222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2735177610178625531}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 300bc9baf60443a4294f215b3fe504df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootController: {fileID: 6153751423258294058}
   bullet: {fileID: 4875157400705881935, guid: 1b09603517fb67a48a07066fa652d887, type: 3}
+  shootController: {fileID: 6153751423258294058}
+  rb: {fileID: 2735177610178625532}
+  shootingPriority: 0
   shootingCooldown: 0.5
   lastShootTime: 0
 --- !u!114 &2735177610178625534
@@ -313,6 +299,7 @@ MonoBehaviour:
   playerSpeed: 5
   jumpHeight: 1
   gravityValue: 0
+  shootChecking: {fileID: 8964228003313113882}
 --- !u!1 &6511771817973351768
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class Rotation : MonoBehaviour
 {
-    [SerializeField] private Player playerInput;
+    [SerializeField] private Player playerInput; //Pide el mapa
 
-    [SerializeField] private GameObject bullet;
-    [SerializeField] private Transform shootController;
+    [SerializeField] private GameObject bullet; //pide el prefab
+    [SerializeField] private Transform shootController; // spot de donde salen las balas
 
-    [SerializeField] private Rigidbody rb;
+    [SerializeField] private Rigidbody rb; // rigid del personaje para rotarlo
 
-    public bool shootingPriority;
-    [SerializeField] private bool isFirstRotation = true; // Nuevo booleano para rastrear la primera rotación
-    [SerializeField] private float rotationCooldown = 0.2f; // Tiempo para la primera rotación
+    public bool shootingPriority; //checkea si esta disparando
 
     [SerializeField] private float shootingCooldown = 0.5f;
     [SerializeField] private float lastShootTime;
@@ -42,14 +40,7 @@ public class Rotation : MonoBehaviour
         {
             shootingPriority = true;
 
-            if (isFirstRotation)
-            {
-                if (Time.time >= rotationCooldown)
-                {
-                    isFirstRotation = false;
-                }
-            }
-            else if (Time.time - lastShootTime >= shootingCooldown)
+           if (Time.time - lastShootTime >= shootingCooldown)
             {
                 Shoot();
                 lastShootTime = Time.time;
@@ -60,7 +51,6 @@ public class Rotation : MonoBehaviour
         else
         {
             shootingPriority = false;
-            isFirstRotation = true; // Reiniciar el booleano de la primera rotación
         }
     }
 
@@ -70,7 +60,10 @@ public class Rotation : MonoBehaviour
 
         if (moveDirection != Vector3.zero)
         {
-            Quaternion newRotation = Quaternion.LookRotation(moveDirection);
+            float rotationSpeed = 15f;
+
+            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+            Quaternion newRotation = Quaternion.Lerp(rb.rotation, targetRotation, rotationSpeed * Time.deltaTime);
             rb.MoveRotation(newRotation);
         }
     }

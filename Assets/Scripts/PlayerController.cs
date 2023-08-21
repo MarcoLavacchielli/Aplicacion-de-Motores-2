@@ -45,7 +45,10 @@ public class PlayerController : MonoBehaviour
         // Rotamos al jugador hacia la dirección del movimiento.
         if (move != Vector3.zero && shootChecking.shootingPriority==false)
         {
-            Quaternion newRotation = Quaternion.LookRotation(move);
+            float rotationSpeed = 15f;
+
+            Quaternion targetRotation = Quaternion.LookRotation(move);
+            Quaternion newRotation = Quaternion.Lerp(rb.rotation, targetRotation, rotationSpeed * Time.deltaTime);
             rb.MoveRotation(newRotation);
         }
 
