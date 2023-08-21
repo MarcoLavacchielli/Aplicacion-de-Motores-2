@@ -12,10 +12,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
 
+    [SerializeField] private Rotation shootChecking;
+
     private void Awake()
     {
         playerInput = new Player();
         rb = GetComponent<Rigidbody>();
+
+        shootChecking = GetComponent<Rotation>();
     }
 
     private void OnEnable()
@@ -39,13 +43,13 @@ public class PlayerController : MonoBehaviour
         rb.velocity = move * playerSpeed;
 
         // Rotamos al jugador hacia la dirección del movimiento.
-        if (move != Vector3.zero)
+        if (move != Vector3.zero && shootChecking.shootingPriority==false)
         {
             Quaternion newRotation = Quaternion.LookRotation(move);
             rb.MoveRotation(newRotation);
         }
 
-        /*if (groundedPlayer && playerInput.PlayerMain.Jump.triggered)
+        /*if (groundedPlayer && playerInput.PlayerMain.Jump.triggered) //esto en caso de agregar un salto
         {
             rb.AddForce(Vector3.up * Mathf.Sqrt(jumpHeight * -2f * gravityValue), ForceMode.VelocityChange);
         }*/

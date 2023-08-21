@@ -5,12 +5,18 @@ using UnityEngine;
 public class Rotation : MonoBehaviour
 {
     [SerializeField] private Player playerInput;
+
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private Transform shootController;
+
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private Vector3 playerVelocity;
-    [SerializeField] private bool groundedPlayer;
-    [SerializeField] private float playerSpeed = 2.0f;
-    [SerializeField] private float jumpHeight = 1.0f;
-    [SerializeField] private float gravityValue = -9.81f;
+
+    public bool shootingPriority;
+    [SerializeField] private bool isFirstRotation = true; // Nuevo booleano para rastrear la primera rotación
+    [SerializeField] private float rotationCooldown = 0.2f; // Tiempo para la primera rotación
+
+    [SerializeField] private float shootingCooldown = 0.5f;
+    [SerializeField] private float lastShootTime;
 
     private void Awake()
     {
@@ -30,24 +36,48 @@ public class Rotation : MonoBehaviour
 
     private void FixedUpdate()
     {
-        groundedPlayer = Physics.Raycast(transform.position, Vector3.down, 0.1f);
-
         Vector2 movementInput = playerInput.PlayerMain.Look.ReadValue<Vector2>();
-        Vector3 move = new Vector3(movementInput.x, 0f, movementInput.y).normalized;
 
-        // Rotamos al jugador hacia la dirección del movimiento.
-        if (move != Vector3.zero)
+        if (movementInput.magnitude > 0.1f)
         {
-            Quaternion newRotation = Quaternion.LookRotation(move);
+            shootingPriority = true;
+
+            if (isFirstRotation)
+            {
+                if (Time.time >= rotationCooldown)
+                {
+                    isFirstRotation = false;
+                }
+            }
+            else if (Time.time - lastShootTime >= shootingCooldown)
+            {
+                Shoot();
+                lastShootTime = Time.time;
+            }
+
+            RotatePlayer(movementInput);
+        }
+        else
+        {
+            shootingPriority = false;
+            isFirstRotation = true; // Reiniciar el booleano de la primera rotación
+        }
+    }
+
+    private void RotatePlayer(Vector2 direction)
+    {
+        Vector3 moveDirection = new Vector3(direction.x, 0f, direction.y).normalized;
+
+        if (moveDirection != Vector3.zero)
+        {
+            Quaternion newRotation = Quaternion.LookRotation(moveDirection);
             rb.MoveRotation(newRotation);
         }
+    }
 
-        /*if (groundedPlayer && playerInput.PlayerMain.Jump.triggered)
-        {
-            rb.AddForce(Vector3.up * Mathf.Sqrt(jumpHeight * -2f * gravityValue), ForceMode.VelocityChange);
-        }*/
-
-        // Aplicamos la gravedad.
-        rb.AddForce(Vector3.up * gravityValue * Time.fixedDeltaTime, ForceMode.VelocityChange);
+    private void Shoot()
+    {
+        GameObject newBullet = Instantiate(bullet, shootController.position, shootController.rotation);
+        Destroy(newBullet, 3f);
     }
 }
