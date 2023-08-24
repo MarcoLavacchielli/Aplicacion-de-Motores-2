@@ -5,18 +5,16 @@ using UnityEngine;
 public class Rotation : MonoBehaviour
 {
     [SerializeField] private Player playerInput; //Pide el mapa
-
     [SerializeField] private GameObject bullet; //pide el prefab
     [SerializeField] private Transform shootController; // spot de donde salen las balas
-
     [SerializeField] private Rigidbody rb; // rigid del personaje para rotarlo
-
     public bool shootingPriority; //checkea si esta disparando
-
     [SerializeField] private float shootingCooldown = 0.5f;
     [SerializeField] private float lastShootTime;
-
     [SerializeField] private float anticipationTime = 1f; // Nuevo tiempo de anticipación
+    [SerializeField] private Bullet prefab;
+
+    private Pool<Bullet> pool = new Pool<Bullet>();
 
     private void Awake()
     {
@@ -76,6 +74,15 @@ public class Rotation : MonoBehaviour
 
     private void Shoot()
     {
+        /*if (pool.TryRent(out Bullet bullet))
+        {
+            bullet = Instantiate(prefab);
+            bullet.SetPool(pool);
+        }
+        bullet.gameObject.SetActive(true);
+        bullet.transform.position = shootController.transform.position;
+        bullet.transform.rotation = shootController.transform.rotation;*/
+
         GameObject newBullet = Instantiate(bullet, shootController.position, shootController.rotation);
         Destroy(newBullet, 3f);
     }

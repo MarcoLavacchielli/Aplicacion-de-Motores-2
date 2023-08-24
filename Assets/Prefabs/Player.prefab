@@ -281,6 +281,8 @@ MonoBehaviour:
   shootingPriority: 0
   shootingCooldown: 0.5
   lastShootTime: 0
+  anticipationTime: 1
+  prefab: {fileID: 3006035034926817437, guid: 1b09603517fb67a48a07066fa652d887, type: 3}
 --- !u!114 &2735177610178625534
 MonoBehaviour:
   m_ObjectHideFlags: 0
