@@ -10,7 +10,7 @@ public class Rotation : MonoBehaviour
     [SerializeField] private Rigidbody rb;
 
     [SerializeField] private List<Bullet> bulletPool = new List<Bullet>();
-    [SerializeField]  private int bulletIndex = 0;
+    [SerializeField] private int bulletIndex = 0;
 
     public bool shootingPriority;
     [SerializeField] private float shootingCooldown = 0.5f;
