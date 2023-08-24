@@ -26,7 +26,7 @@ public class Rotation : MonoBehaviour
         {
             Bullet newBullet = Instantiate(bulletPrefab);
             bulletPool.Add(newBullet);
-            newBullet.gameObject.SetActive(true);
+            //newBullet.gameObject.SetActive(false); // Set the bullets as inactive initially   NO ACTIVES ESTA LINEA, LO ROMPE Y CREA BALAS AL MOMENTO
         }
     }
 
@@ -38,6 +38,11 @@ public class Rotation : MonoBehaviour
     private void OnDisable()
     {
         playerInput.Disable();
+    }
+
+    private void Start()
+    {
+        lastShootTime = Time.time;
     }
 
     private void FixedUpdate()
@@ -86,13 +91,20 @@ public class Rotation : MonoBehaviour
         newBullet.transform.position = shootController.position;
         newBullet.transform.rotation = shootController.rotation;
         newBullet.gameObject.SetActive(true);
-        newBullet.Launch(); // Added line to launch the bullet
+        newBullet.Launch();
     }
 
     private Bullet GetNextBullet()
     {
         Bullet bullet = bulletPool[bulletIndex];
         bulletIndex = (bulletIndex + 1) % bulletPool.Count;
+
+        // If the bullet is already active, deactivate it before returning
+        if (bullet.gameObject.activeSelf)
+        {
+            bullet.gameObject.SetActive(false);
+        }
+
         return bullet;
     }
 }
