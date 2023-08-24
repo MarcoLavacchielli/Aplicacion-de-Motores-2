@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rotation : MonoBehaviour
+public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] private Player playerInput;  //Direccion del joystick
     [SerializeField] private Bullet bulletPrefab;   //Llama al prefab de la bala
