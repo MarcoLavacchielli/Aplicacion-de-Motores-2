@@ -25,8 +25,8 @@ public class Rotation : MonoBehaviour
         for (int i = 0; i < 12; i++)
         {
             Bullet newBullet = Instantiate(bulletPrefab);
-            newBullet.gameObject.SetActive(false);
             bulletPool.Add(newBullet);
+            newBullet.gameObject.SetActive(true);
         }
     }
 

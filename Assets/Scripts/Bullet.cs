@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
     public void Launch() // Added method to launch the bullet
     {
         rb.velocity = transform.forward * velocity;
-        StartCoroutine(ReturnAfterSeconds(7f)); // Return after 7 seconds
+        StartCoroutine(ReturnAfterSeconds(3f)); // Return after 7 seconds
     }
 
     private IEnumerator ReturnAfterSeconds(float seconds)
