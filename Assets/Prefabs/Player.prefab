@@ -79,14 +79,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37b907acc2552ec4f90aa38f8700204c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 4875157400705881935, guid: 1b09603517fb67a48a07066fa652d887, type: 3}
+  bulletPrefab: {fileID: 3006035034926817437, guid: 1b09603517fb67a48a07066fa652d887, type: 3}
   shootController: {fileID: 6153751423258294058}
   rb: {fileID: 2735177610178625532}
+  bulletPool: []
+  bulletIndex: 0
   shootingPriority: 0
   shootingCooldown: 0.5
   lastShootTime: 0
   anticipationTime: 1
-  prefab: {fileID: 3006035034926817437, guid: 1b09603517fb67a48a07066fa652d887, type: 3}
 --- !u!114 &2735177610178625534
 MonoBehaviour:
   m_ObjectHideFlags: 0
