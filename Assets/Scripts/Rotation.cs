@@ -4,29 +4,29 @@ using UnityEngine;
 
 public class Rotation : MonoBehaviour
 {
-    [SerializeField] private Player playerInput;
-    [SerializeField] private Bullet bulletPrefab;
-    [SerializeField] private Transform shootController;
-    [SerializeField] private Rigidbody rb;
+    [SerializeField] private Player playerInput;  //Direccion del joystick
+    [SerializeField] private Bullet bulletPrefab;   //Llama al prefab de la bala
+    [SerializeField] private Transform shootController;   // Ubicacion de la bala (donde se instancia)
+    [SerializeField] private Rigidbody rb;  //RigidBody de la bala
 
-    [SerializeField] private List<Bullet> bulletPool = new List<Bullet>();
-    [SerializeField] private int bulletIndex = 0;
+    [SerializeField] private List<Bullet> bulletPool = new List<Bullet>();  //Lista de balas prehechas
+    [SerializeField] private int bulletIndex = 0; //Inidice para saber que bala se va a utilizar
 
-    public bool shootingPriority;
-    [SerializeField] private float shootingCooldown = 0.5f;
-    [SerializeField] private float lastShootTime;
-    [SerializeField] private float anticipationTime = 1f;
+    public bool shootingPriority;   // Esto es un booleano para sobreescribir la rotacion
+    [SerializeField] private float shootingCooldown = 0.5f;  //Tiempo entre disparos
+    [SerializeField] private float lastShootTime;  //Controlar el tiempo de disparo
+    [SerializeField] private float anticipationTime = 1f;  //El primer disparo va a salir despues de esta funcion
 
     private void Awake()
     {
         playerInput = new Player();
         rb = GetComponent<Rigidbody>();
 
-        for (int i = 0; i < 12; i++)
+        for (int i = 0; i < 12; i++)   //instancia 12 balas que son las de la bolsa
         {
             Bullet newBullet = Instantiate(bulletPrefab);
             bulletPool.Add(newBullet);
-            //newBullet.gameObject.SetActive(false); // Set the bullets as inactive initially   NO ACTIVES ESTA LINEA, LO ROMPE Y CREA BALAS AL MOMENTO
+            //newBullet.gameObject.SetActive(false); // SeInstancia las balas al inicio (al pedo)
         }
     }
 
@@ -49,7 +49,7 @@ public class Rotation : MonoBehaviour
     {
         Vector2 movementInput = playerInput.PlayerMain.Look.ReadValue<Vector2>();
 
-        if (movementInput.magnitude > 0.1f)
+        if (movementInput.magnitude > 0.1f)  //Checkea si se movio el joystick
         {
             if (!shootingPriority && Time.time - lastShootTime >= anticipationTime)
             {
@@ -71,7 +71,7 @@ public class Rotation : MonoBehaviour
         }
     }
 
-    private void RotatePlayer(Vector2 direction)
+    private void RotatePlayer(Vector2 direction)  //rota al jugador segun la entrada obtenida
     {
         Vector3 moveDirection = new Vector3(direction.x, 0f, direction.y).normalized;
 
@@ -85,7 +85,7 @@ public class Rotation : MonoBehaviour
         }
     }
 
-    private void Shoot()
+    private void Shoot() //Metodo de disparo, obtiene una bala del pool y la lanza desde la posicion del controller
     {
         Bullet newBullet = GetNextBullet();
         newBullet.transform.position = shootController.position;
@@ -94,7 +94,7 @@ public class Rotation : MonoBehaviour
         newBullet.Launch();
     }
 
-    private Bullet GetNextBullet()
+    private Bullet GetNextBullet() // Obtiene la siguiente bala desde el pool
     {
         Bullet bullet = bulletPool[bulletIndex];
         bulletIndex = (bulletIndex + 1) % bulletPool.Count;
