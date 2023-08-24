@@ -942,6 +942,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1209263494939646950, guid: 3a61ffecc17d4f74588eed7943b64d3a, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2735177610178625529, guid: 3a61ffecc17d4f74588eed7943b64d3a, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -989,6 +993,22 @@ PrefabInstance:
     - target: {fileID: 2735177610178625531, guid: 3a61ffecc17d4f74588eed7943b64d3a, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570593054835507484, guid: 3a61ffecc17d4f74588eed7943b64d3a, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6153751423258294058, guid: 3a61ffecc17d4f74588eed7943b64d3a, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7975252330831009125, guid: 3a61ffecc17d4f74588eed7943b64d3a, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8555214120019332577, guid: 3a61ffecc17d4f74588eed7943b64d3a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8964228003313113882, guid: 3a61ffecc17d4f74588eed7943b64d3a, type: 3}
       propertyPath: rotationCooldown
