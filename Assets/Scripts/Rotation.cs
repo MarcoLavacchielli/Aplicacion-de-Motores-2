@@ -4,22 +4,30 @@ using UnityEngine;
 
 public class Rotation : MonoBehaviour
 {
-    [SerializeField] private Player playerInput; //Pide el mapa
-    [SerializeField] private GameObject bullet; //pide el prefab
-    [SerializeField] private Transform shootController; // spot de donde salen las balas
-    [SerializeField] private Rigidbody rb; // rigid del personaje para rotarlo
-    public bool shootingPriority; //checkea si esta disparando
+    [SerializeField] private Player playerInput;
+    [SerializeField] private Bullet bulletPrefab;
+    [SerializeField] private Transform shootController;
+    [SerializeField] private Rigidbody rb;
+
+    [SerializeField] private List<Bullet> bulletPool = new List<Bullet>();
+    [SerializeField]  private int bulletIndex = 0;
+
+    public bool shootingPriority;
     [SerializeField] private float shootingCooldown = 0.5f;
     [SerializeField] private float lastShootTime;
-    [SerializeField] private float anticipationTime = 1f; // Nuevo tiempo de anticipación
-    [SerializeField] private Bullet prefab;
-
-    private Pool<Bullet> pool = new Pool<Bullet>();
+    [SerializeField] private float anticipationTime = 1f;
 
     private void Awake()
     {
         playerInput = new Player();
         rb = GetComponent<Rigidbody>();
+
+        for (int i = 0; i < 12; i++)
+        {
+            Bullet newBullet = Instantiate(bulletPrefab);
+            newBullet.gameObject.SetActive(false);
+            bulletPool.Add(newBullet);
+        }
     }
 
     private void OnEnable()
@@ -41,7 +49,7 @@ public class Rotation : MonoBehaviour
             if (!shootingPriority && Time.time - lastShootTime >= anticipationTime)
             {
                 shootingPriority = true;
-                lastShootTime = Time.time; // Actualizar el tiempo de último movimiento
+                lastShootTime = Time.time;
             }
 
             if (shootingPriority && Time.time - lastShootTime >= shootingCooldown)
@@ -74,16 +82,17 @@ public class Rotation : MonoBehaviour
 
     private void Shoot()
     {
-        /*if (pool.TryRent(out Bullet bullet))
-        {
-            bullet = Instantiate(prefab);
-            bullet.SetPool(pool);
-        }
-        bullet.gameObject.SetActive(true);
-        bullet.transform.position = shootController.transform.position;
-        bullet.transform.rotation = shootController.transform.rotation;*/
+        Bullet newBullet = GetNextBullet();
+        newBullet.transform.position = shootController.position;
+        newBullet.transform.rotation = shootController.rotation;
+        newBullet.gameObject.SetActive(true);
+        newBullet.Launch(); // Added line to launch the bullet
+    }
 
-        GameObject newBullet = Instantiate(bullet, shootController.position, shootController.rotation);
-        Destroy(newBullet, 3f);
+    private Bullet GetNextBullet()
+    {
+        Bullet bullet = bulletPool[bulletIndex];
+        bulletIndex = (bulletIndex + 1) % bulletPool.Count;
+        return bullet;
     }
 }

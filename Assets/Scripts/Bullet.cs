@@ -6,32 +6,27 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float velocity;
     [SerializeField] private float damage;
-    [SerializeField] private Rigidbody rb;
-
-    private Pool<Bullet> pool;
-
-    public void SetPool(Pool<Bullet> pool)
-    {
-        this.pool = pool;
-    }
+    private Rigidbody rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+    }
+
+    public void Launch() // Added method to launch the bullet
+    {
         rb.velocity = transform.forward * velocity;
+        StartCoroutine(ReturnAfterSeconds(7f)); // Return after 7 seconds
+    }
+
+    private IEnumerator ReturnAfterSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        gameObject.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         gameObject.SetActive(false);
-        pool.Return(this);
     }
-
-    /*private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-
-        }
-    }*/
 }
