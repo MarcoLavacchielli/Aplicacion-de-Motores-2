@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyFactory : MonoBehaviour
 {
-    public GameObject enemy;
+    [SerializeField] private GameObject enemy;
 
     public Enemy CreateBasicEnemy(Vector3 position)
     {
