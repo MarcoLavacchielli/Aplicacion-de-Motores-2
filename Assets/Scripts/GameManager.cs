@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
             Vector3 randomSpawnPosition = GetRandomSpawnPosition();
-            Enemy basicEnemy = enemyFactory.CreateBasicEnemy(randomSpawnPosition);
+            IEnemy basicEnemy = enemyFactory.CreateBasicEnemy(randomSpawnPosition);
         }
     }
 

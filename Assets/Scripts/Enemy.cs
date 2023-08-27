@@ -2,7 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public interface IEnemy
+{
+    void TakeDamage(int amount);
+    void Die();
+}
+public class Enemy : MonoBehaviour, IEnemy
 {
     public int health;
     public int damage;
@@ -16,7 +21,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    protected virtual void Die()
+    public void Die()
     {
         Destroy(gameObject);
     }
