@@ -5,15 +5,16 @@ using UnityEngine;
 public class EnemyFactory : MonoBehaviour
 {
     [SerializeField] private GameObject enemy;
+    [SerializeField] private GameObject enemy2;
 
-    public Enemy CreateBasicEnemy(Vector3 position)
+    public IEnemy CreateEnemy(Vector3 position)
     {
         GameObject enemyObj = Instantiate(enemy, position, Quaternion.identity);
         return enemyObj.GetComponent<Enemy>();
     }
-    public IEnemy CreateEnemy(Vector3 position)
+    public IEnemy CreateEnemy2(Vector3 position)
     {
-        GameObject enemyObj = Instantiate(enemy, position, Quaternion.identity);
-        return enemyObj.GetComponent<IEnemy>();
+        GameObject enemyObj2 = Instantiate(enemy2, position, Quaternion.identity);
+        return enemyObj2.GetComponent<IEnemy>();
     }
 }

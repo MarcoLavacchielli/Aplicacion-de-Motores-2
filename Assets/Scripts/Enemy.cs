@@ -26,3 +26,22 @@ public class Enemy : MonoBehaviour, IEnemy
         Destroy(gameObject);
     }
 }
+public class Enemy2 : MonoBehaviour, IEnemy
+{
+    public int health;
+    public int damage;
+
+    public void TakeDamage(int amount)
+    {
+        health -= amount;
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        Destroy(gameObject);
+    }
+}
