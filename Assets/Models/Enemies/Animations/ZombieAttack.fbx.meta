@@ -12,6 +12,9 @@ ModelImporter:
   - first:
       74: 7998665639636511456
     second: ZombieAttack
+  - first:
+      74: -3780516532778130023
+    second: ZombieAttack
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -43,10 +46,10 @@ ModelImporter:
     clipAnimations:
     - serializedVersion: 16
       name: ZombieAttack
-      takeName: Take 001
+      takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 100
+      lastFrame: 79
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

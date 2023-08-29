@@ -43,10 +43,10 @@ ModelImporter:
     clipAnimations:
     - serializedVersion: 16
       name: ZombieRunning
-      takeName: Take 001
+      takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 100
+      lastFrame: 24
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
