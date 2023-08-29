@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Player playerInput;
+    private Charview view;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Vector3 playerVelocity;
     [SerializeField] private bool groundedPlayer;
@@ -37,6 +38,15 @@ public class PlayerController : MonoBehaviour
 
         Vector2 movementInput = playerInput.PlayerMain.Move.ReadValue<Vector2>();
         Vector3 move = new Vector3(movementInput.x, 0f, movementInput.y).normalized;
+
+        /*if (move.magnitude > 0.3f)
+        {
+            view.Isrunning(true);
+        }
+        else
+        {
+            view.Isrunning(false);
+        }*/
 
         // Aplicamos la velocidad constante en la dirección del movimiento.
         rb.velocity = move * playerSpeed;
