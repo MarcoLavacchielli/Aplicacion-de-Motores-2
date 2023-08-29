@@ -125,6 +125,34 @@ public partial class @Player : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""GameMain"",
+            ""id"": ""60264c79-f663-408b-bb6b-b7116cb28aeb"",
+            ""actions"": [
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""24aa76d8-608f-4147-9e3b-0af311d33ea6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""336e7100-61e7-468d-b876-d791a9f41949"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -133,6 +161,9 @@ public partial class @Player : IInputActionCollection2, IDisposable
         m_PlayerMain = asset.FindActionMap("PlayerMain", throwIfNotFound: true);
         m_PlayerMain_Move = m_PlayerMain.FindAction("Move", throwIfNotFound: true);
         m_PlayerMain_Look = m_PlayerMain.FindAction("Look", throwIfNotFound: true);
+        // GameMain
+        m_GameMain = asset.FindActionMap("GameMain", throwIfNotFound: true);
+        m_GameMain_Pause = m_GameMain.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -229,9 +260,46 @@ public partial class @Player : IInputActionCollection2, IDisposable
         }
     }
     public PlayerMainActions @PlayerMain => new PlayerMainActions(this);
+
+    // GameMain
+    private readonly InputActionMap m_GameMain;
+    private IGameMainActions m_GameMainActionsCallbackInterface;
+    private readonly InputAction m_GameMain_Pause;
+    public struct GameMainActions
+    {
+        private @Player m_Wrapper;
+        public GameMainActions(@Player wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pause => m_Wrapper.m_GameMain_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_GameMain; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(GameMainActions set) { return set.Get(); }
+        public void SetCallbacks(IGameMainActions instance)
+        {
+            if (m_Wrapper.m_GameMainActionsCallbackInterface != null)
+            {
+                @Pause.started -= m_Wrapper.m_GameMainActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_GameMainActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_GameMainActionsCallbackInterface.OnPause;
+            }
+            m_Wrapper.m_GameMainActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+            }
+        }
+    }
+    public GameMainActions @GameMain => new GameMainActions(this);
     public interface IPlayerMainActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
+    }
+    public interface IGameMainActions
+    {
+        void OnPause(InputAction.CallbackContext context);
     }
 }
