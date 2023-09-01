@@ -11,8 +11,8 @@ public interface IEnemy
 }
 public class Enemy : MonoBehaviour, IEnemy
 {
-    public int health;
-    public int damage;
+    [SerializeField] private int health;
+    [SerializeField] private int damage;
 
     public event Action OnEnemyDeath;
 
@@ -33,8 +33,8 @@ public class Enemy : MonoBehaviour, IEnemy
 }
 public class Enemy2 : MonoBehaviour, IEnemy
 {
-    public int health;
-    public int damage;
+    [SerializeField] private int health;
+    [SerializeField] private int damage;
 
     public event Action OnEnemyDeath;
 
