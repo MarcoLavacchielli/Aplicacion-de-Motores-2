@@ -9,13 +9,12 @@ public interface IEnemy
     void TakeDamage(int amount);
     void Die();
 }
-
 public class Enemy : MonoBehaviour, IEnemy
 {
     [SerializeField] private int health;
     [SerializeField] private int damage;
 
-    public event Action OnEnemyDeath = delegate { };
+    public event Action OnEnemyDeath;
 
     public void TakeDamage(int amount)
     {
@@ -31,23 +30,13 @@ public class Enemy : MonoBehaviour, IEnemy
         OnEnemyDeath.Invoke();
         Destroy(gameObject);
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("Aa");
-            Die();
-        }
-    }
 }
-
 public class Enemy2 : MonoBehaviour, IEnemy
 {
     [SerializeField] private int health;
     [SerializeField] private int damage;
 
-    public event Action OnEnemyDeath = delegate { };
+    public event Action OnEnemyDeath;
 
     public void TakeDamage(int amount)
     {
@@ -62,14 +51,5 @@ public class Enemy2 : MonoBehaviour, IEnemy
     {
         OnEnemyDeath.Invoke();
         Destroy(gameObject);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("Aa");
-            Die();
-        }
     }
 }
