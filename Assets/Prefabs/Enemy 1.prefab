@@ -2231,7 +2231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4cb2c05e04a78941947177a906534b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 2735177610178625529, guid: 3a61ffecc17d4f74588eed7943b64d3a, type: 3}
   moveSpeed: 10
   velocity: {x: 0, y: 0, z: 0}
   fleeVelocity: {x: 0, y: 0, z: 0}

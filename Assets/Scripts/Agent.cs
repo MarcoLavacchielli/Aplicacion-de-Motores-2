@@ -19,6 +19,10 @@ public class Agent : MonoBehaviour
 
     public void Update()
     {
+        if (target != null)
+        {
+            transform.LookAt(target.position);
+        }
         velocity = Vector3.zero;
         //Gravedad
         #region Referncia
@@ -60,7 +64,6 @@ public class Agent : MonoBehaviour
 
         transform.position += (Vector3)velocity * Time.deltaTime;
     }
-
     private void AddAcceleration(Vector3 force)
     {
         velocity += force * Time.deltaTime;
