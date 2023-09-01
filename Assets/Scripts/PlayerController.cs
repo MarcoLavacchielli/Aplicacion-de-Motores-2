@@ -14,6 +14,22 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float gravityValue = -9.81f;
     [SerializeField] private PlayerShoot shootChecking;
 
+    private void Start()
+    {
+        MonoBehaviour[] monoBehaviours = FindObjectsOfType<MonoBehaviour>();
+        foreach (var monoBehaviour in monoBehaviours)
+        {
+            if (monoBehaviour is IEnemy enemy)
+            {
+                enemy.OnEnemyDeath += HandleEnemyDeath;
+            }
+        }
+    }
+    private void HandleEnemyDeath()
+    {
+        // Maneja la notificación de la muerte del enemigo aquí.
+        Debug.Log("Un enemigo ha muerto.");
+    }
     private void Awake()
     {
         playerInput = new Player();
