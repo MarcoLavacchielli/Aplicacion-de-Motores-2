@@ -81,7 +81,7 @@ public class Agent : MonoBehaviour
                 // Direccion a cada Comida
                 Vector3 collDir = checkCollider.transform.position - transform.position;
 
-                // Chequeamos si hay pared entre yo y la comida
+                // Chequeamos si hay pared entre la comida y yo
                 if (!Physics.Raycast(transform.position, collDir, collDir.magnitude, floorMask))
                 {
                     if (actualObj == null)

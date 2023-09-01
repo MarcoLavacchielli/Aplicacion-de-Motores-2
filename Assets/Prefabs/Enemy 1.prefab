@@ -2232,16 +2232,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  moveSpeed: 3
+  moveSpeed: 10
+  velocity: {x: 0, y: 0, z: 0}
+  fleeVelocity: {x: 0, y: 0, z: 0}
+  chaseVelocity: {x: 0, y: 0, z: 0}
+  gravityVelocity: {x: 0, y: 0, z: 0}
   floorMask:
     serializedVersion: 2
     m_Bits: 64
   foodMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   enemyMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 128
   detectionRadius: 10
 --- !u!1 &8858982978949160550
 GameObject:
