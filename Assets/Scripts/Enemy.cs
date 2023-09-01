@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour, IEnemy
     [SerializeField] private int health;
     [SerializeField] private int damage;
 
-    public event Action OnEnemyDeath;
+    public event Action OnEnemyDeath = delegate { };
 
     public void TakeDamage(int amount)
     {
@@ -29,6 +29,14 @@ public class Enemy : MonoBehaviour, IEnemy
     {
         OnEnemyDeath.Invoke();
         Destroy(gameObject);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (!collision.gameObject.CompareTag("Player"))
+        {
+            Die();
+        }
     }
 }
 public class Enemy2 : MonoBehaviour, IEnemy
@@ -36,7 +44,7 @@ public class Enemy2 : MonoBehaviour, IEnemy
     [SerializeField] private int health;
     [SerializeField] private int damage;
 
-    public event Action OnEnemyDeath;
+    public event Action OnEnemyDeath = delegate { };
 
     public void TakeDamage(int amount)
     {
@@ -51,5 +59,13 @@ public class Enemy2 : MonoBehaviour, IEnemy
     {
         OnEnemyDeath.Invoke();
         Destroy(gameObject);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (!collision.gameObject.CompareTag("Player"))
+        {
+            Die();
+        }
     }
 }
