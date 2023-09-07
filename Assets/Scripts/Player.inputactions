@@ -116,6 +116,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchPanel",
+                    "type": "Button",
+                    "id": "e3695424-0979-4e43-a14a-8ce5a65a6e9e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -127,6 +136,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d69b717f-96b8-4a5e-b45a-55d3892f3590",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchPanel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

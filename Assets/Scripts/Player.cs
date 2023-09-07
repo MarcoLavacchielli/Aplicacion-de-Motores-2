@@ -138,6 +138,15 @@ public partial class @Player : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchPanel"",
+                    ""type"": ""Button"",
+                    ""id"": ""e3695424-0979-4e43-a14a-8ce5a65a6e9e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -149,6 +158,17 @@ public partial class @Player : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d69b717f-96b8-4a5e-b45a-55d3892f3590"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchPanel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -164,6 +184,7 @@ public partial class @Player : IInputActionCollection2, IDisposable
         // GameMain
         m_GameMain = asset.FindActionMap("GameMain", throwIfNotFound: true);
         m_GameMain_Pause = m_GameMain.FindAction("Pause", throwIfNotFound: true);
+        m_GameMain_SwitchPanel = m_GameMain.FindAction("SwitchPanel", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -265,11 +286,13 @@ public partial class @Player : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_GameMain;
     private IGameMainActions m_GameMainActionsCallbackInterface;
     private readonly InputAction m_GameMain_Pause;
+    private readonly InputAction m_GameMain_SwitchPanel;
     public struct GameMainActions
     {
         private @Player m_Wrapper;
         public GameMainActions(@Player wrapper) { m_Wrapper = wrapper; }
         public InputAction @Pause => m_Wrapper.m_GameMain_Pause;
+        public InputAction @SwitchPanel => m_Wrapper.m_GameMain_SwitchPanel;
         public InputActionMap Get() { return m_Wrapper.m_GameMain; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -282,6 +305,9 @@ public partial class @Player : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_GameMainActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_GameMainActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_GameMainActionsCallbackInterface.OnPause;
+                @SwitchPanel.started -= m_Wrapper.m_GameMainActionsCallbackInterface.OnSwitchPanel;
+                @SwitchPanel.performed -= m_Wrapper.m_GameMainActionsCallbackInterface.OnSwitchPanel;
+                @SwitchPanel.canceled -= m_Wrapper.m_GameMainActionsCallbackInterface.OnSwitchPanel;
             }
             m_Wrapper.m_GameMainActionsCallbackInterface = instance;
             if (instance != null)
@@ -289,6 +315,9 @@ public partial class @Player : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @SwitchPanel.started += instance.OnSwitchPanel;
+                @SwitchPanel.performed += instance.OnSwitchPanel;
+                @SwitchPanel.canceled += instance.OnSwitchPanel;
             }
         }
     }
@@ -301,5 +330,6 @@ public partial class @Player : IInputActionCollection2, IDisposable
     public interface IGameMainActions
     {
         void OnPause(InputAction.CallbackContext context);
+        void OnSwitchPanel(InputAction.CallbackContext context);
     }
 }
