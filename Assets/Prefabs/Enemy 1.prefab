@@ -2248,6 +2248,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   detectionRadius: 10
+  rotationSpeed: 5
 --- !u!114 &7845457929246196246
 MonoBehaviour:
   m_ObjectHideFlags: 0

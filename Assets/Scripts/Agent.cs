@@ -14,6 +14,7 @@ public class Agent : MonoBehaviour
     [SerializeField] private LayerMask foodMask;
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private float detectionRadius;
+    [SerializeField] private float rotationSpeed;
 
     Ground ground => Ground.Instance;
 
@@ -21,7 +22,7 @@ public class Agent : MonoBehaviour
     {
         if (target != null)
         {
-            transform.LookAt(target.position);
+            //transform.LookAt(target.position);
         }
         velocity = Vector3.zero;
         //Gravedad
@@ -130,6 +131,7 @@ public class Agent : MonoBehaviour
         {
             // Comida actual
             GameObject actualObj = null;
+            float shortestDistance = float.MaxValue; // Mantén un registro de la distancia más corta
 
             //  Chequeamos las comidas cercanas
             foreach (var checkCollider in nearColliders)
@@ -140,17 +142,12 @@ public class Agent : MonoBehaviour
                 // Chequeamos si hay pared entre yo y la comida
                 if (!Physics.Raycast(transform.position, collDir, collDir.magnitude, floorMask))
                 {
-                    if (actualObj == null)
+                    float distance = Vector3.Distance(transform.position, checkCollider.transform.position);
+
+                    if (distance < shortestDistance)
                     {
-                        // Guardamos la comida si no hay pared en medio
+                        shortestDistance = distance;
                         actualObj = checkCollider.gameObject;
-                    }
-                    else
-                    {
-                        if (Vector3.Distance(transform.position, actualObj.transform.position) > Vector3.Distance(transform.position, checkCollider.transform.position))
-                        {
-                            actualObj = checkCollider.gameObject;
-                        }
                     }
                 }
             }
@@ -161,10 +158,17 @@ public class Agent : MonoBehaviour
                 return;
             }
 
+            // Calcula la dirección hacia el objetivo
             Vector3 dir = actualObj.transform.position - transform.position;
             dir.Normalize();
             dir.y = 0;
-            chaseVelocity += dir * moveSpeed * Time.deltaTime;
+
+            // Utiliza Lerp para suavizar la rotación hacia el objetivo
+            Quaternion targetRotation = Quaternion.LookRotation(dir);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+            // Aplica la velocidad de movimiento
+            chaseVelocity = dir * moveSpeed;
             chaseVelocity = Vector3.ClampMagnitude(chaseVelocity, 4f);
         }
         else
