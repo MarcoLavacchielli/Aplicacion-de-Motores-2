@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour
 {
@@ -46,6 +47,12 @@ public class Pause : MonoBehaviour
             Time.timeScale = 1f; // Reanudar el tiempo en el juego
             pauseCanvas.SetActive(false); // Ocultar el canvas de pausa
         }
+    }
+
+    public void loadscene(string scenename) //carga una escena especifica por nombre
+    {
+        Time.timeScale = 1f; // Reanudar el tiempo en el juego
+        SceneManager.LoadScene(scenename);
     }
 
 }
