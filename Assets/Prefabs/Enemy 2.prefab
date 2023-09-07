@@ -1529,7 +1529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2735177610178625529, guid: 3a61ffecc17d4f74588eed7943b64d3a, type: 3}
-  moveSpeed: 5
+  moveSpeed: 3
   velocity: {x: 0, y: 0, z: 0}
   fleeVelocity: {x: 0, y: 0, z: 0}
   chaseVelocity: {x: 0, y: 0, z: 0}
