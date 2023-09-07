@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
@@ -14,7 +15,7 @@ public class MainMenuManager : MonoBehaviour
 
     [SerializeField] private GameObject[] panels;
 
-    public void SwitchPanel(int index)
+    public void SwitchPanel(int index)  //Setea por indice, el panel a activar
     {
         if (index >= 0 && index < panels.Length)
         {
@@ -22,13 +23,17 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
-    public void TogglePanel(GameObject panelToToggle)
+    public void TogglePanel(GameObject panelToToggle) //setea por editor, el panel a desactivar
     {
         panelToToggle.SetActive(!panelToToggle.activeSelf);
     }
 
+    public void loadscene(string scenename) //carga una escena especifica por nombre
+    {
+        SceneManager.LoadScene(scenename);
+    }
 
-    public void QuitGame()
+    public void QuitGame() //Cierra el juego, gracias por jugar o pispear
     {
         Application.Quit();
     }
