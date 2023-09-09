@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Player playerInput;
-    private Charview view;
+    Charview view;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Vector3 playerVelocity;
     [SerializeField] private bool groundedPlayer;
@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        view = GetComponent<Charview>();
         playerInput = new Player();
         rb = GetComponent<Rigidbody>();
 
@@ -59,6 +60,12 @@ public class PlayerController : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(move);
             Quaternion newRotation = Quaternion.Lerp(rb.rotation, targetRotation, rotationSpeed * Time.deltaTime);
             rb.MoveRotation(newRotation);
+
+            view.Isrunning(true);
+        }
+        else
+        {
+            view.Isrunning(false);
         }
 
         /*if (groundedPlayer && playerInput.PlayerMain.Jump.triggered) //esto en caso de agregar un salto
