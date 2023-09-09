@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Player playerInput;
-    Charview view;
+    private Charview view;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Vector3 playerVelocity;
     [SerializeField] private bool groundedPlayer;

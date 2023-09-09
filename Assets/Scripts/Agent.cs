@@ -15,9 +15,16 @@ public class Agent : MonoBehaviour
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private float detectionRadius;
     [SerializeField] private float rotationSpeed;
+    [SerializeField] private Animator enemy1Anim;
+    [SerializeField] private Animator enemy2Anim;
 
     Ground ground => Ground.Instance;
 
+    public void Awake()
+    {
+        enemy1Anim = GetComponent<Animator>();
+        enemy2Anim = GetComponent<Animator>();
+    }
     public void Update()
     {
         if (target != null)
@@ -97,6 +104,7 @@ public class Agent : MonoBehaviour
                     {
                         if (Vector3.Distance(transform.position, actualObj.transform.position) > Vector3.Distance(transform.position, checkCollider.transform.position))
                         {
+                            enemy1Anim.Play("ZombieRunning");
                             actualObj = checkCollider.gameObject;
                         }
                     }
@@ -146,6 +154,7 @@ public class Agent : MonoBehaviour
 
                     if (distance < shortestDistance)
                     {
+                        enemy2Anim.Play("ZombieRunning");
                         shortestDistance = distance;
                         actualObj = checkCollider.gameObject;
                     }

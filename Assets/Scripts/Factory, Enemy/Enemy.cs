@@ -42,7 +42,6 @@ public class Enemy2 : MonoBehaviour, IEnemy
 {
     [SerializeField] private int health;
     [SerializeField] private int damage;
-
     public void TakeDamage(int amount)
     {
         health -= amount;
