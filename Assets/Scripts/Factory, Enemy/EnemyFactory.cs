@@ -10,7 +10,7 @@ public class EnemyFactory : MonoBehaviour
     public IEnemy CreateEnemy(Vector3 position)
     {
         GameObject enemyObj = Instantiate(enemy, position, Quaternion.identity);
-        return enemyObj.GetComponent<Enemy>();
+        return enemyObj.GetComponent<IEnemy>();
     }
     public IEnemy CreateEnemy2(Vector3 position)
     {
