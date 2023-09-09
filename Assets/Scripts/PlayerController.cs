@@ -25,27 +25,11 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         playerInput.Enable();
-        EventManager.StartListening("EnemyDied", HandleEnemyDeath);
     }
 
     private void OnDisable()
     {
         playerInput.Disable();
-        EventManager.StopListening("EnemyDied", HandleEnemyDeath);
-    }
-    private void HandleEnemyDeath()
-    {
-        // Este método se ejecutará cada vez que un enemigo muera.
-        // Puedes realizar acciones específicas relacionadas con el jugador aquí.
-        NotifyPlayerObserverOfEnemyDeath();
-    }
-    private void NotifyPlayerObserverOfEnemyDeath()
-    {
-        PlayerObserver playerObserver = FindObjectOfType<PlayerObserver>();
-        if (playerObserver != null)
-        {
-            playerObserver.HandleEnemyDeath();
-        }
     }
 
     private void FixedUpdate()
