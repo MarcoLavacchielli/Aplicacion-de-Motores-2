@@ -20,6 +20,7 @@ public class MainMenuManager : MonoBehaviour
         if (index >= 0 && index < panels.Length)
         {
             panels[index].SetActive(!panels[index].activeSelf);
+            AudioManager.Instance.PlaySFX(0); //hace Play del sonido del boton (actualmente, indice 0)
         }
     }
 
@@ -37,4 +38,9 @@ public class MainMenuManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    /*public void PlaySfx()
+    {
+        AudioManager.Instance.PlaySFX(0);
+    }*/
 }
