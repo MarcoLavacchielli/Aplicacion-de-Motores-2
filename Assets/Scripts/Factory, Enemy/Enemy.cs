@@ -5,16 +5,14 @@ using UnityEngine;
 
 public interface IEnemy
 {
-    event Action OnEnemyDeath;
     void TakeDamage(int amount);
     void Die();
 }
+
 public class Enemy : MonoBehaviour, IEnemy
 {
     [SerializeField] private int health;
     [SerializeField] private int damage;
-
-    public event Action OnEnemyDeath = delegate { };
 
     public void TakeDamage(int amount)
     {
@@ -27,7 +25,7 @@ public class Enemy : MonoBehaviour, IEnemy
 
     public void Die()
     {
-        OnEnemyDeath.Invoke();
+        EventManager.TriggerEvent("EnemyDied");
         Destroy(gameObject);
     }
 
@@ -39,12 +37,11 @@ public class Enemy : MonoBehaviour, IEnemy
         }
     }
 }
+
 public class Enemy2 : MonoBehaviour, IEnemy
 {
     [SerializeField] private int health;
     [SerializeField] private int damage;
-
-    public event Action OnEnemyDeath = delegate { };
 
     public void TakeDamage(int amount)
     {
@@ -57,7 +54,7 @@ public class Enemy2 : MonoBehaviour, IEnemy
 
     public void Die()
     {
-        OnEnemyDeath.Invoke();
+        EventManager.TriggerEvent("EnemyDied");
         Destroy(gameObject);
     }
 

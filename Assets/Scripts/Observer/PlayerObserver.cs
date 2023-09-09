@@ -14,12 +14,11 @@ public class PlayerObserver : MonoBehaviour
             if (monoBehaviour is IEnemy enemy && !observedEnemies.Contains(enemy))
             {
                 observedEnemies.Add(enemy);
-                enemy.OnEnemyDeath += HandleEnemyDeath;
             }
         }
     }
 
-    private void HandleEnemyDeath()
+    public void HandleEnemyDeath()
     {
         // Maneja la notificación de la muerte del enemigo aquí.
         Debug.Log("Un enemigo ha muerto.");
