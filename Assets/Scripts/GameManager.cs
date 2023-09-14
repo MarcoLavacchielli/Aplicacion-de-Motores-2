@@ -9,19 +9,22 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < 2; i++)
-        {
-            Vector3 randomSpawnPosition = GetRandomSpawnPosition();
-            int enemyType = Random.Range(1, 3);
-            if(enemyType == 1)
-            {
-                IEnemy basicEnemy = enemyFactory.CreateEnemy(randomSpawnPosition);
+        InvokeRepeating("SpawnEnemy", 0f, 5f);
+    }
 
-            }
-            else if(enemyType == 2)
-            {
-                IEnemy basicEnemy = enemyFactory.CreateEnemy2(randomSpawnPosition);
-            }
+    private void SpawnEnemy()
+    {
+        Vector3 randomSpawnPosition = GetRandomSpawnPosition();
+        int enemyType = Random.Range(1, 3);
+        IEnemy basicEnemy;
+
+        if (enemyType == 1)
+        {
+            basicEnemy = enemyFactory.CreateEnemy(randomSpawnPosition);
+        }
+        else
+        {
+            basicEnemy = enemyFactory.CreateEnemy2(randomSpawnPosition);
         }
     }
 
