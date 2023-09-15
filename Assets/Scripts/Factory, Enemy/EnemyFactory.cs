@@ -20,7 +20,7 @@ public class EnemyFactory : MonoBehaviour
         }
         else
         {
-            //Debug.LogError("Failed to create Enemy: Enemy component not found.");
+            Debug.LogError("Failed to create Enemy: Enemy component not found.");
             return null;
         }
     }
@@ -38,7 +38,7 @@ public class EnemyFactory : MonoBehaviour
         }
         else
         {
-            //Debug.LogError("Failed to create Enemy2: Enemy2 component not found.");
+            Debug.LogError("Failed to create Enemy2: Enemy2 component not found.");
             return null;
         }
     }
