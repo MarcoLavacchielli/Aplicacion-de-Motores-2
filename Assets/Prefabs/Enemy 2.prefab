@@ -1516,6 +1516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   damage: 2
+  enemyType: 0
 --- !u!114 &7010000463389081923
 MonoBehaviour:
   m_ObjectHideFlags: 0

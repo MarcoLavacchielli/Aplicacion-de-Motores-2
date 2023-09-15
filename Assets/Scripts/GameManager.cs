@@ -16,16 +16,18 @@ public class GameManager : MonoBehaviour
     {
         Vector3 randomSpawnPosition = GetRandomSpawnPosition();
         int enemyType = Random.Range(1, 3);
-        IEnemy basicEnemy;
+        GameObject enemy;
 
         if (enemyType == 1)
         {
-            basicEnemy = enemyFactory.CreateEnemy(randomSpawnPosition);
+            enemy = enemyFactory.CreateEnemy(randomSpawnPosition, 100, 10);
         }
         else
         {
-            basicEnemy = enemyFactory.CreateEnemy2(randomSpawnPosition);
+            enemy = enemyFactory.CreateEnemy2(randomSpawnPosition, 150, 15);
         }
+
+        // para agregarle algo a los enemigos que creas, no se si es buena idea hacer el disparo
     }
 
     private Vector3 GetRandomSpawnPosition()

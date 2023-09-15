@@ -1,19 +1,12 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IEnemy
-{
-    void TakeDamage(int amount);
-    void Die();
-}
-
-public class Enemy : MonoBehaviour, IEnemy
+public class Enemy2 : MonoBehaviour, IEnemy
 {
     [SerializeField] private int health;
     [SerializeField] private int damage;
-    [SerializeField] private int enemyType; // 1 for Enemy, 2 for Enemy2
+    [SerializeField] private int enemyType; // Cambiado a enemyType
 
     public void TakeDamage(int amount)
     {
@@ -38,37 +31,37 @@ public class Enemy : MonoBehaviour, IEnemy
         }
     }
 
-    // Builder pattern methods
+    // Builder pattern methods en Enemy2
     public class Builder
     {
-        private GameObject enemyGameObject;
+        private Enemy2 enemy;
 
         public Builder(GameObject enemyGameObject)
         {
-            this.enemyGameObject = enemyGameObject;
+            enemy = enemyGameObject.GetComponent<Enemy2>();
         }
 
         public Builder WithHealth(int health)
         {
-            enemyGameObject.GetComponent<Enemy>().health = health;
+            enemy.health = health;
             return this;
         }
 
         public Builder WithDamage(int damage)
         {
-            enemyGameObject.GetComponent<Enemy>().damage = damage;
+            enemy.damage = damage;
             return this;
         }
 
         public Builder WithEnemyType(int enemyType)
         {
-            enemyGameObject.GetComponent<Enemy>().enemyType = enemyType;
+            enemy.enemyType = enemyType;
             return this;
         }
 
         public GameObject Build()
         {
-            return enemyGameObject;
+            return enemy.gameObject;
         }
     }
 }
