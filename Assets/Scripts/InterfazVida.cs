@@ -73,13 +73,4 @@ public class InterfazVida : MonoBehaviour, IHealthObserver
         float porcentajeVida = vidaActual / vidaMaxima;
         textoVida.text = $"Vida: {vidaActual}/{vidaMaxima}"; // Actualiza el texto de vida
     }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            float cantidadDeDano = 1f;
-            ReducirVida(cantidadDeDano);
-        }
-    }
 }
