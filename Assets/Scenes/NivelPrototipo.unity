@@ -439,9 +439,8 @@ GameObject:
   - component: {fileID: 373024323}
   - component: {fileID: 373024325}
   - component: {fileID: 373024324}
-  - component: {fileID: 373024326}
   m_Layer: 5
-  m_Name: Life
+  m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -564,18 +563,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 373024322}
   m_CullTransparentMesh: 1
---- !u!114 &373024326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 373024322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ccd066ef0e30e1469a5702c04fbbda4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &374757776
 GameObject:
   m_ObjectHideFlags: 0
@@ -1430,8 +1417,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c1ea4abd4f98c47bbfc4b8fbe68c01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLife: {fileID: 0}
-  lifeUI: {fileID: 0}
   enemyFactory: {fileID: 611997247}
   spawnPositions:
   - {x: 0, y: 0.01, z: 10}

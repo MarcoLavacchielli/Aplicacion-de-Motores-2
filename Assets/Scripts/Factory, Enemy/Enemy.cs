@@ -15,14 +15,6 @@ public class Enemy : MonoBehaviour, IEnemy
     [SerializeField] private int damage;
     [SerializeField] private int enemyType; // 1 for Enemy, 2 for Enemy2
 
-    private PlayerLife playerLife; // Cambia el tipo de variable a PlayerLife
-
-    private void Start()
-    {
-        // Obtén una referencia al componente PlayerLife
-        playerLife = FindObjectOfType<PlayerLife>();
-    }
-
     public void TakeDamage(int amount)
     {
         health -= amount;
@@ -40,10 +32,8 @@ public class Enemy : MonoBehaviour, IEnemy
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (!collision.gameObject.CompareTag("Player"))
         {
-            // Cuando el jugador colisiona con el enemigo, resta 1 a la vida del jugador.
-            playerLife.TakeDamage(1);
             Die();
         }
     }

@@ -1,19 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static PlayerLife;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private PlayerLife playerLife;
-    [SerializeField] private LifeUI lifeUI;
     [SerializeField] private EnemyFactory enemyFactory;
     [SerializeField] private List<Vector3> spawnPositions;
 
     private void Start()
     {
         InvokeRepeating("SpawnEnemy", 0f, 3f);
-        playerLife.AddLifeObserver(lifeUI);
     }
 
     private void SpawnEnemy()
