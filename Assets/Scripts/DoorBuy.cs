@@ -17,10 +17,24 @@ public class DoorBuy : MonoBehaviour
 
     [SerializeField] private GameObject panel; //Activa el boton de compra.
 
+    private static List<DoorData> doorDataList = new List<DoorData>();
+
+    [SerializeField] private int doorDataIndex;
+
     private void Awake()
     {
         score = FindObjectOfType<PlayerScore>();
         originalMaterial = GetComponent<Renderer>().material; // Establece el material original una vez en Awake.
+
+        if (doorDataIndex >= 0 && doorDataIndex < doorDataList.Count)
+        {
+            originalMaterial = doorDataList[doorDataIndex].originalMaterial;
+            limit = doorDataList[doorDataIndex].limit;
+        }
+        else
+        {
+            Debug.LogError("Invalid doorDataIndex for door: " + gameObject.name);
+        }
     }
 
     private void Update()
