@@ -2,24 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//
+[System.Serializable]
+public class DoorFlyweight
+{
+    public float radius = 5f; // Radio del área sensible.
+    public LayerMask playerLayer; // La capa en la que se encuentra el jugador.
+    public Material buyMaterial; // Material para cuando el jugador puede comprar.
+    public Material notBuyMaterial; // Material para cuando el jugador no puede comprar.
+}
+//
+
 public class DoorBuy : MonoBehaviour
 {
-    [SerializeField] private float radius = 5f; // Radio del área sensible. //
-    [SerializeField] private LayerMask playerLayer; // La capa en la que se encuentra el jugador. //
-    [SerializeField] private bool playerInRange = false; // El booleano que se activará cuando el jugador esté en el radio.
     [SerializeField] private int limit;
-
     public PlayerScore score;
-
-    [SerializeField] private Material BuynewMaterial; //
-    [SerializeField] private Material NOTnewMaterial; //
+    public GameObject panel; // Activa el botón de compra.
+    [SerializeField] private int doorDataIndex;
     private Material originalMaterial;
 
-    [SerializeField] private GameObject panel; //Activa el boton de compra.
-
-    private static List<DoorData> doorDataList = new List<DoorData>();
-
-    [SerializeField] private int doorDataIndex;
+    [SerializeField] private DoorFlyweight doorFlyweight;
 
     private void Awake()
     {
@@ -30,10 +32,10 @@ public class DoorBuy : MonoBehaviour
     private void Update()
     {
         // Comprueba si hay colisión con el jugador dentro del radio.
-        Collider[] colliders = Physics.OverlapSphere(transform.position, radius, playerLayer);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, doorFlyweight.radius, doorFlyweight.playerLayer);
 
         // Si hay colisión con el jugador, activa el booleano.
-        playerInRange = colliders.Length > 0;
+        bool playerInRange = colliders.Length > 0;
 
         // Realiza aquí las acciones que desees cuando el jugador esté en el radio.
         if (playerInRange)
@@ -58,7 +60,7 @@ public class DoorBuy : MonoBehaviour
         Renderer renderer = GetComponent<Renderer>(); // Obtener el componente Renderer del objeto.
         if (renderer != null)
         {
-            renderer.material = BuynewMaterial; // Asignar el nuevo material.
+            renderer.material = doorFlyweight.buyMaterial; // Asignar el nuevo material.
         }
 
         if (panel != null)
@@ -72,7 +74,7 @@ public class DoorBuy : MonoBehaviour
         Renderer renderer = GetComponent<Renderer>(); // Obtener el componente Renderer del objeto.
         if (renderer != null)
         {
-            renderer.material = NOTnewMaterial; // Asignar el nuevo material.
+            renderer.material = doorFlyweight.notBuyMaterial; // Asignar el nuevo material.
         }
 
         if (panel != null)
@@ -97,21 +99,21 @@ public class DoorBuy : MonoBehaviour
 
     public void Doorbuyed()
     {
-        score.characterScore = score.characterScore - limit; //Resto el valor
+        score.characterScore = score.characterScore - limit; // Resto el valor
 
-        if (panel != null) //Desactivo el panel
+        if (panel != null) // Desactivo el panel
         {
             panel.SetActive(false); // Activar el panel.
         }
 
-        //Por ahora sin animaciones pero iria aca
+        // Por ahora sin animaciones pero iría aquí
         Destroy(gameObject);
     }
 
     private void OnDrawGizmosSelected()
     {
-        // Giazmo dibujado.
+        // Gizmo dibujado.
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, radius);
+        Gizmos.DrawWireSphere(transform.position, doorFlyweight.radius);
     }
 }

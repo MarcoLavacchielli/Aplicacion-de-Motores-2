@@ -352,6 +352,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 201133439}
   m_CullTransparentMesh: 1
+--- !u!114 &260011476 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3573807377104627558, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
+  m_PrefabInstance: {fileID: 610715089}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c9984f9e063d1f48bc7635bc4bb8a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &362854093
 GameObject:
   m_ObjectHideFlags: 0
@@ -807,7 +818,7 @@ MonoBehaviour:
       - m_Target: {fileID: 560042100}
         m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
         m_MethodName: DoorBought
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -970,8 +981,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doors:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 260011476}
+  - {fileID: 1060320713}
 --- !u!1 &571812962
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,6 +1125,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9068793214134369258, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
+      propertyPath: limit
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3573807377104627558, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
       propertyPath: panel
       value: 
@@ -1124,7 +1139,23 @@ PrefabInstance:
       objectReference: {fileID: 1924963980}
     - target: {fileID: 3573807377104627558, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
       propertyPath: doorDataIndex
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3573807377104627558, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
+      propertyPath: doorFlyweight.radius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3573807377104627558, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
+      propertyPath: doorFlyweight.buyMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 4548e0e2e9b37cc44893ce1ac954421b, type: 2}
+    - target: {fileID: 3573807377104627558, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
+      propertyPath: doorFlyweight.notBuyMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 48ad4c19c988c844db49d6beba871e90, type: 2}
+    - target: {fileID: 3573807377104627558, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
+      propertyPath: doorFlyweight.playerLayer.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 3573807377104627560, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
       propertyPath: m_Name
@@ -1174,7 +1205,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -9068793214134369258, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
 --- !u!1 &611997246
 GameObject:
@@ -1520,11 +1552,11 @@ MonoBehaviour:
       - m_Target: {fileID: 560042100}
         m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
         m_MethodName: DoorBought
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2371,6 +2403,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9068793214134369258, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
+      propertyPath: limit
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3573807377104627558, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
+      propertyPath: limit
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3573807377104627558, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
       propertyPath: panel
       value: 
@@ -2381,11 +2421,31 @@ PrefabInstance:
       objectReference: {fileID: 1924963980}
     - target: {fileID: 3573807377104627558, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
       propertyPath: doorDataIndex
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3573807377104627558, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
+      propertyPath: doorFlyweight.radius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3573807377104627558, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
+      propertyPath: doorFlyweight.buyMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 4548e0e2e9b37cc44893ce1ac954421b, type: 2}
+    - target: {fileID: 3573807377104627558, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
+      propertyPath: doorFlyweight.notBuyMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 48ad4c19c988c844db49d6beba871e90, type: 2}
+    - target: {fileID: 3573807377104627558, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
+      propertyPath: doorFlyweight.playerLayer.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 3573807377104627560, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
       propertyPath: m_Name
       value: Door (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3573807377104627560, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3573807377104627561, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
       propertyPath: m_RootOrder
@@ -2647,6 +2707,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4eab494d11c12d418678e2d7d8d2ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1060320713 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3573807377104627558, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
+  m_PrefabInstance: {fileID: 970034547}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c9984f9e063d1f48bc7635bc4bb8a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1105542972
