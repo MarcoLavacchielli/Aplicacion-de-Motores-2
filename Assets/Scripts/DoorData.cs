@@ -6,5 +6,4 @@ using UnityEngine;
 public class DoorData : MonoBehaviour
 {
     public Material originalMaterial;
-    public int limit;
 }

@@ -25,16 +25,6 @@ public class DoorBuy : MonoBehaviour
     {
         score = FindObjectOfType<PlayerScore>();
         originalMaterial = GetComponent<Renderer>().material; // Establece el material original una vez en Awake.
-
-        if (doorDataIndex >= 0 && doorDataIndex < doorDataList.Count)
-        {
-            originalMaterial = doorDataList[doorDataIndex].originalMaterial;
-            limit = doorDataList[doorDataIndex].limit;
-        }
-        else
-        {
-            Debug.LogError("Invalid doorDataIndex for door: " + gameObject.name);
-        }
     }
 
     private void Update()
