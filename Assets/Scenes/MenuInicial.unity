@@ -1310,6 +1310,7 @@ GameObject:
   - component: {fileID: 464607036}
   - component: {fileID: 464607035}
   - component: {fileID: 464607037}
+  - component: {fileID: 464607038}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1363,10 +1364,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveData:
     currencyKey: 0
-    playerNameKey: MyName
+    ColorBala: Blanco
     levelTutorialKey: 1
     level1Key: 0
     level2Key: 0
+--- !u!114 &464607038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464607034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c02449f61aa2304aa856bbc52048889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveGameManager: {fileID: 464607037}
 --- !u!1 &468892271
 GameObject:
   m_ObjectHideFlags: 0
