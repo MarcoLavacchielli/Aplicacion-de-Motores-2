@@ -8,7 +8,7 @@ public class JsonSaveGameKey
     //Key de la moneda
     public float currencyKey = 0;
     //Key nombre
-    public string playerNameKey = "MyName";
+    public string ColorBala = "Blanco";
     //Key niveles
     public bool levelTutorialKey = true;
     public bool level1Key = false;

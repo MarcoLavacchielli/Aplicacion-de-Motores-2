@@ -7,7 +7,7 @@ using System.IO;
 public class JsonSaveGameManager : MonoBehaviour
 {
 
-    [SerializeField] JsonSaveGameKey saveData = new JsonSaveGameKey();
+    [SerializeField] public JsonSaveGameKey saveData = new JsonSaveGameKey();
     string path;
 
     void Awake()
@@ -36,7 +36,7 @@ public class JsonSaveGameManager : MonoBehaviour
         }
     }
 
-    private void SaveGame()
+    public void SaveGame()
     {
         string json = JsonUtility.ToJson(saveData, true);
         File.WriteAllText(path, json);
@@ -44,7 +44,7 @@ public class JsonSaveGameManager : MonoBehaviour
         Debug.Log(json);
     }
 
-    private void LoadGame()
+    public void LoadGame()
     {
         string json = File.ReadAllText(path);
         JsonUtility.FromJsonOverwrite(json, saveData);
@@ -52,7 +52,7 @@ public class JsonSaveGameManager : MonoBehaviour
         Debug.Log(json);
     }
 
-    private void DeleteGame()
+    public void DeleteGame()
     {
         File.Delete(path);
 
