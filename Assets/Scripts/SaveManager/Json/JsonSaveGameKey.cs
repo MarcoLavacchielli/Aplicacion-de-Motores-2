@@ -13,4 +13,8 @@ public class JsonSaveGameKey
     public bool levelTutorialKey = true;
     public bool level1Key = false;
     public bool level2Key = false;
+    //Colores comprados
+    public bool colorRedBought = false;
+    public bool colorBlueBought = false;
+    public bool colorGreenBought = false;
 }

@@ -4,9 +4,14 @@ public class JsonIndividualsSave : MonoBehaviour
 {
     public JsonSaveGameManager saveGameManager;
 
-    void Start()
+    void Awake()
     {
+        saveGameManager = FindObjectOfType<JsonSaveGameManager>();
 
+        if (saveGameManager == null)
+        {
+            Debug.LogError("JsonSaveGameManager no encontrado en la escena.");
+        }
     }
 
     void Update()
@@ -24,30 +29,44 @@ public class JsonIndividualsSave : MonoBehaviour
         saveGameManager.SaveGame();
     }
 
-    void WhiteSkin()
+    void WhiteSkinActivate()
     {
         saveGameManager.saveData.ColorBala = "Blanco";
         // Llama a la función de guardar del JsonSaveGameManager
         saveGameManager.SaveGame();
     }
 
-    void BlueSkin()
+    void BlueSkinActivate()
     {
         saveGameManager.saveData.ColorBala = "Azul";
         // Llama a la función de guardar del JsonSaveGameManager
         saveGameManager.SaveGame();
     }
 
-    void RojoSkin()
+    void RojoSkinActivate()
     {
         saveGameManager.saveData.ColorBala = "Rojo";
         // Llama a la función de guardar del JsonSaveGameManager
         saveGameManager.SaveGame();
     }
 
-    void GreenSkin()
+    void GreenSkinActivate()
     {
         saveGameManager.saveData.ColorBala = "Azul";
+        // Llama a la función de guardar del JsonSaveGameManager
+        saveGameManager.SaveGame();
+    }
+
+    void Level1unlocked()
+    {
+        saveGameManager.saveData.level1Key = true;
+        // Llama a la función de guardar del JsonSaveGameManager
+        saveGameManager.SaveGame();
+    }
+
+    void Level2unlocked()
+    {
+        saveGameManager.saveData.level2Key = true;
         // Llama a la función de guardar del JsonSaveGameManager
         saveGameManager.SaveGame();
     }
