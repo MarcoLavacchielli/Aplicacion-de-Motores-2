@@ -31,28 +31,28 @@ public class JsonIndividualsSave : MonoBehaviour
 
     void WhiteSkinActivate()
     {
-        saveGameManager.saveData.ColorBala = "Blanco";
+        saveGameManager.saveData.ColorBullet = "Blanco";
         // Llama a la función de guardar del JsonSaveGameManager
         saveGameManager.SaveGame();
     }
 
     void BlueSkinActivate()
     {
-        saveGameManager.saveData.ColorBala = "Azul";
+        saveGameManager.saveData.ColorBullet = "Azul";
         // Llama a la función de guardar del JsonSaveGameManager
         saveGameManager.SaveGame();
     }
 
     void RojoSkinActivate()
     {
-        saveGameManager.saveData.ColorBala = "Rojo";
+        saveGameManager.saveData.ColorBullet = "Rojo";
         // Llama a la función de guardar del JsonSaveGameManager
         saveGameManager.SaveGame();
     }
 
     void GreenSkinActivate()
     {
-        saveGameManager.saveData.ColorBala = "Azul";
+        saveGameManager.saveData.ColorBullet = "Azul";
         // Llama a la función de guardar del JsonSaveGameManager
         saveGameManager.SaveGame();
     }

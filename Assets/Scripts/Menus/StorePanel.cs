@@ -23,6 +23,10 @@ public class StorePanel : MonoBehaviour
     [SerializeField] private GameObject greenAdquiridoText;
     [SerializeField] private GameObject greenACTIVADOText;
 
+    //Canvas de falta plata
+    [SerializeField] private GameObject canvasStore;
+    [SerializeField] private GameObject canvasPlata;
+
     void Awake()
     {
         saveGameManager = FindObjectOfType<JsonSaveGameManager>();
@@ -35,7 +39,7 @@ public class StorePanel : MonoBehaviour
 
     private void Update()
     {
-        TextTMPManager();
+        ButtonsManager();
         ActiveColor();
     }
 
@@ -52,6 +56,11 @@ public class StorePanel : MonoBehaviour
         if (saveGameManager.saveData.currencyKey >= colorRedPrice)
         {
             saveGameManager.saveData.colorRedBought = true;
+            saveGameManager.SaveGame();
+        }
+        else
+        {
+            showNocurrencyPanel();
         }
     }
 
@@ -60,10 +69,11 @@ public class StorePanel : MonoBehaviour
         if (saveGameManager.saveData.currencyKey >= colorBluePrice)
         {
             saveGameManager.saveData.colorBlueBought = true;
-
-            // Desactivar "comprar" y activar "adquirido" para el botón azul.
-            blueComprarText.gameObject.SetActive(false);
-            blueAdquiridoText.gameObject.SetActive(true);
+            saveGameManager.SaveGame();
+        }
+        else
+        {
+            showNocurrencyPanel();
         }
     }
 
@@ -72,20 +82,33 @@ public class StorePanel : MonoBehaviour
         if (saveGameManager.saveData.currencyKey >= colorGreenPrice)
         {
             saveGameManager.saveData.colorGreenBought = true;
-
-            // Desactivar "comprar" y activar "adquirido" para el botón verde.
-            greenComprarText.gameObject.SetActive(false);
-            greenAdquiridoText.gameObject.SetActive(true);
+            saveGameManager.SaveGame();
+        }
+        else
+        {
+            showNocurrencyPanel();
         }
     }
 
-    void TextTMPManager()
+    public void ActivateColorClick(string colorKeymodified)
     {
+        saveGameManager.saveData.ColorBullet = colorKeymodified;
+        saveGameManager.SaveGame();
+    }
+
+    void ButtonsManager()
+    {
+        //Blanco
+        if (saveGameManager.saveData.ColorBullet != "Blanco")
+        {
+            whiteAdquiridoText.gameObject.SetActive(true);
+        }
+
         //Rojo
         if(saveGameManager.saveData.colorRedBought == true)
         {
             redComprarText.gameObject.SetActive(false);
-            redAdquiridoText.gameObject.SetActive(true); // Esto requiere un bool para activar
+            redAdquiridoText.gameObject.SetActive(true); 
         }
         else if (saveGameManager.saveData.colorRedBought == false)
         {
@@ -97,7 +120,7 @@ public class StorePanel : MonoBehaviour
         if (saveGameManager.saveData.colorBlueBought == true)
         {
             blueComprarText.gameObject.SetActive(false);
-            blueAdquiridoText.gameObject.SetActive(true); // Esto requiere un bool para activar
+            blueAdquiridoText.gameObject.SetActive(true); 
         }
         else if (saveGameManager.saveData.colorBlueBought == false)
         {
@@ -109,7 +132,7 @@ public class StorePanel : MonoBehaviour
         if (saveGameManager.saveData.colorGreenBought == true)
         {
             greenComprarText.gameObject.SetActive(false);
-            greenAdquiridoText.gameObject.SetActive(true); // Esto requiere un bool para activar
+            greenAdquiridoText.gameObject.SetActive(true); 
         }
         else if (saveGameManager.saveData.colorGreenBought == false)
         {
@@ -120,24 +143,59 @@ public class StorePanel : MonoBehaviour
 
     void ActiveColor()
     {
-        string colorActivate = saveGameManager.saveData.ColorBala;
+        string colorActivate = saveGameManager.saveData.ColorBullet;
 
         switch (colorActivate)
         {
             case "Blanco":
+                whiteAdquiridoText.gameObject.SetActive(false);
+                whiteACTIVADOText.gameObject.SetActive(true);
+
+                //Desactivo los otros porque solo puede haber uno activado
+                redACTIVADOText.gameObject.SetActive(false);
+                blueACTIVADOText.gameObject.SetActive(false);
+                greenACTIVADOText.gameObject.SetActive(false);
                 break;
 
             case "Rojo":
+                redAdquiridoText.gameObject.SetActive(false);
+                redACTIVADOText.gameObject.SetActive(true);
+
+                //Desactivo los otros porque solo puede haber uno activado
+                whiteACTIVADOText.gameObject.SetActive(false);
+                blueACTIVADOText.gameObject.SetActive(false);
+                greenACTIVADOText.gameObject.SetActive(false);
                 break;
 
             case "Azul":
+                blueAdquiridoText.gameObject.SetActive(false);
+                blueACTIVADOText.gameObject.SetActive(true);
+
+                //Desactivo los otros porque solo puede haber uno activado
+                whiteACTIVADOText.gameObject.SetActive(false);
+                redACTIVADOText.gameObject.SetActive(false);
+                greenACTIVADOText.gameObject.SetActive(false);
                 break;
 
             case "Verde":
-                break;
+                greenAdquiridoText.gameObject.SetActive(false);
+                greenACTIVADOText.gameObject.SetActive(true);
 
+                //Desactivo los otros porque solo puede haber uno activado
+                whiteACTIVADOText.gameObject.SetActive(false);
+                redACTIVADOText.gameObject.SetActive(false);
+                blueACTIVADOText.gameObject.SetActive(false);
+                break;
             default:
+                whiteAdquiridoText.gameObject.SetActive(false);
+                whiteACTIVADOText.gameObject.SetActive(true);
                 break;
         }
+    }
+
+    public void showNocurrencyPanel()
+    {
+        canvasStore.gameObject.SetActive(false);
+        canvasPlata.gameObject.SetActive(true);
     }
 }
