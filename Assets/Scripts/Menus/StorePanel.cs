@@ -25,7 +25,7 @@ public class StorePanel : MonoBehaviour
 
     //Canvas de falta plata
     [SerializeField] private GameObject canvasStore;
-    [SerializeField] private GameObject canvasPlata;
+    [SerializeField] private GameObject canvasMoney;
 
     void Awake()
     {
@@ -196,6 +196,6 @@ public class StorePanel : MonoBehaviour
     public void showNocurrencyPanel()
     {
         canvasStore.gameObject.SetActive(false);
-        canvasPlata.gameObject.SetActive(true);
+        canvasMoney.gameObject.SetActive(true);
     }
 }
