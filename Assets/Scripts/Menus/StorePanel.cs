@@ -6,24 +6,10 @@ using TMPro;
 public class StorePanel : MonoBehaviour
 {
     public JsonSaveGameManager saveGameManager;
-    [SerializeField] private int colorRedPrice;
-    [SerializeField] private int colorBluePrice;
-    [SerializeField] private int colorGreenPrice;
-
-    // Referencias a los TextMeshPro de "comprar" y "adquirido" para cada botón.
-    [SerializeField] private GameObject whiteAdquiridoText;
-    [SerializeField] private GameObject whiteACTIVADOText;
-    [SerializeField] private GameObject redComprarText;
-    [SerializeField] private GameObject redAdquiridoText;
-    [SerializeField] private GameObject redACTIVADOText;
-    [SerializeField] private GameObject blueComprarText;
-    [SerializeField] private GameObject blueAdquiridoText;
-    [SerializeField] private GameObject blueACTIVADOText;
-    [SerializeField] private GameObject greenComprarText;
-    [SerializeField] private GameObject greenAdquiridoText;
-    [SerializeField] private GameObject greenACTIVADOText;
-
-    //Canvas de falta plata
+    [SerializeField] private int[] colorPrices = new int[3];
+    [SerializeField] private GameObject[] comprarTexts = new GameObject[3];
+    [SerializeField] private GameObject[] adquiridoTexts = new GameObject[3];
+    [SerializeField] private GameObject[] activadoTexts = new GameObject[4];
     [SerializeField] private GameObject canvasStore;
     [SerializeField] private GameObject canvasMoney;
 
@@ -45,48 +31,22 @@ public class StorePanel : MonoBehaviour
 
     void Start()
     {
-        // Desactivar los textos "adquirido" al inicio.
-        redAdquiridoText.gameObject.SetActive(false);
-        blueAdquiridoText.gameObject.SetActive(false);
-        greenAdquiridoText.gameObject.SetActive(false);
+        foreach (var text in adquiridoTexts)
+        {
+            text.gameObject.SetActive(false);
+        }
     }
 
-    public void BuycolorRed()
+    public void BuyColor(int colorIndex)
     {
-        if (saveGameManager.saveData.currencyKey >= colorRedPrice)
+        if (saveGameManager.saveData.currencyKey >= colorPrices[colorIndex])
         {
-            saveGameManager.saveData.colorRedBought = true;
+            saveGameManager.saveData.SetColorBought(colorIndex, true);
             saveGameManager.SaveGame();
         }
         else
         {
-            showNocurrencyPanel();
-        }
-    }
-
-    public void BuycolorBlue()
-    {
-        if (saveGameManager.saveData.currencyKey >= colorBluePrice)
-        {
-            saveGameManager.saveData.colorBlueBought = true;
-            saveGameManager.SaveGame();
-        }
-        else
-        {
-            showNocurrencyPanel();
-        }
-    }
-
-    public void BuycolorGreen()
-    {
-        if (saveGameManager.saveData.currencyKey >= colorGreenPrice)
-        {
-            saveGameManager.saveData.colorGreenBought = true;
-            saveGameManager.SaveGame();
-        }
-        else
-        {
-            showNocurrencyPanel();
+            ShowNoCurrencyPanel();
         }
     }
 
@@ -96,48 +56,20 @@ public class StorePanel : MonoBehaviour
         saveGameManager.SaveGame();
     }
 
-    void ButtonsManager()
+    public void ButtonsManager()
     {
-        //Blanco
-        if (saveGameManager.saveData.ColorBullet != "Blanco")
+        for (int i = 0; i < comprarTexts.Length; i++)
         {
-            whiteAdquiridoText.gameObject.SetActive(true);
-        }
-
-        //Rojo
-        if(saveGameManager.saveData.colorRedBought == true)
-        {
-            redComprarText.gameObject.SetActive(false);
-            redAdquiridoText.gameObject.SetActive(true); 
-        }
-        else if (saveGameManager.saveData.colorRedBought == false)
-        {
-            redComprarText.gameObject.SetActive(true);
-            redAdquiridoText.gameObject.SetActive(false);
-        }
-
-        //Azul
-        if (saveGameManager.saveData.colorBlueBought == true)
-        {
-            blueComprarText.gameObject.SetActive(false);
-            blueAdquiridoText.gameObject.SetActive(true); 
-        }
-        else if (saveGameManager.saveData.colorBlueBought == false)
-        {
-            blueComprarText.gameObject.SetActive(true);
-            blueAdquiridoText.gameObject.SetActive(false);
-        }
-
-        //Verde
-        if (saveGameManager.saveData.colorGreenBought == true)
-        {
-            greenComprarText.gameObject.SetActive(false);
-            greenAdquiridoText.gameObject.SetActive(true); 
-        }
-        else if (saveGameManager.saveData.colorGreenBought == false)
-        {
-            greenComprarText.gameObject.SetActive(true);
-            greenAdquiridoText.gameObject.SetActive(false);
+            if (saveGameManager.saveData.GetColorBought(i))
+            {
+                comprarTexts[i].SetActive(false);
+                adquiridoTexts[i].SetActive(true);
+            }
+            else
+            {
+                comprarTexts[i].SetActive(true);
+                adquiridoTexts[i].SetActive(false);
+            }
         }
     }
 
@@ -145,55 +77,32 @@ public class StorePanel : MonoBehaviour
     {
         string colorActivate = saveGameManager.saveData.ColorBullet;
 
+        for (int i = 0; i < activadoTexts.Length; i++)
+        {
+            activadoTexts[i].gameObject.SetActive(false);
+        }
+
         switch (colorActivate)
         {
             case "Blanco":
-                whiteAdquiridoText.gameObject.SetActive(false);
-                whiteACTIVADOText.gameObject.SetActive(true);
-
-                //Desactivo los otros porque solo puede haber uno activado
-                redACTIVADOText.gameObject.SetActive(false);
-                blueACTIVADOText.gameObject.SetActive(false);
-                greenACTIVADOText.gameObject.SetActive(false);
+                activadoTexts[0].gameObject.SetActive(true);
                 break;
-
             case "Rojo":
-                redAdquiridoText.gameObject.SetActive(false);
-                redACTIVADOText.gameObject.SetActive(true);
-
-                //Desactivo los otros porque solo puede haber uno activado
-                whiteACTIVADOText.gameObject.SetActive(false);
-                blueACTIVADOText.gameObject.SetActive(false);
-                greenACTIVADOText.gameObject.SetActive(false);
+                activadoTexts[1].gameObject.SetActive(true);
                 break;
-
             case "Azul":
-                blueAdquiridoText.gameObject.SetActive(false);
-                blueACTIVADOText.gameObject.SetActive(true);
-
-                //Desactivo los otros porque solo puede haber uno activado
-                whiteACTIVADOText.gameObject.SetActive(false);
-                redACTIVADOText.gameObject.SetActive(false);
-                greenACTIVADOText.gameObject.SetActive(false);
+                activadoTexts[2].gameObject.SetActive(true);
                 break;
-
             case "Verde":
-                greenAdquiridoText.gameObject.SetActive(false);
-                greenACTIVADOText.gameObject.SetActive(true);
-
-                //Desactivo los otros porque solo puede haber uno activado
-                whiteACTIVADOText.gameObject.SetActive(false);
-                redACTIVADOText.gameObject.SetActive(false);
-                blueACTIVADOText.gameObject.SetActive(false);
+                activadoTexts[3].gameObject.SetActive(true);
                 break;
             default:
-                whiteAdquiridoText.gameObject.SetActive(false);
-                whiteACTIVADOText.gameObject.SetActive(true);
+                activadoTexts[0].gameObject.SetActive(true); // Activar "Blanco" por defecto
                 break;
         }
     }
 
-    public void showNocurrencyPanel()
+    public void ShowNoCurrencyPanel()
     {
         canvasStore.gameObject.SetActive(false);
         canvasMoney.gameObject.SetActive(true);

@@ -351,7 +351,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &120456497
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3738,7 +3738,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &660980260
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5161,12 +5161,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1170472397}
         m_TargetAssemblyTypeName: StorePanel, Assembly-CSharp
-        m_MethodName: BuycolorBlue
-        m_Mode: 1
+        m_MethodName: BuyColor
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5989,8 +5989,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1170472397}
         m_TargetAssemblyTypeName: StorePanel, Assembly-CSharp
-        m_MethodName: BuycolorRed
-        m_Mode: 1
+        m_MethodName: BuyColor
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6329,20 +6329,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveGameManager: {fileID: 464607037}
-  colorRedPrice: 0
-  colorBluePrice: 10
-  colorGreenPrice: 100
-  whiteAdquiridoText: {fileID: 1134584554}
-  whiteACTIVADOText: {fileID: 172033409}
-  redComprarText: {fileID: 1142728682}
-  redAdquiridoText: {fileID: 949167166}
-  redACTIVADOText: {fileID: 1478253205}
-  blueComprarText: {fileID: 926362084}
-  blueAdquiridoText: {fileID: 751108676}
-  blueACTIVADOText: {fileID: 1516299288}
-  greenComprarText: {fileID: 1417795281}
-  greenAdquiridoText: {fileID: 2047823227}
-  greenACTIVADOText: {fileID: 1649722644}
+  colorPrices: 000000000a00000064000000
+  comprarTexts:
+  - {fileID: 1142728682}
+  - {fileID: 926362084}
+  - {fileID: 1417795281}
+  adquiridoTexts:
+  - {fileID: 949167166}
+  - {fileID: 751108676}
+  - {fileID: 2047823227}
+  activadoTexts:
+  - {fileID: 172033409}
+  - {fileID: 1478253205}
+  - {fileID: 1516299288}
+  - {fileID: 1649722644}
   canvasStore: {fileID: 660980259}
   canvasMoney: {fileID: 770126053}
 --- !u!1 &1196946231
@@ -7698,12 +7698,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1170472397}
         m_TargetAssemblyTypeName: StorePanel, Assembly-CSharp
-        m_MethodName: BuycolorGreen
-        m_Mode: 1
+        m_MethodName: BuyColor
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
