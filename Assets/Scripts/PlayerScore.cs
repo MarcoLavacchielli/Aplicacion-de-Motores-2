@@ -1,23 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScore : MonoBehaviour
 {
+    [SerializeField] private Text scoreText;
     public int characterScore = 0;
 
-    void Start()
+    void Update()
     {
-        // Puedes llamar a la función AddScore() en el inicio si deseas iniciar con una puntuación predeterminada.
-        // AddScore();
+        UpdateScoreText();
     }
 
     public void AddScore(int amount)
     {
         // Incrementa la puntuación en 100 puntos.
         characterScore += amount;
-
-        // Puedes agregar aquí cualquier lógica adicional relacionada con la puntuación.
 
         Debug.Log("Puntuación actual: " + characterScore);
     }
@@ -27,5 +26,13 @@ public class PlayerScore : MonoBehaviour
         characterScore -= amount;
 
         Debug.Log("Puntuación actual: " + characterScore);
+    }
+
+    void UpdateScoreText()
+    {
+        if (scoreText != null)
+        {
+            scoreText.text = "Score: " + characterScore;
+        }
     }
 }
