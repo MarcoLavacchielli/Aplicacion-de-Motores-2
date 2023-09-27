@@ -22,7 +22,6 @@ public class DoorBuy : MonoBehaviour
     private Material originalMaterial;
 
     [SerializeField] private DoorFlyweight doorFlyweight;
-
     private void Awake()
     {
         score = FindObjectOfType<PlayerScore>();
@@ -99,7 +98,8 @@ public class DoorBuy : MonoBehaviour
 
     public void Doorbuyed()
     {
-        score.characterScore = score.characterScore - limit; // Resto el valor
+        //score.characterScore = score.characterScore - limit; // Resto el valor
+        score.SubstractScore(limit);
 
         if (panel != null) // Desactivo el panel
         {
