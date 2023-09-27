@@ -26,6 +26,29 @@ public class DoorBuy : MonoBehaviour
     {
         score = FindObjectOfType<PlayerScore>();
         originalMaterial = GetComponent<Renderer>().material; // Establece el material original una vez en Awake.
+        score.OnScoreChanged += HandleScoreChanged;
+    }
+    private void HandleScoreChanged(int newScore)
+    {
+        // Realizar acciones en respuesta al cambio de puntaje.
+        // Por ejemplo, actualizar la interfaz de usuario, cambiar la apariencia, etc.
+        Debug.Log("Puntaje del jugador ha cambiado a: " + newScore);
+
+        // Aquí puedes realizar acciones específicas en respuesta al cambio de puntaje.
+        CheckScoreForActions();
+
+    }
+
+    void CheckScoreForActions()
+    {
+        if (score.CharacterScore >= limit)
+        {
+            ActiveBuy();
+        }
+        else
+        {
+            DisableBuy();
+        }
     }
 
     private void Update()
