@@ -2210,8 +2210,8 @@ MonoBehaviour:
     currencyKey: 0
     ColorBullet: Blanco
     levelTutorialKey: 1
-    level1Key: 0
-    level2Key: 0
+    level1Key: 1
+    level2Key: 1
     colorRedBought: 0
     colorBlueBought: 0
     colorGreenBought: 0
@@ -3732,6 +3732,7 @@ GameObject:
   - component: {fileID: 660980260}
   - component: {fileID: 660980262}
   - component: {fileID: 660980261}
+  - component: {fileID: 660980263}
   m_Layer: 5
   m_Name: Panel(Store)
   m_TagString: Untagged
@@ -3813,6 +3814,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 660980259}
   m_CullTransparentMesh: 1
+--- !u!114 &660980263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660980259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e47db8ad902aaa408c50ebdc3085d32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveGameManager: {fileID: 464607037}
+  colorPrices: 000000000a00000064000000
+  comprarTexts:
+  - {fileID: 1142728682}
+  - {fileID: 926362084}
+  - {fileID: 1417795281}
+  adquiridoTexts:
+  - {fileID: 949167166}
+  - {fileID: 751108676}
+  - {fileID: 2047823227}
+  activadoTexts:
+  - {fileID: 172033409}
+  - {fileID: 1478253205}
+  - {fileID: 1516299288}
+  - {fileID: 1649722644}
+  canvasStore: {fileID: 660980259}
+  canvasMoney: {fileID: 770126053}
 --- !u!1 &722509219
 GameObject:
   m_ObjectHideFlags: 0
@@ -4108,7 +4138,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1170472397}
+      - m_Target: {fileID: 660980263}
         m_TargetAssemblyTypeName: StorePanel, Assembly-CSharp
         m_MethodName: ActivateColorClick
         m_Mode: 5
@@ -5159,7 +5189,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1170472397}
+      - m_Target: {fileID: 660980263}
         m_TargetAssemblyTypeName: StorePanel, Assembly-CSharp
         m_MethodName: BuyColor
         m_Mode: 3
@@ -5293,7 +5323,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1170472397}
+      - m_Target: {fileID: 660980263}
         m_TargetAssemblyTypeName: StorePanel, Assembly-CSharp
         m_MethodName: ActivateColorClick
         m_Mode: 5
@@ -5354,6 +5384,7 @@ GameObject:
   - component: {fileID: 977721773}
   - component: {fileID: 977721775}
   - component: {fileID: 977721774}
+  - component: {fileID: 977721776}
   m_Layer: 5
   m_Name: Panel(LevelSelector)
   m_TagString: Untagged
@@ -5423,6 +5454,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977721772}
   m_CullTransparentMesh: 1
+--- !u!114 &977721776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977721772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f84c59c958140a94faf5540325635c2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BotonesLevels:
+  - {fileID: 884661438}
+  - {fileID: 2142397801}
+  - {fileID: 223413510}
+  saveGameManager: {fileID: 464607037}
+  botonDesactivadoSprite: {fileID: 21300000, guid: 65f0e363b74cf5845ab8c3fbc14f39ac, type: 3}
 --- !u!1 &1015197108
 GameObject:
   m_ObjectHideFlags: 0
@@ -5777,7 +5826,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1170472397}
+      - m_Target: {fileID: 660980263}
         m_TargetAssemblyTypeName: StorePanel, Assembly-CSharp
         m_MethodName: ActivateColorClick
         m_Mode: 5
@@ -5987,7 +6036,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1170472397}
+      - m_Target: {fileID: 660980263}
         m_TargetAssemblyTypeName: StorePanel, Assembly-CSharp
         m_MethodName: BuyColor
         m_Mode: 3
@@ -6186,7 +6235,6 @@ GameObject:
   - component: {fileID: 1170472391}
   - component: {fileID: 1170472395}
   - component: {fileID: 1170472396}
-  - component: {fileID: 1170472397}
   m_Layer: 5
   m_Name: Canvas(TitleScreen)
   m_TagString: Untagged
@@ -6316,35 +6364,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _musicSlider: {fileID: 602721388}
   _sfxSlider: {fileID: 2123062498}
---- !u!114 &1170472397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1170472390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e47db8ad902aaa408c50ebdc3085d32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  saveGameManager: {fileID: 464607037}
-  colorPrices: 000000000a00000064000000
-  comprarTexts:
-  - {fileID: 1142728682}
-  - {fileID: 926362084}
-  - {fileID: 1417795281}
-  adquiridoTexts:
-  - {fileID: 949167166}
-  - {fileID: 751108676}
-  - {fileID: 2047823227}
-  activadoTexts:
-  - {fileID: 172033409}
-  - {fileID: 1478253205}
-  - {fileID: 1516299288}
-  - {fileID: 1649722644}
-  canvasStore: {fileID: 660980259}
-  canvasMoney: {fileID: 770126053}
 --- !u!1 &1196946231
 GameObject:
   m_ObjectHideFlags: 0
@@ -7696,7 +7715,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1170472397}
+      - m_Target: {fileID: 660980263}
         m_TargetAssemblyTypeName: StorePanel, Assembly-CSharp
         m_MethodName: BuyColor
         m_Mode: 3
@@ -10152,7 +10171,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1170472397}
+      - m_Target: {fileID: 660980263}
         m_TargetAssemblyTypeName: StorePanel, Assembly-CSharp
         m_MethodName: ActivateColorClick
         m_Mode: 5
