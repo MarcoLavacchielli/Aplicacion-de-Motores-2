@@ -3395,6 +3395,8 @@ GameObject:
   m_Component:
   - component: {fileID: 871209756}
   - component: {fileID: 871209755}
+  - component: {fileID: 871209758}
+  - component: {fileID: 871209757}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3434,6 +3436,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &871209757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871209754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c02449f61aa2304aa856bbc52048889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveGameManager: {fileID: 0}
+--- !u!114 &871209758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871209754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3487d8b00e8510e47ba96a1e8ff3b3c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveData:
+    currencyKey: 0
+    ColorBullet: Blanco
+    levelTutorialKey: 1
+    level1Key: 0
+    level2Key: 0
+    colorRedBought: 0
+    colorBlueBought: 0
+    colorGreenBought: 0
 --- !u!1 &873714914
 GameObject:
   m_ObjectHideFlags: 0
