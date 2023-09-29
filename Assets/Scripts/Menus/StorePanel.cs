@@ -5,7 +5,7 @@ using TMPro;
 
 public class StorePanel : MonoBehaviour
 {
-    public JsonSaveGameManager saveGameManager;
+    [SerializeField] private JsonSaveGameManager saveGameManager;
     [SerializeField] private int[] colorPrices = new int[3];
     [SerializeField] private GameObject[] comprarTexts = new GameObject[3];
     [SerializeField] private GameObject[] adquiridoTexts = new GameObject[3];

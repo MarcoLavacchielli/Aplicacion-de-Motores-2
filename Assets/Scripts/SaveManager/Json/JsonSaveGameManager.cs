@@ -22,7 +22,7 @@ public class JsonSaveGameManager : MonoBehaviour
 
     void Update() //Esto es para testing
     {
-        if (Input.GetKeyDown(KeyCode.S))
+        /*if (Input.GetKeyDown(KeyCode.S))
         {
             SaveGame();
         }
@@ -33,7 +33,7 @@ public class JsonSaveGameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D))
         {
             DeleteGame();
-        }
+        }*/
     }
 
     public void SaveGame()
