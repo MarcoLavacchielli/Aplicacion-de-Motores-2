@@ -35,6 +35,7 @@ public class PassLevel : MonoBehaviour
             {
                 Debug.Log("no se escribio la key correcta");
             }
+
             SceneManager.LoadScene(sceneToGo);
         }
     }
