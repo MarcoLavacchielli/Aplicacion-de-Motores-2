@@ -19,21 +19,22 @@ public class PassLevel : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        // Llena el diccionario con las claves y valores correspondientes
-        levelKeys["level1Key"] = saveGameManager.saveData.level1Key;
-        levelKeys["level2Key"] = saveGameManager.saveData.level2Key;
-        // Agrega más niveles según sea necesario
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && levelKeys.ContainsKey(keyToActivate))
+        if (other.CompareTag("Player"))
         {
-            // Activa la clave especificada en saveGameManager.saveData
-            levelKeys[keyToActivate] = true;
-            saveGameManager.SaveGame();
+            if (keyToActivate == "1")
+            {
+                saveGameManager.saveData.level1Key = true;
+            }
+            else if(keyToActivate == "2")
+            {
+                saveGameManager.saveData.level2Key = true;
+            }
+            else
+            {
+                Debug.Log("no se escribio la key correcta");
+            }
             SceneManager.LoadScene(sceneToGo);
         }
     }
