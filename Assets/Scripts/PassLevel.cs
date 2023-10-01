@@ -17,6 +17,8 @@ public class PassLevel : MonoBehaviour
         {
             Debug.LogError("JsonSaveGameManager no encontrado en la escena.");
         }
+        // Suscribe el método OnSceneLoaded al evento SceneManager.sceneLoaded
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -27,7 +29,7 @@ public class PassLevel : MonoBehaviour
             {
                 saveGameManager.saveData.level1Key = true;
             }
-            else if(keyToActivate == "2")
+            else if (keyToActivate == "2")
             {
                 saveGameManager.saveData.level2Key = true;
             }
@@ -39,4 +41,29 @@ public class PassLevel : MonoBehaviour
             SceneManager.LoadScene(sceneToGo);
         }
     }
+
+    // Este método se llama cuando la escena se ha cargado
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        //Debug.Log("Checkeo");
+        // Verifica si la escena cargada es la que especificaste en sceneToGo
+        if (scene.name == sceneToGo)
+        {
+            // Encuentra el canvas en la escena cargada
+            Canvas canvas = FindObjectOfType<Canvas>();
+
+            // Encuentra los paneles que deseas activar/desactivar
+            GameObject initialScreenPanel = canvas.transform.Find("Panel(InitialScreen)").gameObject;
+            GameObject levelSelectorPanel = canvas.transform.Find("Panel(LevelSelector)").gameObject;
+
+            // Desactiva el panel inicial y activa el panel del selector de niveles
+            initialScreenPanel.SetActive(false);
+            levelSelectorPanel.SetActive(true);
+        }
+    }
 }
+
+
+
+
+
