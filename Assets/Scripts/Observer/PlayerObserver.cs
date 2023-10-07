@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerObserver : MonoBehaviour
 {
-    //private HashSet<IDamage> observedEnemies = new HashSet<IDamage>();
     private PlayerScore playerScore = new PlayerScore();
 
     private void Awake()

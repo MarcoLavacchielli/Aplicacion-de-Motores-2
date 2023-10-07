@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
-    private Dictionary<string, Action> eventDictionary;
+    private readonly Dictionary<string, Action> eventDictionary = new Dictionary<string, Action>();
 
     private static EventManager eventManager;
 
@@ -21,21 +21,9 @@ public class EventManager : MonoBehaviour
                 {
                     Debug.LogError("No hay un objeto EventManager en la escena.");
                 }
-                else
-                {
-                    eventManager.Init();
-                }
             }
 
             return eventManager;
-        }
-    }
-
-    void Init()
-    {
-        if (eventDictionary == null)
-        {
-            eventDictionary = new Dictionary<string, Action>();
         }
     }
 
