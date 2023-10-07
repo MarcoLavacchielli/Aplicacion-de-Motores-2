@@ -27,9 +27,9 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision) // Se desactiva la bala cuando colisiona con algo
     {
-        if(collision.gameObject.TryGetComponent(out IEnemy enemy))
+        if(collision.gameObject.TryGetComponent(out IDamage enemy))
         {
-            enemy.Die();
+            enemy.TakeDamage(1);
         }
 
         gameObject.SetActive(false);

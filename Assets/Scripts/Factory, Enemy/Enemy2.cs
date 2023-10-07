@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy2 : MonoBehaviour, IEnemy
+public class Enemy2 : MonoBehaviour, IDamage
 {
     [SerializeField] private int health;
     [SerializeField] private int damage;

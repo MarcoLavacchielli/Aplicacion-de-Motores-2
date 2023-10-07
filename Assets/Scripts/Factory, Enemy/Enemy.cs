@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IEnemy
+public interface IDamage
 {
     void TakeDamage(int amount);
     void Die();
 }
 
-public class Enemy : MonoBehaviour, IEnemy
+public class Enemy : MonoBehaviour, IDamage
 {
     [SerializeField] private int health;
     [SerializeField] private int damage;
