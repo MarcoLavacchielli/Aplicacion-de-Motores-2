@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Door Flyweight")]
 [System.Serializable]
 public class DoorFlyWeight: ScriptableObject
 {

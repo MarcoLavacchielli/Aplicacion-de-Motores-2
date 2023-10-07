@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//
+/*
 [System.Serializable]
 public class DoorFlyweight
 {
@@ -11,7 +11,7 @@ public class DoorFlyweight
     public Material buyMaterial; // Material para cuando el jugador puede comprar.
     public Material notBuyMaterial; // Material para cuando el jugador no puede comprar.
 }
-//
+*/
 
 public class DoorBuy : MonoBehaviour
 {
@@ -21,7 +21,7 @@ public class DoorBuy : MonoBehaviour
     [SerializeField] private int doorDataIndex;
     private Material originalMaterial;
 
-    [SerializeField] private DoorFlyweight doorFlyweight;
+    [SerializeField] private DoorFlyWeight doorFlyweight;
     private void Awake()
     {
         score = FindObjectOfType<PlayerScore>();
@@ -54,7 +54,7 @@ public class DoorBuy : MonoBehaviour
     private void Update()
     {
         // Comprueba si hay colisión con el jugador dentro del radio.
-        Collider[] colliders = Physics.OverlapSphere(transform.position, doorFlyweight.radius, doorFlyweight.playerLayer);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, doorFlyweight.Radius, doorFlyweight.PlayerLayer);
 
         // Si hay colisión con el jugador, activa el booleano.
         bool playerInRange = colliders.Length > 0;
@@ -82,7 +82,7 @@ public class DoorBuy : MonoBehaviour
         Renderer renderer = GetComponent<Renderer>(); // Obtener el componente Renderer del objeto.
         if (renderer != null)
         {
-            renderer.material = doorFlyweight.buyMaterial; // Asignar el nuevo material.
+            renderer.material = doorFlyweight.BuyMaterial; // Asignar el nuevo material.
         }
 
         if (panel != null)
@@ -96,7 +96,7 @@ public class DoorBuy : MonoBehaviour
         Renderer renderer = GetComponent<Renderer>(); // Obtener el componente Renderer del objeto.
         if (renderer != null)
         {
-            renderer.material = doorFlyweight.notBuyMaterial; // Asignar el nuevo material.
+            renderer.material = doorFlyweight.NotBuyMaterial; // Asignar el nuevo material.
         }
 
         if (panel != null)
@@ -137,6 +137,6 @@ public class DoorBuy : MonoBehaviour
     {
         // Gizmo dibujado.
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, doorFlyweight.radius);
+        Gizmos.DrawWireSphere(transform.position, doorFlyweight.Radius);
     }
 }

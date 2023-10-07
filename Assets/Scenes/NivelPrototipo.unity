@@ -2255,6 +2255,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3573807377104627558, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
+      propertyPath: doorFlyweight
+      value: 
+      objectReference: {fileID: 11400000, guid: 1c6e12ea61884a34fb6ebf8949d7668e, type: 2}
+    - target: {fileID: 3573807377104627558, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
       propertyPath: doorFlyweight.radius
       value: 3
       objectReference: {fileID: 0}
@@ -4836,6 +4840,10 @@ PrefabInstance:
       propertyPath: doorDataIndex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3573807377104627558, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
+      propertyPath: doorFlyweight
+      value: 
+      objectReference: {fileID: 11400000, guid: 1c6e12ea61884a34fb6ebf8949d7668e, type: 2}
     - target: {fileID: 3573807377104627558, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
       propertyPath: doorFlyweight.radius
       value: 3
@@ -10228,6 +10236,10 @@ PrefabInstance:
       propertyPath: doorDataIndex
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3573807377104627558, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
+      propertyPath: doorFlyweight
+      value: 
+      objectReference: {fileID: 11400000, guid: 1c6e12ea61884a34fb6ebf8949d7668e, type: 2}
     - target: {fileID: 3573807377104627558, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
       propertyPath: doorFlyweight.radius
       value: 3
