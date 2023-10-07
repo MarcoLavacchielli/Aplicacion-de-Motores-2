@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-public interface IHealthObserver
+/*public interface IHealthObserver
 {
     void OnHealthChanged(float health);
-}
-public class InterfazVida : MonoBehaviour, IHealthObserver
+}*/
+public class InterfazVida : MonoBehaviour
 {
     [SerializeField] private Text textoVida;
     [SerializeField] private float vidaMaxima = 5f;
@@ -21,7 +21,18 @@ public class InterfazVida : MonoBehaviour, IHealthObserver
         PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
         if (playerHealth != null)
         {
-            playerHealth.AddObserver(this);
+            playerHealth.OnHealthChange += OnHealthChanged;
+        }
+    }
+    private void OnDestroy()
+    {
+        vidaActual = vidaMaxima;
+        ActualizarInterfazVida();
+
+        PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
+        if (playerHealth != null)
+        {
+            playerHealth.OnHealthChange -= OnHealthChanged;
         }
     }
 

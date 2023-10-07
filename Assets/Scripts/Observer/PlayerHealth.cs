@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,8 +7,7 @@ public class PlayerHealth : MonoBehaviour
 {
     private float currentHealth;
     private float maxHealth = 5f;
-    private List<IHealthObserver> observers = new List<IHealthObserver>();
-
+    public event Action<float> OnHealthChange;
     public float CurrentHealth
     {
         get { return currentHealth; }
@@ -32,22 +32,9 @@ public class PlayerHealth : MonoBehaviour
         NotifyObservers();
     }
 
-    public void AddObserver(IHealthObserver observer)
-    {
-        observers.Add(observer);
-    }
-
-    public void RemoveObserver(IHealthObserver observer)
-    {
-        observers.Remove(observer);
-    }
-
     private void NotifyObservers()
     {
-        foreach (var observer in observers)
-        {
-            observer.OnHealthChanged(currentHealth);
-        }
+        OnHealthChange?.Invoke(currentHealth);
     }
 
     private void OnCollisionEnter(Collision collision)

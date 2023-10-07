@@ -4,23 +4,12 @@ using UnityEngine;
 
 public class PlayerObserver : MonoBehaviour
 {
-    private HashSet<IEnemy> observedEnemies = new HashSet<IEnemy>();
+    //private HashSet<IEnemy> observedEnemies = new HashSet<IEnemy>();
     private PlayerScore playerScore = new PlayerScore();
 
     private void Awake()
     {
         playerScore = FindObjectOfType<PlayerScore>();
-    }
-    private void Start()
-    {
-        MonoBehaviour[] monoBehaviours = FindObjectsOfType<MonoBehaviour>();
-        foreach (var monoBehaviour in monoBehaviours)
-        {
-            if (monoBehaviour is IEnemy enemy && !observedEnemies.Contains(enemy))
-            {
-                observedEnemies.Add(enemy);
-            }
-        }
     }
 
     public void HandleEnemyDeath()
