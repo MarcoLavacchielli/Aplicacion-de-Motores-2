@@ -23,14 +23,6 @@ public class Enemy2 : MonoBehaviour, IEnemy
         Destroy(gameObject);
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (!collision.gameObject.CompareTag("Player"))
-        {
-            Die();
-        }
-    }
-
     // Builder pattern methods en Enemy2
     public class Builder
     {

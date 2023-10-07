@@ -30,14 +30,6 @@ public class Enemy : MonoBehaviour, IEnemy
         Destroy(gameObject);
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (!collision.gameObject.CompareTag("Player"))
-        {
-            Die();
-        }
-    }
-
     // Builder pattern methods
     public class Builder
     {
