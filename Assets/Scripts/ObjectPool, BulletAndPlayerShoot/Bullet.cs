@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float velocity;   //Velocidad de la bala
-    [SerializeField] private float damage;  //Daño de la vala
+    [SerializeField] private int velocity;   //Velocidad de la bala
+    [SerializeField] private int damage;  //Daño de la vala
     [SerializeField] private Rigidbody rb;  //Obtiene el rigid del enemigo
 
     private void Start()
@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour
     {
         if(collision.gameObject.TryGetComponent(out IDamage enemy))
         {
-            enemy.TakeDamage(1);
+            enemy.TakeDamage((int)damage);
         }
 
         gameObject.SetActive(false);
