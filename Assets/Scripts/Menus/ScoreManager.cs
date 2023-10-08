@@ -6,7 +6,7 @@ public class ScoreManager : MonoBehaviour
 {
 
     public List<DoorBuy> doors = new List<DoorBuy>();
-
+    public PowerUpVelocity velocity = new PowerUpVelocity();
     // Puedes usar doors para acceder a múltiples puertas.
 
     public void DoorBought(int index)
@@ -19,5 +19,10 @@ public class ScoreManager : MonoBehaviour
         {
             Debug.LogError("Índice de puerta fuera de rango.");
         }
+    }
+
+    public void BuyVelocity()
+    {
+        velocity.Doorbuyed();
     }
 }
