@@ -8,19 +8,12 @@ public class EnemyFactory1 : EnemyFactory
 
     public override GameObject CreateEnemy(Vector3 position, int health, int damage)
     {
-        GameObject enemyObj = Instantiate(enemyPrefab, position, Quaternion.identity);
-        var enemy = enemyObj.GetComponent<Enemy>();
-        if (enemy != null)
-        {
-            return new Enemy.Builder(enemyObj)
-                .WithHealth(health)
-                .WithDamage(damage)
-                .Build();
-        }
-        else
-        {
-            Debug.LogError("Failed to create Enemy: Enemy component not found.");
-            return null;
-        }
+        Enemy.Builder builder = new Enemy.Builder(enemyPrefab)
+            .WithHealth(health)
+            .WithDamage(damage);
+
+        return builder.Build(position);
     }
 }
+
+

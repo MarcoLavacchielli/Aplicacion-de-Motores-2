@@ -26,34 +26,51 @@ public class Enemy2 : MonoBehaviour, IDamage
     // Builder pattern methods en Enemy2
     public class Builder
     {
-        private Enemy2 enemy;
+        private int health;
+        private int damage;
+        private int enemyType;
+        private GameObject enemyPrefab;
 
-        public Builder(GameObject enemyGameObject)
+        public Builder(GameObject prefab)
         {
-            enemy = enemyGameObject.GetComponent<Enemy2>();
+            this.enemyPrefab = prefab;
         }
 
         public Builder WithHealth(int health)
         {
-            enemy.health = health;
+            this.health = health;
             return this;
         }
 
         public Builder WithDamage(int damage)
         {
-            enemy.damage = damage;
+            this.damage = damage;
             return this;
         }
 
         public Builder WithEnemyType(int enemyType)
         {
-            enemy.enemyType = enemyType;
+            this.enemyType = enemyType;
             return this;
         }
 
-        public GameObject Build()
+        public GameObject Build(Vector3 position)
         {
-            return enemy.gameObject;
+            GameObject enemyObj = Instantiate(enemyPrefab, position, Quaternion.identity);
+            var enemy2 = enemyObj.GetComponent<Enemy2>();
+            if (enemy2 != null)
+            {
+                enemy2.health = health;
+                enemy2.damage = damage;
+                enemy2.enemyType = enemyType;
+                return enemyObj;
+            }
+            else
+            {
+                Debug.LogError("Failed to create Enemy2: Enemy2 component not found.");
+                Destroy(enemyObj);
+                return null;
+            }
         }
     }
 }

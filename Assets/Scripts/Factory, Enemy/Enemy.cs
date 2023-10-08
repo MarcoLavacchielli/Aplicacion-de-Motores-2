@@ -33,36 +33,51 @@ public class Enemy : MonoBehaviour, IDamage
     // Builder pattern methods
     public class Builder
     {
-        private GameObject enemyGameObject;
-        private Enemy enemy;
+        [SerializeField] private int health;
+        private int damage;
+        private int enemyType;
+        private GameObject enemyPrefab;
 
-        public Builder(GameObject enemyGameObject)
+        public Builder(GameObject prefab)
         {
-            this.enemyGameObject = enemyGameObject;
-            enemy = enemyGameObject.GetComponent<Enemy>();
+            this.enemyPrefab = prefab;
         }
 
         public Builder WithHealth(int health)
         {
-            enemy.health = health;
+            this.health = health;
             return this;
         }
 
         public Builder WithDamage(int damage)
         {
-            enemy.damage = damage;
+            this.damage = damage;
             return this;
         }
 
         public Builder WithEnemyType(int enemyType)
         {
-            enemy.enemyType = enemyType;
+            this.enemyType = enemyType;
             return this;
         }
 
-        public GameObject Build()
+        public GameObject Build(Vector3 position)
         {
-            return enemyGameObject;
+            GameObject enemyObj = Instantiate(enemyPrefab, position, Quaternion.identity);
+            var enemy = enemyObj.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.health = health;
+                enemy.damage = damage;
+                enemy.enemyType = enemyType;
+                return enemyObj;
+            }
+            else
+            {
+                Debug.LogError("Failed to create Enemy: Enemy component not found.");
+                Destroy(enemyObj);
+                return null;
+            }
         }
     }
 }
