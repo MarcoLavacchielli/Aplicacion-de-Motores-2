@@ -87,8 +87,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3006035034926817437, guid: 1b09603517fb67a48a07066fa652d887, type: 3}
   shootController: {fileID: 6153751423258294058}
   rb: {fileID: 2735177610178625532}
-  bulletPool: []
-  bulletIndex: 0
   shootingPriority: 0
   shootingCooldown: 0.5
   lastShootTime: 0
@@ -173,6 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd7fc2e9bbed9bf479f0cb9893f922a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
   characterScore: 0
 --- !u!1 &6426432082606474569
 GameObject:

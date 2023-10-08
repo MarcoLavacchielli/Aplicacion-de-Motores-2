@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Services.Analytics;
 using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
@@ -9,8 +11,9 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private Transform shootController;   // Ubicacion de la bala (donde se instancia)
     [SerializeField] private Rigidbody rb;  //RigidBody de la bala
 
-    [SerializeField] private List<Bullet> bulletPool = new List<Bullet>();  //Lista de balas prehechas
-    [SerializeField] private int bulletIndex = 0; //Inidice para saber que bala se va a utilizar
+    //private List<Bullet> bulletPool = new List<Bullet>();  //Lista de balas prehechas
+    //private int bulletIndex = 0; //Inidice para saber que bala se va a utilizar
+    private Pool<Bullet> bulletsPool = new Pool<Bullet>();
 
     public bool shootingPriority;   // Esto es un booleano para sobreescribir la rotacion
     [SerializeField] private float shootingCooldown = 0.5f;  //Tiempo entre disparos
@@ -24,9 +27,9 @@ public class PlayerShoot : MonoBehaviour
 
         for (int i = 0; i < 12; i++)   //instancia 12 balas que son las de la bolsa
         {
-            Bullet newBullet = Instantiate(bulletPrefab);
-            bulletPool.Add(newBullet);
-            //newBullet.gameObject.SetActive(false); // SeInstancia las balas al inicio (al pedo)
+            Bullet item = CreateBullet();
+            item.gameObject.SetActive(false);
+            bulletsPool.Return(item);
         }
     }
 
@@ -96,15 +99,17 @@ public class PlayerShoot : MonoBehaviour
 
     private Bullet GetNextBullet() // Obtiene la siguiente bala desde el pool
     {
-        Bullet bullet = bulletPool[bulletIndex];
-        bulletIndex = (bulletIndex + 1) % bulletPool.Count;
-
-        // If the bullet is already active, deactivate it before returning
-        if (bullet.gameObject.activeSelf)
+        if(bulletsPool.TryRent(out Bullet item))
         {
-            bullet.gameObject.SetActive(false);
+            item.gameObject.SetActive(true);
+            return item;
         }
-
+        return CreateBullet();
+    }
+    private Bullet CreateBullet()
+    {
+        Bullet bullet = Instantiate(bulletPrefab);
+        bullet.pool = bulletsPool;
         return bullet;
     }
 }

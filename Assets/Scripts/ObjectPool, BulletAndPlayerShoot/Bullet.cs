@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
     [SerializeField] private int damage;  //Daño de la vala
     [SerializeField] private Rigidbody rb;  //Obtiene el rigid del enemigo
 
+    public Pool<Bullet> pool;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -23,6 +25,7 @@ public class Bullet : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
         gameObject.SetActive(false);
+        pool.Return(this);
     }
 
     private void OnCollisionEnter(Collision collision) // Se desactiva la bala cuando colisiona con algo
@@ -32,6 +35,8 @@ public class Bullet : MonoBehaviour
             enemy.TakeDamage((int)damage);
         }
 
+        StopCoroutine(ReturnAfterSeconds(3f));
         gameObject.SetActive(false);
+        pool.Return(this);
     }
 }
