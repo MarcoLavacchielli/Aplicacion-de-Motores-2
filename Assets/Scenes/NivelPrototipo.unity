@@ -6336,7 +6336,7 @@ MonoBehaviour:
   PowerUpDataIndex: 0
   bought: 0
   score: {fileID: 1924963980}
-  pjMovement: {fileID: 1924963985}
+  pjMovement: {fileID: 0}
   panel: {fileID: 1138575399}
   velocityImage: {fileID: 1397259137}
 --- !u!65 &1337830060
@@ -10281,17 +10281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd7fc2e9bbed9bf479f0cb9893f922a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1924963985 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2735177610178625534, guid: 3a61ffecc17d4f74588eed7943b64d3a, type: 3}
-  m_PrefabInstance: {fileID: 2735177608343904634}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 652078762}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e2029427b2bc5343bc08b6d682270b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &1924963987 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 2735177610178625532, guid: 3a61ffecc17d4f74588eed7943b64d3a, type: 3}
@@ -12277,5 +12266,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2735177610178625534, guid: 3a61ffecc17d4f74588eed7943b64d3a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3a61ffecc17d4f74588eed7943b64d3a, type: 3}
