@@ -34,27 +34,29 @@ public class Enemy : MonoBehaviour, IDamage
     public class Builder
     {
         private GameObject enemyGameObject;
+        private Enemy enemy;
 
         public Builder(GameObject enemyGameObject)
         {
             this.enemyGameObject = enemyGameObject;
+            enemy = enemyGameObject.GetComponent<Enemy>();
         }
 
         public Builder WithHealth(int health)
         {
-            enemyGameObject.GetComponent<Enemy>().health = health;
+            enemy.health = health;
             return this;
         }
 
         public Builder WithDamage(int damage)
         {
-            enemyGameObject.GetComponent<Enemy>().damage = damage;
+            enemy.damage = damage;
             return this;
         }
 
         public Builder WithEnemyType(int enemyType)
         {
-            enemyGameObject.GetComponent<Enemy>().enemyType = enemyType;
+            enemy.enemyType = enemyType;
             return this;
         }
 
