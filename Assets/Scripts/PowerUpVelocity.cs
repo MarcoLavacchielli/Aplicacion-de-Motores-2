@@ -10,7 +10,7 @@ public class PowerUpVelocity : MonoBehaviour
     [SerializeField] private int PowerUpDataIndex;
     [SerializeField] private bool bought;
     public PlayerScore score;
-    public PlayerController pjMovement;
+    public PlayerModel pjMovement;
     [SerializeField] private GameObject panel; // Activa el botón de compra.
     [SerializeField] private GameObject velocityImage;
 
@@ -18,16 +18,13 @@ public class PowerUpVelocity : MonoBehaviour
     {
         score = FindObjectOfType<PlayerScore>();
         score.OnScoreChanged += HandleScoreChanged;
-        pjMovement = FindObjectOfType<PlayerController>();
+        pjMovement = FindObjectOfType<PlayerModel>();
         bought = false;
     }
     private void HandleScoreChanged(int newScore)
     {
-        // Realizar acciones en respuesta al cambio de puntaje.
-        // Por ejemplo, actualizar la interfaz de usuario, cambiar la apariencia, etc.
         Debug.Log("Puntaje del jugador ha cambiado a: " + newScore);
 
-        // Aquí puedes realizar acciones específicas en respuesta al cambio de puntaje.
         CheckScoreForActions();
 
     }
@@ -39,8 +36,6 @@ public class PowerUpVelocity : MonoBehaviour
 
         // Si hay colisión con el jugador, activa el booleano.
         bool playerInRange = colliders.Length > 0;
-
-        // Realiza aquí las acciones que desees cuando el jugador esté en el radio.
         if (playerInRange)
         {
             if (score.characterScore >= limit && bought == false)
@@ -72,7 +67,7 @@ public class PowerUpVelocity : MonoBehaviour
 
     void ActiveBuy()
     {
-        Renderer renderer = GetComponent<Renderer>(); // Obtener el componente Renderer del objeto.
+        Renderer renderer = GetComponent<Renderer>(); 
         if (renderer != null)
         {
             //renderer.material = doorFlyweight.BuyMaterial; // Asignar el nuevo material.

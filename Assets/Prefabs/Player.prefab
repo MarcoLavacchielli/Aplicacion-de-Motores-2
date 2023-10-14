@@ -12,12 +12,14 @@ GameObject:
   - component: {fileID: 2735177610178625528}
   - component: {fileID: 2735177610178625532}
   - component: {fileID: 8964228003313113882}
-  - component: {fileID: 2735177610178625534}
   - component: {fileID: 7277757774898917642}
   - component: {fileID: -7651403414457344885}
   - component: {fileID: 7497713981910581445}
   - component: {fileID: 4058400673541892761}
   - component: {fileID: 1247141395453425327}
+  - component: {fileID: 6509604994875589461}
+  - component: {fileID: 7316560689036635409}
+  - component: {fileID: 7712276323359896898}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -91,25 +93,6 @@ MonoBehaviour:
   shootingCooldown: 0.5
   lastShootTime: 0
   anticipationTime: 1
---- !u!114 &2735177610178625534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2735177610178625531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e2029427b2bc5343bc08b6d682270b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  playerVelocity: {x: 0, y: 0, z: 0}
-  groundedPlayer: 0
-  playerSpeed: 5
-  jumpHeight: 1
-  gravityValue: 0
-  shootChecking: {fileID: 8964228003313113882}
 --- !u!114 &7277757774898917642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,6 +156,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
   characterScore: 0
+--- !u!114 &6509604994875589461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2735177610178625531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f68aef0d76b09314da5bfc6fda67b8d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 2735177610178625532}
+--- !u!114 &7316560689036635409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2735177610178625531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d101268fb6bd5341b850a15906e4d9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 2735177610178625532}
+  playerSpeed: 5
+  jumpHeight: 1
+  gravityValue: 0
+--- !u!114 &7712276323359896898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2735177610178625531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29de94bf5446a4e4781950bfdeab3d12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6426432082606474569
 GameObject:
   m_ObjectHideFlags: 0

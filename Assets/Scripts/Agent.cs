@@ -13,17 +13,20 @@ public class Agent : MonoBehaviour
     [SerializeField] private LayerMask floorMask;
     [SerializeField] private LayerMask foodMask;
     [SerializeField] private LayerMask enemyMask;
-    [SerializeField] private float detectionRadius;
+    [SerializeField] public float detectionRadius;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private Animator enemy1Anim;
     [SerializeField] private Animator enemy2Anim;
 
     Ground ground => Ground.Instance;
 
+    public bool isFlee;
+
     public void Awake()
     {
         enemy1Anim = GetComponent<Animator>();
         enemy2Anim = GetComponent<Animator>();
+        isFlee = false;
     }
     public void Update()
     {
@@ -114,6 +117,7 @@ public class Agent : MonoBehaviour
             if (actualObj == null)
             {
                 fleeVelocity = Vector3.zero;
+                isFlee = false;  // No estás huyendo si no hay objeto cercano
                 return;
             }
 
@@ -124,10 +128,12 @@ public class Agent : MonoBehaviour
             dir.y = 0;
             fleeVelocity += dir * moveSpeed * Time.deltaTime;
             fleeVelocity = Vector3.ClampMagnitude(fleeVelocity, 4f);
+            isFlee = true;
         }
         else
         {
             fleeVelocity = Vector3.zero;
+            isFlee = false;  // No estás huyendo si no hay enemigos cercanos
         }
     }
 
