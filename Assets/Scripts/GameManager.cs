@@ -12,39 +12,61 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int healthEnemy2;
     [SerializeField] private int damageEnemy2;
 
+    [Range(1f, 50f)]
     [SerializeField] private float spawnDistanceThreshold = 10f; // Umbral de distancia para spawnear enemigos
 
-    private Transform player;
+    private PlayerController1 playerController;
 
     private void Start()
     {
-        player = FindObjectOfType<PlayerController1>().transform;
+        playerController = FindObjectOfType<PlayerController1>();
 
-        InvokeRepeating("SpawnEnemy", 0f, 3f);
+        if (playerController == null)
+        {
+            Debug.LogError("PlayerController1 no encontrado en la escena.");
+        }
+
+        InvokeRepeating("SpawnEnemy", 0f, 2f);
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (playerController != null)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(playerController.transform.position, spawnDistanceThreshold);
+        }
     }
 
     private void SpawnEnemy()
     {
-        Vector3 randomSpawnPosition = GetRandomSpawnPosition();
-
-        float distanceToPlayer = Vector3.Distance(randomSpawnPosition, player.position);
-        if (distanceToPlayer < spawnDistanceThreshold)
+        if (playerController != null)
         {
-            int enemyType = Random.Range(1, 3);
-            enemyType--;
+            Vector3 randomSpawnPosition = GetRandomSpawnPosition();
 
-            if (enemyType >= 0 && enemyType < enemyFactories.Length)
+            float distanceToPlayer = Vector3.Distance(randomSpawnPosition, playerController.transform.position);
+            if (distanceToPlayer < spawnDistanceThreshold)
             {
-                GameObject enemy = enemyFactories[enemyType].CreateEnemy(
-                    randomSpawnPosition,
-                    (enemyType == 0) ? healthEnemy1 : healthEnemy2,
-                    (enemyType == 0) ? damageEnemy1 : damageEnemy2
-                );
+                int enemyType = Random.Range(1, 3);
+                enemyType--;
+
+                if (enemyType >= 0 && enemyType < enemyFactories.Length)
+                {
+                    GameObject enemy = enemyFactories[enemyType].CreateEnemy(
+                        randomSpawnPosition,
+                        (enemyType == 0) ? healthEnemy1 : healthEnemy2,
+                        (enemyType == 0) ? damageEnemy1 : damageEnemy2
+                    );
+                }
+                else
+                {
+                    Debug.LogError("Invalid enemyType: " + enemyType);
+                }
             }
-            else
-            {
-                Debug.LogError("Invalid enemyType: " + enemyType);
-            }
+        }
+        else
+        {
+            Debug.LogWarning("PlayerController1 no encontrado. No se spawnearán enemigos.");
         }
     }
 

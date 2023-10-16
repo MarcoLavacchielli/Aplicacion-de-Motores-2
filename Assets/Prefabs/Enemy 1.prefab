@@ -2313,8 +2313,8 @@ MonoBehaviour:
   agent: {fileID: -6961709400772429473}
   bulletPrefab: {fileID: 4875157400705881935, guid: 024bee7058dd4d44bb50fc11fe3fc484, type: 3}
   bulletOrigin: {fileID: 5572622340595574821}
-  bulletSpeed: 10
-  shootFrequency: 1
+  bulletSpeed: 5
+  shootFrequency: 0.5
   shootRadius: 15
 --- !u!1 &8858982978949160550
 GameObject:
