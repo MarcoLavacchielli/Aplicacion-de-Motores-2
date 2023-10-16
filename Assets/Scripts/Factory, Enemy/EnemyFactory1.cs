@@ -15,5 +15,3 @@ public class EnemyFactory1 : EnemyFactory
         return builder.Build(position);
     }
 }
-
-

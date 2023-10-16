@@ -12,30 +12,39 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int healthEnemy2;
     [SerializeField] private int damageEnemy2;
 
+    [SerializeField] private float spawnDistanceThreshold = 10f; // Umbral de distancia para spawnear enemigos
+
+    private Transform player;
+
     private void Start()
     {
+        player = FindObjectOfType<PlayerController1>().transform;
+
         InvokeRepeating("SpawnEnemy", 0f, 3f);
     }
 
     private void SpawnEnemy()
     {
         Vector3 randomSpawnPosition = GetRandomSpawnPosition();
-        int enemyType = Random.Range(1, 3);  // Generates 1 or 2
-        enemyType--;  // Adjust to array indices (0 or 1)
 
-        if (enemyType == 0 && enemyType < enemyFactories.Length)
+        float distanceToPlayer = Vector3.Distance(randomSpawnPosition, player.position);
+        if (distanceToPlayer < spawnDistanceThreshold)
         {
-            // Spawn Enemy1
-            GameObject enemy = enemyFactories[enemyType].CreateEnemy(randomSpawnPosition, healthEnemy1, damageEnemy1);
-        }
-        else if (enemyType == 1 && enemyType < enemyFactories.Length)
-        {
-            // Spawn Enemy2
-            GameObject enemy2 = enemyFactories[enemyType].CreateEnemy(randomSpawnPosition, healthEnemy2, damageEnemy2);
-        }
-        else
-        {
-            Debug.LogError("Invalid enemyType: " + enemyType);
+            int enemyType = Random.Range(1, 3);
+            enemyType--;
+
+            if (enemyType >= 0 && enemyType < enemyFactories.Length)
+            {
+                GameObject enemy = enemyFactories[enemyType].CreateEnemy(
+                    randomSpawnPosition,
+                    (enemyType == 0) ? healthEnemy1 : healthEnemy2,
+                    (enemyType == 0) ? damageEnemy1 : damageEnemy2
+                );
+            }
+            else
+            {
+                Debug.LogError("Invalid enemyType: " + enemyType);
+            }
         }
     }
 
