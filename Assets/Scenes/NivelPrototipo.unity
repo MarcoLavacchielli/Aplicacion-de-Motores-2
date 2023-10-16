@@ -4433,6 +4433,7 @@ MonoBehaviour:
   healthEnemy2: 2
   damageEnemy2: 2
   spawnDistanceThreshold: 10
+  timeBetweenSpawns: 2
 --- !u!4 &871209756
 Transform:
   m_ObjectHideFlags: 0
@@ -11470,7 +11471,7 @@ GameObject:
   - component: {fileID: 2056102875}
   - component: {fileID: 2056102876}
   m_Layer: 0
-  m_Name: VelocityIcon (1)
+  m_Name: HealthIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
