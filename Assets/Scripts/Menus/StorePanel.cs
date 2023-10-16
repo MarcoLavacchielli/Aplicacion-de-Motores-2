@@ -42,6 +42,7 @@ public class StorePanel : MonoBehaviour
         if (saveGameManager.saveData.currencyKey >= colorPrices[colorIndex])
         {
             saveGameManager.saveData.SetColorBought(colorIndex, true);
+            saveGameManager.saveData.currencyKey -= colorPrices[colorIndex];
             saveGameManager.SaveGame();
         }
         else
