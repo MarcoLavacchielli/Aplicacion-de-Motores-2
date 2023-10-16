@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     [Range(1f, 50f)]
     [SerializeField] private float spawnDistanceThreshold = 10f; // Umbral de distancia para spawnear enemigos
 
+    [SerializeField] private float timeBetweenSpawns = 2f;
+
     private PlayerController1 playerController;
 
     private void Start()
@@ -26,7 +28,7 @@ public class GameManager : MonoBehaviour
             Debug.LogError("PlayerController1 no encontrado en la escena.");
         }
 
-        InvokeRepeating("SpawnEnemy", 0f, 2f);
+        StartCoroutine(SpawnEnemyWithDelay());
     }
 
     private void OnDrawGizmos()
@@ -35,6 +37,15 @@ public class GameManager : MonoBehaviour
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(playerController.transform.position, spawnDistanceThreshold);
+        }
+    }
+
+    private IEnumerator SpawnEnemyWithDelay()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(timeBetweenSpawns);
+            SpawnEnemy();
         }
     }
 
