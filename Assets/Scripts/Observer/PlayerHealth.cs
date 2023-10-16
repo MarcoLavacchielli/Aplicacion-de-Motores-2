@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
     private float currentHealth;
     private float maxHealth = 5f;
     public event Action<float> OnHealthChange;
+
     public float CurrentHealth
     {
         get { return currentHealth; }
@@ -17,6 +18,14 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         NotifyObservers();
+    }
+
+    private void Update()
+    {
+        if (maxHealth > 5)
+        {
+            maxHealth = 5;
+        }
     }
 
     public void TakeDamage(float damageAmount)

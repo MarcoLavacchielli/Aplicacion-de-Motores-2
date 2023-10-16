@@ -52,7 +52,7 @@ public class JsonIndividualsSave : MonoBehaviour
 
     void GreenSkinActivate()
     {
-        saveGameManager.saveData.ColorBullet = "Azul";
+        saveGameManager.saveData.ColorBullet = "Verde";
         // Llama a la función de guardar del JsonSaveGameManager
         saveGameManager.SaveGame();
     }

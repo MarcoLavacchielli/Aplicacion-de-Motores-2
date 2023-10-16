@@ -107,7 +107,7 @@ public class PowerUpVelocity : MonoBehaviour
         }
     }
 
-    public void Doorbuyed()
+    public void PowerUpbuyed()
     {
         //score.characterScore = score.characterScore - limit; // Resto el valor
         score.SubstractScore(limit);

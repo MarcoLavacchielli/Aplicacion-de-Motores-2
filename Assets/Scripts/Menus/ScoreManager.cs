@@ -23,6 +23,6 @@ public class ScoreManager : MonoBehaviour
 
     public void BuyVelocity()
     {
-        velocity.Doorbuyed();
+        velocity.PowerUpbuyed();
     }
 }
