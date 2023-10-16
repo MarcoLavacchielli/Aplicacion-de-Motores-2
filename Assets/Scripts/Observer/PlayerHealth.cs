@@ -20,12 +20,24 @@ public class PlayerHealth : MonoBehaviour
         NotifyObservers();
     }
 
-    private void Update()
+    /*private void Update()
     {
         if (maxHealth > 5)
         {
             maxHealth = 5;
         }
+    }*/
+
+    public void Health(float healthAmout)
+    {
+        currentHealth += healthAmout;
+
+        if (currentHealth > 5)
+        {
+            currentHealth = 5;
+        }
+
+        NotifyObservers();
     }
 
     public void TakeDamage(float damageAmount)
