@@ -117,7 +117,7 @@ public class Agent : MonoBehaviour
             if (actualObj == null)
             {
                 fleeVelocity = Vector3.zero;
-                isFlee = false;  // No estás huyendo si no hay objeto cercano
+                isFlee = false;
                 return;
             }
 
@@ -126,14 +126,25 @@ public class Agent : MonoBehaviour
 
             dir.Normalize();
             dir.y = 0;
-            fleeVelocity += dir * moveSpeed * Time.deltaTime;
+
+            // Modificamos el cálculo del fleeVelocity para evitar Z-fighting
+            RaycastHit wallHit;
+            if (Physics.Raycast(transform.position, dir, out wallHit, 2f, floorMask))
+            {
+                fleeVelocity = Vector3.Reflect(dir, wallHit.normal) * moveSpeed * Time.deltaTime;
+            }
+            else
+            {
+                fleeVelocity += dir * moveSpeed * Time.deltaTime;
+            }
+
             fleeVelocity = Vector3.ClampMagnitude(fleeVelocity, 4f);
             isFlee = true;
         }
         else
         {
             fleeVelocity = Vector3.zero;
-            isFlee = false;  // No estás huyendo si no hay enemigos cercanos
+            isFlee = false;
         }
     }
 
