@@ -13,7 +13,7 @@ public class PowerUpHealth : MonoBehaviour
     public PlayerScore scoreHealth;
     public PlayerHealth playerHealth;
     [SerializeField] private GameObject panel; // Activa el botón de compra.
-    [SerializeField] private GameObject velocityImage;
+    [SerializeField] private GameObject healthImage; //por ahora no hay imagen
 
     private void Awake()
     {
@@ -132,7 +132,7 @@ public class PowerUpHealth : MonoBehaviour
         //Destroy(gameObject);
         playerHealth.Health(5f);
         bought = true;
-        velocityImage.SetActive(true);
+        //healthImage.SetActive(true);
     }
 
     private void OnDrawGizmosSelected()
