@@ -2281,7 +2281,7 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 640
-  detectionRadius: 10
+  detectionRadius: 5
   rotationSpeed: 5
   enemy1Anim: {fileID: 3325000262379375575}
   enemy2Anim: {fileID: 7294670508752558847, guid: 93312b353dad4044b9f991f30ef0b5a0, type: 3}
