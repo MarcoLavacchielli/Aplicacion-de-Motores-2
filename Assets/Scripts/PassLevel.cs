@@ -28,10 +28,16 @@ public class PassLevel : MonoBehaviour
             if (keyToActivate == "1")
             {
                 saveGameManager.saveData.level1Key = true;
+
+                //Sumamos 100 pesos al terminar un nivel
+                saveGameManager.saveData.currencyKey += 100;
             }
             else if (keyToActivate == "2")
             {
                 saveGameManager.saveData.level2Key = true;
+
+                //Sumamos 200 pesos al terminar un nivel
+                saveGameManager.saveData.currencyKey += 200;
             }
             else
             {

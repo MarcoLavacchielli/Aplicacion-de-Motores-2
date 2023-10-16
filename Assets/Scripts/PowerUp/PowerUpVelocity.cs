@@ -9,15 +9,15 @@ public class PowerUpVelocity : MonoBehaviour
     [SerializeField] LayerMask playerLayer;
     [SerializeField] private int PowerUpDataIndex;
     [SerializeField] private bool bought;
-    public PlayerScore score;
+    public PlayerScore scoreVelocity;
     public PlayerModel pjMovement;
     [SerializeField] private GameObject panel; // Activa el botón de compra.
     [SerializeField] private GameObject velocityImage;
 
     private void Awake()
     {
-        score = FindObjectOfType<PlayerScore>();
-        score.OnScoreChanged += HandleScoreChanged;
+        scoreVelocity = FindObjectOfType<PlayerScore>();
+        scoreVelocity.OnScoreChanged += HandleScoreChanged;
         pjMovement = FindObjectOfType<PlayerModel>();
         bought = false;
     }
@@ -38,7 +38,7 @@ public class PowerUpVelocity : MonoBehaviour
         bool playerInRange = colliders.Length > 0;
         if (playerInRange)
         {
-            if (score.characterScore >= limit && bought == false)
+            if (scoreVelocity.characterScore >= limit && bought == false)
             {
                 ActiveBuy();
             }
@@ -55,7 +55,7 @@ public class PowerUpVelocity : MonoBehaviour
 
     void CheckScoreForActions()
     {
-        if (score.CharacterScore >= limit)
+        if (scoreVelocity.CharacterScore >= limit)
         {
             ActiveBuy();
         }
@@ -110,7 +110,7 @@ public class PowerUpVelocity : MonoBehaviour
     public void PowerUpbuyed()
     {
         //score.characterScore = score.characterScore - limit; // Resto el valor
-        score.SubstractScore(limit);
+        scoreVelocity.SubstractScore(limit);
 
         if (panel != null) // Desactivo el panel
         {
