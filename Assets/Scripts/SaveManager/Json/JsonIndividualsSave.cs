@@ -16,59 +16,19 @@ public class JsonIndividualsSave : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.U))
+        if (saveGameManager.saveData.stamine > 10)
         {
-
+            saveGameManager.saveData.stamine = 10;
+        }
+        else if (saveGameManager.saveData.stamine < 0)
+        {
+            saveGameManager.saveData.stamine = 0;
         }
     }
 
-    void Add100Currency()
+    public void fillStamine()
     {
-        saveGameManager.saveData.currencyKey += 100;
-        // Llama a la función de guardar del JsonSaveGameManager
-        saveGameManager.SaveGame();
-    }
-
-    void WhiteSkinActivate()
-    {
-        saveGameManager.saveData.ColorBullet = "Blanco";
-        // Llama a la función de guardar del JsonSaveGameManager
-        saveGameManager.SaveGame();
-    }
-
-    void BlueSkinActivate()
-    {
-        saveGameManager.saveData.ColorBullet = "Azul";
-        // Llama a la función de guardar del JsonSaveGameManager
-        saveGameManager.SaveGame();
-    }
-
-    void RojoSkinActivate()
-    {
-        saveGameManager.saveData.ColorBullet = "Rojo";
-        // Llama a la función de guardar del JsonSaveGameManager
-        saveGameManager.SaveGame();
-    }
-
-    void GreenSkinActivate()
-    {
-        saveGameManager.saveData.ColorBullet = "Verde";
-        // Llama a la función de guardar del JsonSaveGameManager
-        saveGameManager.SaveGame();
-    }
-
-    void Level1unlocked()
-    {
-        saveGameManager.saveData.level1Key = true;
-        // Llama a la función de guardar del JsonSaveGameManager
-        saveGameManager.SaveGame();
-    }
-
-    void Level2unlocked()
-    {
-        saveGameManager.saveData.level2Key = true;
-        // Llama a la función de guardar del JsonSaveGameManager
-        saveGameManager.SaveGame();
+        saveGameManager.saveData.stamine += 10;
     }
 
 }

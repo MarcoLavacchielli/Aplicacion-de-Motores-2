@@ -692,6 +692,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panels:
   - {fileID: 1092713176}
+  saveGameManager: {fileID: 0}
+  imageStamina: {fileID: 1195903106}
+  shakeDuration: 0.5
+  intensityShake: 0.1
 --- !u!114 &1688374568
 MonoBehaviour:
   m_ObjectHideFlags: 0

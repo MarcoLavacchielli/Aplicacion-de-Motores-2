@@ -17,6 +17,8 @@ public class JsonSaveGameKey
     public bool colorRedBought = false;
     public bool colorBlueBought = false;
     public bool colorGreenBought = false;
+    // Stamina
+    public int stamine = 10;
 
     internal bool GetColorBought(int colorIndex)
     {

@@ -15,6 +15,16 @@ public class MainMenuManager : MonoBehaviour
 
     [SerializeField] private GameObject[] panels;
 
+    [SerializeField] private JsonSaveGameManager saveGameManager;
+    [SerializeField] private GameObject imageStamina;
+    [SerializeField] private float shakeDuration = 0.5f;
+    [SerializeField] private  float intensityShake = 0.1f;
+
+    void Awake()
+    {
+        saveGameManager = FindObjectOfType<JsonSaveGameManager>();
+    }
+
     public void SwitchPanel(int index)  //Setea por indice, el panel a activar
     {
         if (index >= 0 && index < panels.Length)
@@ -31,12 +41,42 @@ public class MainMenuManager : MonoBehaviour
 
     public void loadscene(string scenename) //carga una escena especifica por nombre
     {
-        SceneManager.LoadScene(scenename);
+        SceneManager.LoadScene(scenename);    //sin estamina
     }
 
     public void QuitGame() //Cierra el juego, gracias por jugar o pispear
     {
         Application.Quit();
+    }
+
+    public void loadLevel(string level)
+    {
+        if (saveGameManager.saveData.stamine > 0)
+        {
+            SceneManager.LoadScene(level);
+            saveGameManager.saveData.stamine -= 1;
+        }
+        else
+        {
+            StartCoroutine(ShakeImagen()); // shake de la imagen
+        }
+    }
+
+    IEnumerator ShakeImagen()
+    {
+        Vector3 posicionInicial = imageStamina.transform.position;
+        float tiempoInicio = Time.time;
+
+        while (Time.time - tiempoInicio < shakeDuration)
+        {
+            float offsetX = Random.Range(-intensityShake, intensityShake);
+            float offsetY = Random.Range(-intensityShake, intensityShake);
+
+            imageStamina.transform.position = new Vector3(posicionInicial.x + offsetX, posicionInicial.y + offsetY, posicionInicial.z);
+
+            yield return null;
+        }
+        imageStamina.transform.position = posicionInicial;
     }
 
     /*public void PlaySfx()
