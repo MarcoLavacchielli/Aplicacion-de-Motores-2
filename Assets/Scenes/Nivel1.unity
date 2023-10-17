@@ -4535,7 +4535,7 @@ MonoBehaviour:
   healthEnemy2: 2
   damageEnemy2: 2
   spawnDistanceThreshold: 15
-  timeBetweenSpawns: 1
+  timeBetweenSpawns: 0.7
 --- !u!4 &871209756
 Transform:
   m_ObjectHideFlags: 0
@@ -4834,7 +4834,7 @@ PrefabInstance:
     - target: {fileID: 3573807377104627558, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
       propertyPath: panel
       value: 
-      objectReference: {fileID: 744042713}
+      objectReference: {fileID: 1552497938}
     - target: {fileID: 3573807377104627558, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
       propertyPath: score
       value: 
@@ -10921,7 +10921,7 @@ PrefabInstance:
     - target: {fileID: 3573807377104627558, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
       propertyPath: panel
       value: 
-      objectReference: {fileID: 744042713}
+      objectReference: {fileID: 1823044759}
     - target: {fileID: 3573807377104627558, guid: 1a2151582ff0f9c43b7fc8cc04ebc750, type: 3}
       propertyPath: score
       value: 
