@@ -27,7 +27,7 @@ public class EnemyFleeShoot : MonoBehaviour
 
     private void Update()
     {
-        if (agent.isFlee==false && PlayerInDetectionRadius())
+        if (/*agent.isFlee==false &&*/ PlayerInDetectionRadius())
         {
             timeSinceLastShot += Time.deltaTime;
 
