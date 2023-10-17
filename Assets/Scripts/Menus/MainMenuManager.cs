@@ -58,7 +58,7 @@ public class MainMenuManager : MonoBehaviour
         }
         else
         {
-            StartCoroutine(ShakeImagen()); // shake de la imagen
+            StartCoroutine(ShakeImagen()); // shake de la imagen, shake shake, shake your movement 
         }
     }
 

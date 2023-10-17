@@ -38,7 +38,7 @@ public class JsonSaveGameKey
             case 0: colorRedBought = value; break;
             case 1: colorBlueBought = value; break;
             case 2: colorGreenBought = value; break;
-            // Puedes agregar más casos si tienes más colores
+            // podemos agregar más casos si tenemos más colores a lo EA, sport tudigaime
             default: break; // Manejo de un índice incorrecto
         }
     }

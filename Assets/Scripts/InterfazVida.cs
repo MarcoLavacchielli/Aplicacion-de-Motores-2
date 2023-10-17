@@ -55,8 +55,6 @@ public class InterfazVida : MonoBehaviour
         ActualizarInterfazVida();
     }
 
-    // Otras funciones del script, como ActualizarInterfazVida, no se muestran aquí pero deben estar presentes.
-
     private void ReiniciarEscena()
     {
         // Carga la escena actual para reiniciar el juego
@@ -75,10 +73,9 @@ public class InterfazVida : MonoBehaviour
 
         ActualizarInterfazVida();
 
-        // Aquí puedes agregar lógica adicional cuando el personaje gana vida.
     }
 
-    // Actualiza la interfaz de vida con los valores actuales
+    // Actualizame UCHIIII
     private void ActualizarInterfazVida()
     {
         float porcentajeVida = vidaActual / vidaMaxima;

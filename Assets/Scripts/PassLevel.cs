@@ -48,7 +48,7 @@ public class PassLevel : MonoBehaviour
         }
     }
 
-    // Este método se llama cuando la escena se ha cargado
+    // Este método se llama cuando la escena ya se cargo, o eso parece
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         //Debug.Log("Checkeo");

@@ -16,8 +16,7 @@ public class PlayerNotification : MonoBehaviour
     }
     private void HandleEnemyDeath()
     {
-        // Este método se ejecutará cada vez que un enemigo muera.
-        // Puedes realizar acciones específicas relacionadas con el jugador aquí.
+        // Este método se ejecutará cada vez que un enemigo muera. Maquiavelico...
         NotifyPlayerObserverOfEnemyDeath();
     }
     private void NotifyPlayerObserverOfEnemyDeath()

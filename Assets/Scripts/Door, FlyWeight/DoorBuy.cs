@@ -30,11 +30,7 @@ public class DoorBuy : MonoBehaviour
     }
     private void HandleScoreChanged(int newScore)
     {
-        // Realizar acciones en respuesta al cambio de puntaje.
-        // Por ejemplo, actualizar la interfaz de usuario, cambiar la apariencia, etc.
         Debug.Log("Puntaje del jugador ha cambiado a: " + newScore);
-
-        // Aquí puedes realizar acciones específicas en respuesta al cambio de puntaje.
         CheckScoreForActions();
 
     }
@@ -59,7 +55,6 @@ public class DoorBuy : MonoBehaviour
         // Si hay colisión con el jugador, activa el booleano.
         bool playerInRange = colliders.Length > 0;
 
-        // Realiza aquí las acciones que desees cuando el jugador esté en el radio.
         if (playerInRange)
         {
             if (score.characterScore >= limit)
