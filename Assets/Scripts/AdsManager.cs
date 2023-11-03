@@ -5,6 +5,7 @@ using UnityEngine.Advertisements;
 
 public class AdsManager : MonoBehaviour, IUnityAdsListener
 {
+
     [SerializeField] string gameID = "5466929", rewardedAdID = "Rewarded_Android";
 
     void Start()
@@ -19,10 +20,9 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 
         Advertisement.Show(rewardedAdID);
     }
-
-    public void OnUnityAdsDidReady(string message)
+    public void OnUnityAdsReady(string placementId)
     {
-        //throw new System.NotImplementedException();
+        // throw new System.NotImplementedException();
         Debug.Log("Ad ready");
     }
 
@@ -32,22 +32,22 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
         Debug.Log("Showing Ad");
     }
 
-
     public void OnUnityAdsDidError(string message)
     {
         //throw new System.NotImplementedException();
         Debug.Log("Ad failed");
     }
 
-    public void OnUnityAdsDidFinish(string placementId, ShowResult showresult)
+    public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
     {
         if (placementId == rewardedAdID)
         {
 
-            if (showresult == ShowResult.Finished) Debug.Log("Full rewards");
-            else if (showresult == ShowResult.Skipped) Debug.Log("half rewards");
-            if (showresult == ShowResult.Failed) Debug.Log("No rewards");
+            if (showResult == ShowResult.Finished) Debug.Log("Full rewards");
+            else if (showResult == ShowResult.Skipped) Debug.Log("half rewards");
+            else if (showResult == ShowResult.Failed) Debug.Log("No rewards");
 
         }
     }
+
 }
