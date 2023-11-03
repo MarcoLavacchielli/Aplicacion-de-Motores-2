@@ -786,6 +786,7 @@ PlayerSettings:
   vrEditorSettings: {}
   cloudServicesEnabled:
     UNet: 1
+    Unity Ads: 1
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -799,11 +800,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 2
-  cloudProjectId: 
+  cloudProjectId: cdf08f49-a0d6-4ceb-86c6-d3e6a4f2260e
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: Aplicacion de motores 2
+  organizationId: drake120
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 
