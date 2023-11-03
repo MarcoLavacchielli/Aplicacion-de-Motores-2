@@ -7,6 +7,17 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 {
 
     [SerializeField] string gameID = "5466929", rewardedAdID = "Rewarded_Android";
+    [SerializeField] private JsonSaveGameManager saveGameManager;
+
+    void Awake()
+    {
+        saveGameManager = FindObjectOfType<JsonSaveGameManager>();
+
+        if (saveGameManager == null)
+        {
+            Debug.LogError("JsonSaveGameManager no encontrado en la escena.");
+        }
+    }
 
     void Start()
     {
@@ -20,6 +31,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 
         Advertisement.Show(rewardedAdID);
     }
+
     public void OnUnityAdsReady(string placementId)
     {
         // throw new System.NotImplementedException();
@@ -43,11 +55,31 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
         if (placementId == rewardedAdID)
         {
 
-            if (showResult == ShowResult.Finished) Debug.Log("Full rewards");
-            else if (showResult == ShowResult.Skipped) Debug.Log("half rewards");
-            else if (showResult == ShowResult.Failed) Debug.Log("No rewards");
-
+            if (showResult == ShowResult.Finished)
+            {
+                Debug.Log("Full rewards");
+                SeeAdd();
+            }
+            else if (showResult == ShowResult.Skipped)
+            {
+                Debug.Log("half rewards");
+                SkipAdd();
+            }
+            else if (showResult == ShowResult.Failed)
+            {
+                Debug.Log("No rewards");
+            } 
         }
+    }
+
+    void SkipAdd()
+    {
+        saveGameManager.saveData.currencyKey += 50;
+    }
+
+    void SeeAdd()
+    {
+        saveGameManager.saveData.currencyKey += 100;
     }
 
 }
