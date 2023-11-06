@@ -9,6 +9,8 @@ public class PlayerHealth : MonoBehaviour
     private float maxHealth = 5f;
     public event Action<float> OnHealthChange;
 
+    [SerializeField] private ParticleSystem damageP;
+
     public float CurrentHealth
     {
         get { return currentHealth; }
@@ -43,6 +45,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(float damageAmount)
     {
         currentHealth -= damageAmount;
+        damageP.Play();
 
         if (currentHealth <= 0)
         {
