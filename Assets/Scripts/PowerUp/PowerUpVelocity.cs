@@ -14,6 +14,8 @@ public class PowerUpVelocity : MonoBehaviour
     [SerializeField] private GameObject panel; // Activa el botón de compra.
     [SerializeField] private GameObject velocityImage;
 
+    [SerializeField] ParticleSystem powerUpBuyP;
+
     private void Awake()
     {
         scoreVelocity = FindObjectOfType<PlayerScore>();
@@ -111,6 +113,8 @@ public class PowerUpVelocity : MonoBehaviour
     {
         //score.characterScore = score.characterScore - limit; // Resto el valor
         scoreVelocity.SubstractScore(limit);
+
+        powerUpBuyP.Play();
 
         if (panel != null) // Desactivo el panel
         {

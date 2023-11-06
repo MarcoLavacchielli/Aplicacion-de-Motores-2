@@ -133,3 +133,4 @@ MonoBehaviour:
   destroyOnCollisionLayers:
   - Floor
   - Wall
+  bulletDestroyP: {fileID: 2013228188647711279, guid: 6af89f52a08f29e45a465d8820ce2608, type: 3}

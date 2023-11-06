@@ -10,9 +10,13 @@ public class Bullet : MonoBehaviour
 
     public Pool<Bullet> pool;
 
+    [SerializeField] ParticleSystem bulletDestroyP;
+    private Vector3 initialPosition;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        initialPosition = transform.position;
     }
 
     public void Launch() // Lanza la bala para adelante y se tiene una funcion para devolver la bala a la bolsa luego de 7 segundos
@@ -26,6 +30,8 @@ public class Bullet : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         gameObject.SetActive(false);
         pool.Return(this);
+
+        PlayBulletDestroyParticles(initialPosition);
     }
 
     private void OnCollisionEnter(Collision collision) // Se desactiva la bala cuando colisiona con algo
@@ -38,5 +44,18 @@ public class Bullet : MonoBehaviour
         StopCoroutine(ReturnAfterSeconds(3f));
         gameObject.SetActive(false);
         pool.Return(this);
+
+        PlayBulletDestroyParticles(collision.contacts[0].point);
+    }
+
+    private void PlayBulletDestroyParticles(Vector3 position)
+    {
+        ParticleSystem bulletDestroyClone = Instantiate(bulletDestroyP, position, Quaternion.identity);
+        bulletDestroyClone.Play();
+
+        ParticleSystem.MainModule mainModule = bulletDestroyClone.main;
+        mainModule.duration = bulletDestroyP.main.duration;
+
+        Destroy(bulletDestroyClone.gameObject, bulletDestroyP.main.duration);
     }
 }

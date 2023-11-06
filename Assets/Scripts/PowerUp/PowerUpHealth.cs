@@ -15,6 +15,8 @@ public class PowerUpHealth : MonoBehaviour
     [SerializeField] private GameObject panel; // Activa el botón de compra.
     [SerializeField] private GameObject healthImage; //por ahora no hay imagen
 
+    [SerializeField] ParticleSystem powerUpBuyP;
+
     private void Awake()
     {
         scoreHealth = FindObjectOfType<PlayerScore>();
@@ -122,6 +124,8 @@ public class PowerUpHealth : MonoBehaviour
     {
         //score.characterScore = score.characterScore - limit; // Resto el valor
         scoreHealth.SubstractScore(limit);
+
+        powerUpBuyP.Play();
 
         if (panel != null) // Desactivo el panel
         {

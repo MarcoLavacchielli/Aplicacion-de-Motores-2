@@ -115,6 +115,7 @@ MonoBehaviour:
   velocity: 10
   damage: 1
   rb: {fileID: -4262080048126063119}
+  bulletDestroyP: {fileID: 2013228188647711279, guid: 6af89f52a08f29e45a465d8820ce2608, type: 3}
 --- !u!54 &-4262080048126063119
 Rigidbody:
   m_ObjectHideFlags: 0
