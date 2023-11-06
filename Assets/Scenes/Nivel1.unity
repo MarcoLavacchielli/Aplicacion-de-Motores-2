@@ -2893,11 +2893,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429833992}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!198 &430284766 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 2996423784313576698, guid: 172b02f52859b264e869449defaf57c0, type: 3}
-  m_PrefabInstance: {fileID: 652917386}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &432243811
 GameObject:
   m_ObjectHideFlags: 0
@@ -3158,7 +3153,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1239067643811241207, guid: a0bc74ceb3d9e7545a8882aa6629d693, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1239067643811241207, guid: a0bc74ceb3d9e7545a8882aa6629d693, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15215,7 +15210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1209263494939646950, guid: 3a61ffecc17d4f74588eed7943b64d3a, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1259949287755099324, guid: 3a61ffecc17d4f74588eed7943b64d3a, type: 3}
       propertyPath: m_Layer
@@ -15565,10 +15560,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 8964228003313113882, guid: 3a61ffecc17d4f74588eed7943b64d3a, type: 3}
-      propertyPath: shootParticle
-      value: 
-      objectReference: {fileID: 430284766}
     - target: {fileID: 8964228003313113882, guid: 3a61ffecc17d4f74588eed7943b64d3a, type: 3}
       propertyPath: rotationCooldown
       value: 2
