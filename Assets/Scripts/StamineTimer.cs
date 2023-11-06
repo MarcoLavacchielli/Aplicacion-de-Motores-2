@@ -2,13 +2,14 @@ using UnityEngine;
 using TMPro;
 using System;
 
-public class JsonIndividualsSave : MonoBehaviour
+public class StamineTimer : MonoBehaviour
 {
     public JsonSaveGameManager saveGameManager;
     public TextMeshProUGUI countdownText;
 
     private const string PlayerPrefsKey = "LastStaminaRechargeTime";
-    private float timeToNextStaminaRecharge = 300f; // 5 minutos en segundos
+    [SerializeField] private float rechargeTimeInSeconds = 300f; // 5 minutos en segundos
+    private float timeToNextStaminaRecharge;
 
     void Awake()
     {
@@ -22,6 +23,8 @@ public class JsonIndividualsSave : MonoBehaviour
 
     void Start()
     {
+        timeToNextStaminaRecharge = rechargeTimeInSeconds;
+
         // Recuperar la última hora de recarga almacenada
         if (PlayerPrefs.HasKey(PlayerPrefsKey))
         {
@@ -54,7 +57,7 @@ public class JsonIndividualsSave : MonoBehaviour
         else
         {
             // Si la estamina es 10, reiniciar el temporizador y el prefab
-            timeToNextStaminaRecharge = 300f;
+            timeToNextStaminaRecharge = rechargeTimeInSeconds;
         }
 
         // Mostrar la cuenta regresiva en el texto
@@ -68,7 +71,7 @@ public class JsonIndividualsSave : MonoBehaviour
             saveGameManager.saveData.stamine++;
 
             // Reiniciar el temporizador
-            timeToNextStaminaRecharge = 300f;
+            timeToNextStaminaRecharge = rechargeTimeInSeconds;
 
             // Almacenar la hora de recarga actual
             PlayerPrefs.SetString(PlayerPrefsKey, DateTime.Now.ToString());

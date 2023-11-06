@@ -2612,6 +2612,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveGameManager: {fileID: 464607037}
   countdownText: {fileID: 918463553}
+  rechargeTimeInSeconds: 60
 --- !u!1 &468892271
 GameObject:
   m_ObjectHideFlags: 0
