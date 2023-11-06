@@ -20,6 +20,8 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private float lastShootTime;  //Controlar el tiempo de disparo
     [SerializeField] private float anticipationTime = 1f;  //El primer disparo va a salir despues de esta funcion
 
+    [SerializeField] private ParticleSystem shootParticle;
+
     private void Awake()
     {
         playerInput = new Player();
@@ -90,6 +92,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void Shoot() //Metodo de disparo, obtiene una bala del pool y la lanza desde la posicion del controller
     {
+        shootParticle.Play();
         Bullet newBullet = GetNextBullet();
         newBullet.transform.position = shootController.position;
         newBullet.transform.rotation = shootController.rotation;
