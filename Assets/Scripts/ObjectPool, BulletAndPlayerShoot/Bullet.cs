@@ -54,7 +54,7 @@ public class Bullet : MonoBehaviour
         bulletDestroyClone.Play();
 
         ParticleSystem.MainModule mainModule = bulletDestroyClone.main;
-        mainModule.duration = bulletDestroyP.main.duration;
+        //mainModule.duration = bulletDestroyP.main.duration;
 
         Destroy(bulletDestroyClone.gameObject, bulletDestroyP.main.duration);
     }
