@@ -39,6 +39,13 @@ public class PassLevel : MonoBehaviour
                 //Sumamos 200 pesos al terminar un nivel
                 saveGameManager.saveData.currencyKey += 200;
             }
+            else if (keyToActivate == "3")
+            {
+                //saveGameManager.saveData.level3Key = true; //La llave todavia no existe en el json, si se hace un nivel, se agrega
+
+                //Sumamos 200 pesos al terminar un nivel
+                saveGameManager.saveData.currencyKey += 250;
+            }
             else
             {
                 Debug.Log("no se escribio la key correcta");
