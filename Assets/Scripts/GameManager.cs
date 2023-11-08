@@ -6,18 +6,21 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private EnemyFactory[] enemyFactories;
     [SerializeField] private List<Vector3> spawnPositions;
-
-    [SerializeField] private int healthEnemy1;
-    [SerializeField] private int damageEnemy1;
-    [SerializeField] private int healthEnemy2;
-    [SerializeField] private int damageEnemy2;
-
-    [Range(1f, 50f)]
-    [SerializeField] private float spawnDistanceThreshold = 10f; // Umbral de distancia para spawnear enemigos
-
+    [SerializeField] private float spawnDistanceThreshold = 10f;
     [SerializeField] private float timeBetweenSpawns = 2f;
 
     private PlayerController1 playerController;
+
+    private Dictionary<int, EnemyStats> enemyStatsLookup = new Dictionary<int, EnemyStats>();
+
+    [System.Serializable]
+    public class EnemyStats
+    {
+        public int health;
+        public int damage;
+    }
+
+    [SerializeField] private List<EnemyStats> enemyStatsList;
 
     private void Start()
     {
@@ -25,7 +28,13 @@ public class GameManager : MonoBehaviour
 
         if (playerController == null)
         {
-            Debug.LogError("PlayerController1 no encontrado en la escena.");
+            Debug.LogError("PlayerController1 not found in the scene.");
+        }
+
+        // Preload enemy stats into the lookup table
+        for (int i = 0; i < enemyStatsList.Count; i++)
+        {
+            enemyStatsLookup[i] = enemyStatsList[i];
         }
 
         StartCoroutine(SpawnEnemyWithDelay());
@@ -58,16 +67,23 @@ public class GameManager : MonoBehaviour
             float distanceToPlayer = Vector3.Distance(randomSpawnPosition, playerController.transform.position);
             if (distanceToPlayer < spawnDistanceThreshold)
             {
-                int enemyType = Random.Range(1, 3);
-                enemyType--;
+                int enemyType = Random.Range(0, enemyFactories.Length);
 
                 if (enemyType >= 0 && enemyType < enemyFactories.Length)
                 {
-                    GameObject enemy = enemyFactories[enemyType].CreateEnemy(
-                        randomSpawnPosition,
-                        (enemyType == 0) ? healthEnemy1 : healthEnemy2,
-                        (enemyType == 0) ? damageEnemy1 : damageEnemy2
-                    );
+                    // Get the stats from the lookup table
+                    if (enemyStatsLookup.TryGetValue(enemyType, out EnemyStats enemyStats))
+                    {
+                        GameObject enemy = enemyFactories[enemyType].CreateEnemy(
+                            randomSpawnPosition,
+                            enemyStats.health,
+                            enemyStats.damage
+                        );
+                    }
+                    else
+                    {
+                        Debug.LogError("Enemy stats not found for enemyType: " + enemyType);
+                    }
                 }
                 else
                 {
@@ -77,7 +93,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("PlayerController1 no encontrado. No se spawnearán enemigos.");
+            Debug.LogWarning("PlayerController1 not found. Enemies will not be spawned.");
         }
     }
 
