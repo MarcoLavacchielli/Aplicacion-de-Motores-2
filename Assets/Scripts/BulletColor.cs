@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using TreeEditor;
 using UnityEngine;
-
+public interface IBulletColorDecorator
+{
+    void ApplyColorToBullet(GameObject bullet);
+}
 public class BulletColor : MonoBehaviour
 {
-
     [SerializeField] private JsonSaveGameManager saveGameManager;
+    [SerializeField] private IBulletColorDecorator bulletColorDecorator;
     [SerializeField] private Material whiteMaterial;
     [SerializeField] private Material redMaterial;
     [SerializeField] private Material blueMaterial;
@@ -21,34 +25,30 @@ public class BulletColor : MonoBehaviour
         }
     }
 
-    void Update()
+    void Start()
     {
-        //Color de la bala -> Tienda temporal//
-        CollorBullet();
-    }
-
-    public void CollorBullet()
-    {
-        Renderer renderer = GetComponent<Renderer>();
-
+        // Crea el decorador según el color guardado
         switch (saveGameManager.saveData.ColorBullet)
         {
             case "Blanco":
-                renderer.material = whiteMaterial;
+                bulletColorDecorator = new BulletColorDecorator(whiteMaterial);
                 break;
-
             case "Rojo":
-                renderer.material = redMaterial;
+                bulletColorDecorator = new BulletColorDecorator(redMaterial);
                 break;
-
             case "Azul":
-                renderer.material = blueMaterial;
+                bulletColorDecorator = new BulletColorDecorator(blueMaterial);
                 break;
-
             case "Verde":
-                renderer.material = greenMaterial;
+                bulletColorDecorator = new BulletColorDecorator(greenMaterial);
+                break;
+            default:
+                // Color por defecto
+                bulletColorDecorator = new BulletColorDecorator(whiteMaterial);
                 break;
         }
-    }
 
+        // Aplica el color a la bala usando el decorador
+        bulletColorDecorator.ApplyColorToBullet(gameObject);
+    }
 }
