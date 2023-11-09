@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BlueColorChangeStrategy : IColorChangeStrategy
 {
-    public void ChangeColor(GameObject floor)
+    public void ChangeColor(GameObject triggerObject)
     {
-        floor.GetComponent<Renderer>().material.color = Color.blue;
+        triggerObject.GetComponent<Renderer>().material.color = Color.blue;
     }
 }

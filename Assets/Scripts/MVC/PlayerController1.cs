@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class PlayerController1 : MonoBehaviour
 {
-    public IColorChangeStrategy colorChangeStrategy;
     [SerializeField] private Player playerInput;
     private PlayerModel model;
     private PlayerView view;
 
-    private void Start()
-    {
-        colorChangeStrategy = new RedColorChangeStrategy();
-    }
     private void Awake()
     {
         model = GetComponent<PlayerModel>();
@@ -41,16 +36,5 @@ public class PlayerController1 : MonoBehaviour
         {
             model.Jump();
         }*/
-    }
-    public void ChangeColorStrategy(IColorChangeStrategy newStrategy)
-    {
-        colorChangeStrategy = newStrategy;
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (colorChangeStrategy != null && other.CompareTag("TriggerObject"))
-        {
-            colorChangeStrategy.ChangeColor(GameObject.FindWithTag("Floor"));
-        }
     }
 }

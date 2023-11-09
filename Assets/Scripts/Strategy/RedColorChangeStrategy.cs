@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 public interface IColorChangeStrategy
 {
-    void ChangeColor(GameObject floor);
+    void ChangeColor(GameObject triggerObject);
 }
 public class RedColorChangeStrategy : IColorChangeStrategy
 {
-    public void ChangeColor(GameObject floor)
+    public void ChangeColor(GameObject triggerObject)
     {
-        floor.GetComponent<Renderer>().material.color = Color.red;
+        triggerObject.GetComponent<Renderer>().material.color = Color.red;
     }
 }
