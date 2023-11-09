@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 1247141395453425327}
   - component: {fileID: 6509604994875589461}
   - component: {fileID: 7316560689036635409}
-  - component: {fileID: 7712276323359896898}
+  - component: {fileID: 9048256982885602163}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -93,6 +93,7 @@ MonoBehaviour:
   shootingCooldown: 0.5
   lastShootTime: 0
   anticipationTime: 1
+  shootParticle: {fileID: 0}
 --- !u!114 &7277757774898917642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,6 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab6fbd5d8676cbd428874578941fb667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageP: {fileID: 0}
+  checkpoint: {fileID: 0}
 --- !u!114 &1247141395453425327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2735177610178625532}
+  runningParticle: {fileID: 0}
 --- !u!114 &7316560689036635409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,7 +189,7 @@ MonoBehaviour:
   playerSpeed: 5
   jumpHeight: 1
   gravityValue: 0
---- !u!114 &7712276323359896898
+--- !u!114 &9048256982885602163
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
