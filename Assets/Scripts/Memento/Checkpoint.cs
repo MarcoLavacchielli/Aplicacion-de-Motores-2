@@ -16,7 +16,7 @@ public class Checkpoint : MonoBehaviour
         }
     }
 
-    private void ActivateCheckpoint()
+    public void ActivateCheckpoint()
     {
         checkpointActivated = true;
         checkpointPosition = transform.position;

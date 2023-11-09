@@ -48,34 +48,32 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float damageAmount)
     {
-        if (checkpoint != null && checkpoint.IsCheckpointActivated())
-        {
-            // Reposicionar al jugador en el checkpoint y restablecer su vida
-            Debug.Log("flag");
-            transform.position = checkpoint.GetCheckpointPosition();
-            currentHealth = maxHealth;
-            NotifyObservers();
-        }
-        else
-        {
-            currentHealth -= damageAmount;
-            damageP.Play();
+        currentHealth -= damageAmount;
+        damageP.Play();
 
-            if (currentHealth <= 0)
+        if (currentHealth <= 0)
+        {
+            if (checkpoint != null && checkpoint.IsCheckpointActivated())
             {
-                currentHealth = 0;
-                StartCoroutine(RespawnCoroutine()); // Usaremos una corrutina para dar tiempo al jugador a reposicionarse antes de reiniciar la escena
+                // Reposicionar al jugador en el checkpoint y restablecer su vida
+                transform.position = checkpoint.GetCheckpointPosition();
+                currentHealth = maxHealth;
+                NotifyObservers();
             }
             else
             {
-                NotifyObservers();
+                currentHealth = 0;
+                Respawn();
             }
+        }
+        else
+        {
+            NotifyObservers();
         }
     }
 
-    private IEnumerator RespawnCoroutine()
+    private void Respawn()
     {
-        yield return new WaitForSeconds(1f); // Espera 1 segundo antes de reiniciar la escena
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reiniciar la escena
     }
 
