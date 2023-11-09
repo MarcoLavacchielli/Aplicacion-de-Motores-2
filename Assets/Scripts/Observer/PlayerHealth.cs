@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,6 +11,9 @@ public class PlayerHealth : MonoBehaviour
     public event Action<float> OnHealthChange;
 
     [SerializeField] private ParticleSystem damageP;
+
+
+    [SerializeField] private Checkpoint checkpoint;
 
     public float CurrentHealth
     {
@@ -44,16 +48,35 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float damageAmount)
     {
-        currentHealth -= damageAmount;
-        damageP.Play();
-
-        if (currentHealth <= 0)
+        if (checkpoint != null && checkpoint.IsCheckpointActivated())
         {
-            currentHealth = 0;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reiniciar la escena
+            // Reposicionar al jugador en el checkpoint y restablecer su vida
+            Debug.Log("flag");
+            transform.position = checkpoint.GetCheckpointPosition();
+            currentHealth = maxHealth;
+            NotifyObservers();
         }
+        else
+        {
+            currentHealth -= damageAmount;
+            damageP.Play();
 
-        NotifyObservers();
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0;
+                StartCoroutine(RespawnCoroutine()); // Usaremos una corrutina para dar tiempo al jugador a reposicionarse antes de reiniciar la escena
+            }
+            else
+            {
+                NotifyObservers();
+            }
+        }
+    }
+
+    private IEnumerator RespawnCoroutine()
+    {
+        yield return new WaitForSeconds(1f); // Espera 1 segundo antes de reiniciar la escena
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reiniciar la escena
     }
 
     private void NotifyObservers()
