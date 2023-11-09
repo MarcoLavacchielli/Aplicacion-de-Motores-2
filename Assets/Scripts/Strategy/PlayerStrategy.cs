@@ -4,21 +4,28 @@ using UnityEngine;
 
 public class PlayerStrategy : MonoBehaviour
 {
-    public IColorChangeStrategy colorChangeStrategy;
+    private IColorChangeStrategy[] colorChangeStrategies;
+    private int currentStrategyIndex;
+
     private void Start()
     {
-        colorChangeStrategy = new RedColorChangeStrategy();
+        colorChangeStrategies = new IColorChangeStrategy[]
+        {
+            new RedColorChangeStrategy(),
+            new BlueColorChangeStrategy()
+        };
+
+        currentStrategyIndex = 0;
     }
 
-    public void ChangeColorStrategy(IColorChangeStrategy newStrategy)
-    {
-        colorChangeStrategy = newStrategy;
-    }
     private void OnTriggerEnter(Collider other)
     {
-        if (colorChangeStrategy != null && other.CompareTag("TriggerObject"))
+        if (other != null && other.CompareTag("TriggerObject"))
         {
-            colorChangeStrategy.ChangeColor(GameObject.FindWithTag("TriggerObject"));
+            currentStrategyIndex = (currentStrategyIndex + 1) % colorChangeStrategies.Length;
+
+            IColorChangeStrategy currentStrategy = colorChangeStrategies[currentStrategyIndex];
+            currentStrategy.ChangeColor(other.gameObject);
         }
     }
 }
