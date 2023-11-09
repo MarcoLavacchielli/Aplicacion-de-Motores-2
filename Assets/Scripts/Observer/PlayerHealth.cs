@@ -53,17 +53,24 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            if (checkpoint != null && checkpoint.IsCheckpointActivated())
+            try
             {
-                // Reposicionar al jugador en el checkpoint y restablecer su vida
-                transform.position = checkpoint.GetCheckpointPosition();
-                currentHealth = maxHealth;
-                NotifyObservers();
+                if (checkpoint != null && checkpoint.IsCheckpointActivated())
+                {
+                    // Reposicionar al jugador en el checkpoint y restablecer su vida
+                    transform.position = checkpoint.GetCheckpointPosition();
+                    currentHealth = maxHealth;
+                    NotifyObservers();
+                }
+                else
+                {
+                    currentHealth = 0;
+                    Respawn();
+                }
             }
-            else
+            catch (Exception e)
             {
-                currentHealth = 0;
-                Respawn();
+                Debug.LogWarning("Error handling checkpoint: " + e.Message);
             }
         }
         else
