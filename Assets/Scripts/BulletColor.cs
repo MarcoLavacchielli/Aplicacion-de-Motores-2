@@ -26,7 +26,6 @@ public class BulletColor : MonoBehaviour
 
     void Start()
     {
-        // Crea el decorador según el color guardado
         switch (saveGameManager.saveData.ColorBullet)
         {
             case "Blanco":
@@ -47,7 +46,6 @@ public class BulletColor : MonoBehaviour
                 break;
         }
 
-        // Aplica el color a la bala usando el decorador
         bulletColorDecorator.ApplyColorToBullet(gameObject);
     }
 }
