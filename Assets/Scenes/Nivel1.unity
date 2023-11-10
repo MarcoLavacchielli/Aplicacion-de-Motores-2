@@ -5257,12 +5257,9 @@ MonoBehaviour:
   - {x: 78.36, y: 0.001, z: -28.19}
   - {x: -0.29, y: 0.001, z: 6.69}
   - {x: -0.29, y: 0.001, z: -6.84}
-  healthEnemy1: 3
-  damageEnemy1: 1
-  healthEnemy2: 2
-  damageEnemy2: 2
   spawnDistanceThreshold: 15
   timeBetweenSpawns: 0.8
+  enemyStatsList: []
 --- !u!4 &871209756
 Transform:
   m_ObjectHideFlags: 0
