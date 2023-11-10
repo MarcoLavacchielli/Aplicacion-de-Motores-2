@@ -15,6 +15,17 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] private Checkpoint checkpoint;
 
+
+    [SerializeField] private PlayerOriginator playerOriginator;
+    //
+    private PlayerMemento savedmemento;
+
+    private void Awake()
+    {
+        this.savedmemento = playerOriginator.Save();
+        Debug.Log("buena salvada");
+    }
+
     public float CurrentHealth
     {
         get { return currentHealth; }
@@ -81,7 +92,11 @@ public class PlayerHealth : MonoBehaviour
 
     private void Respawn()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reiniciar la escena
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reiniciar la escena
+        currentHealth = maxHealth;
+        NotifyObservers();
+        playerOriginator.Restore(savedmemento);
+        Debug.Log("cargado");
     }
 
     private void NotifyObservers()
