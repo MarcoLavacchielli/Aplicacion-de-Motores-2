@@ -15,14 +15,15 @@ public class MainMenuManager : MonoBehaviour
 
     [SerializeField] private GameObject[] panels;
 
-    [SerializeField] private JsonSaveGameManager saveGameManager;
+    //[SerializeField] private JsonSaveGameManager saveGameManager;
+    [SerializeField] StaminaManager staminaManager;
     [SerializeField] private GameObject imageStamina;
     [SerializeField] private float shakeDuration = 0.5f;
     [SerializeField] private  float intensityShake = 0.1f;
 
     void Awake()
     {
-        saveGameManager = FindObjectOfType<JsonSaveGameManager>();
+        staminaManager = FindObjectOfType<StaminaManager>();
     }
 
     public void SwitchPanel(int index)  //Setea por indice, el panel a activar
@@ -51,14 +52,14 @@ public class MainMenuManager : MonoBehaviour
 
     public void loadLevel(string level)
     {
-        if (saveGameManager.saveData.stamine > 0)
+        if (staminaManager.HasEnoughStamina(1))
         {
+            staminaManager.UseStamina(1);
             SceneManager.LoadScene(level);
-            saveGameManager.saveData.stamine -= 1;
         }
         else
         {
-            StartCoroutine(ShakeImagen()); // shake de la imagen, shake shake, shake your movement 
+            StartCoroutine(ShakeImagen());
         }
     }
 

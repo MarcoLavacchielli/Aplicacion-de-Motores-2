@@ -10,7 +10,7 @@ public class StaminaManager : MonoBehaviour
 
     [SerializeField] int _maxStamina = 10;
     [SerializeField] float _timerToRecharge = 15f;
-    int _currentStamina;
+    public int _currentStamina;
 
     DateTime _nextStaminaTime, _lastStaminaTime;
 
@@ -25,14 +25,12 @@ public class StaminaManager : MonoBehaviour
     TimeSpan timer;
     int id;
 
-    [SerializeField] JsonSaveGameManager saveGameManager; // Reference to your JsonSaveGameManager
-
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
+        /*if (Input.GetKeyDown(KeyCode.O))
         {
             UseStamina(1);
-        }
+        }*/
     }
 
     void OnEnable()
@@ -53,19 +51,31 @@ public class StaminaManager : MonoBehaviour
 
     public void UseStamina(int staminaToUse)
     {
-        if(_currentStamina - staminaToUse >= 0)
+        if (_currentStamina - staminaToUse >= 0)
         {
             _currentStamina -= staminaToUse;
             UpdateStaminaText();
 
+            // Cancelar la notificación anterior
             NotificationManager.Instance.CancelNotification(id);
 
-            id = NotificationManager.Instance.DisplayNotification(_notifTitle, _notifText, _smallIcon, _bigIcon, AddDuration(DateTime.Now, ((_maxStamina - _currentStamina + 1) * _timerToRecharge) + 1 + (float)timer.TotalSeconds));
+            // Reiniciar el temporizador al valor completo si la currentStamina es 10
+            if (_currentStamina >= 9)
+            {
 
+                _nextStaminaTime = AddDuration(DateTime.Now, _timerToRecharge);
 
+            }
+
+            // Mostrar la nueva notificación
+            if (_currentStamina < _maxStamina)
+            {
+                id = NotificationManager.Instance.DisplayNotification(_notifTitle, _notifText, _smallIcon, _bigIcon, AddDuration(DateTime.Now, ((_maxStamina - _currentStamina + 1) * _timerToRecharge) + 1 + (float)timer.TotalSeconds));
+            }
+
+            // Iniciar la recarga solo si no se está recargando actualmente
             if (!recharging)
             {
-                _nextStaminaTime = AddDuration(DateTime.Now, _timerToRecharge);
                 StartCoroutine(RechargeStamina());
             }
             Debug.Log("Go to level....");
