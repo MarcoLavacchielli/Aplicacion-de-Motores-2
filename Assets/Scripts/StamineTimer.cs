@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System;
+using static NotificationManager;
 
 public class StamineTimer : MonoBehaviour
 {
@@ -10,6 +11,14 @@ public class StamineTimer : MonoBehaviour
     private const string PlayerPrefsKey = "LastStaminaRechargeTime";
     [SerializeField] private float rechargeTimeInSeconds = 300f; // 5 minutos en segundos
     private float timeToNextStaminaRecharge;
+
+
+    [SerializeField] string _notifTitle = "Estamina llena";
+    [SerializeField] string _notifText = "La estamina se recargo en su totalidad";
+    [SerializeField] IconSelecter _smallIcon = IconSelecter.icon_reminder;
+    [SerializeField] IconSelecter _bigIcon = IconSelecter.icon_reminderbig;
+    TimeSpan timer;
+    int id;
 
     void Awake()
     {
@@ -76,6 +85,9 @@ public class StamineTimer : MonoBehaviour
             // Almacenar la hora de recarga actual
             PlayerPrefs.SetString(PlayerPrefsKey, DateTime.Now.ToString());
             PlayerPrefs.Save();
+
+            // Agregar la notificación cuando la estamina se recargue
+            SendStaminaRechargedNotification();
         }
 
         // Asegurarse de que la estamina no supere el límite
@@ -89,5 +101,27 @@ public class StamineTimer : MonoBehaviour
         // Almacenar la hora de recarga actual
         PlayerPrefs.SetString(PlayerPrefsKey, DateTime.Now.ToString());
         PlayerPrefs.Save();
+
+        // Agregar la notificación cuando la estamina se recargue
+        SendStaminaRechargedNotification();
+    }
+
+    // Función para enviar la notificación cuando la estamina se recargue
+    private void SendStaminaRechargedNotification()
+    {
+        if (NotificationManager.Instance != null)
+        {
+            // Cancelar la notificación anterior antes de mostrar una nueva
+            NotificationManager.Instance.CancelNotification(id);
+            //Debug.Log("NOTI Cancelada");
+
+            // Mostrar la nueva notificación
+            id = NotificationManager.Instance.DisplayNotification(_notifTitle, _notifText, _smallIcon, _bigIcon, DateTime.Now);
+            //Debug.Log("NOTI Creada");
+        }
+        else
+        {
+            Debug.LogError("NotificationManager.Instance is null");
+        }
     }
 }
