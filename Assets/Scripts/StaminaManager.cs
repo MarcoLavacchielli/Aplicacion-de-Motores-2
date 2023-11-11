@@ -198,4 +198,12 @@ public class StaminaManager : MonoBehaviour
         SaveGame();
     }
 
+    public void fillStamina()
+    {
+        _currentStamina = 10;
+        UpdateTimerText();
+        UpdateStaminaText();
+        SaveGame();  
+    }
+
 }
