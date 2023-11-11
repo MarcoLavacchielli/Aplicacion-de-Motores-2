@@ -1,4 +1,4 @@
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -26,6 +26,14 @@ public class StaminaManager : MonoBehaviour
     int id;
 
     [SerializeField] JsonSaveGameManager saveGameManager; // Reference to your JsonSaveGameManager
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            UseStamina(1);
+        }
+    }
 
     void OnEnable()
     {
@@ -111,8 +119,8 @@ public class StaminaManager : MonoBehaviour
 
             UpdateTimerText();
             UpdateStaminaText();
-            SaveGameKey();
-
+            SaveGame();  // duda esto
+             
             yield return new WaitForEndOfFrame();
         }
 
@@ -145,14 +153,14 @@ public class StaminaManager : MonoBehaviour
 
     void SaveGame()
     {
-        PlayerPrefs.SetInt(PlayerPrefsKeys.currentStaminaKey, _currentStamina);
-        PlayerPrefs.SetString(PlayerPrefsKeys.currentStaminaKey, _nextStaminaTime.ToString());
-        PlayerPrefs.SetString(PlayerPrefsKeys.currentStaminaKey, _lastStaminaTime.ToString());
+        PlayerPrefs.SetInt(PlayerPrefskeys.currentStaminaKey.ToString(), _currentStamina);
+        PlayerPrefs.SetString(PlayerPrefskeys.nextStaminaKey, _nextStaminaTime.ToString());
+        PlayerPrefs.SetString(PlayerPrefskeys.lastStaminaKey, _lastStaminaTime.ToString());
     }
 
     void LoadGame()
     {
-        _currentStamina = PlayerPrefs.GetInt(PlayerPrefskeys.currentStaminaKeym _maxStamina);
+        _currentStamina = PlayerPrefs.GetInt(PlayerPrefskeys.currentStaminaKey.ToString(), _maxStamina);
         _nextStaminaTime = StringToDateTime(PlayerPrefs.GetString(PlayerPrefskeys.nextStaminaKey));
         _lastStaminaTime = StringToDateTime(PlayerPrefs.GetString(PlayerPrefskeys.lastStaminaKey));
     }
@@ -181,4 +189,3 @@ public class StaminaManager : MonoBehaviour
     }
 
 }
-*/
