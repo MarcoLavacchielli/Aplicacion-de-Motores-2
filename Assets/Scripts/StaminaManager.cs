@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -25,12 +25,14 @@ public class StaminaManager : MonoBehaviour
     TimeSpan timer;
     int id;
 
+    [SerializeField] JsonSaveGameManager saveGameManager; // Reference to your JsonSaveGameManager
+
     void OnEnable()
     {
         LoadGame();
         StartCoroutine(RechargeStamina());
 
-        if(_currentStamina < _maxStamina)
+        if (_currentStamina < _maxStamina)
         {
             timer = _nextStaminaTime - DateTime.Now;
             id = NotificationManager.Instance.DisplayNotification(_notifTitle, _notifText, _smallIcon, _bigIcon, AddDuration(DateTime.Now, ((_maxStamina - _currentStamina + 1) * _timerToRecharge) + 1 + (float)timer.TotalSeconds));
@@ -179,3 +181,4 @@ public class StaminaManager : MonoBehaviour
     }
 
 }
+*/
