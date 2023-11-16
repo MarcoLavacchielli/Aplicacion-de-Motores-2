@@ -69,10 +69,17 @@ public class ScreenManager : MonoBehaviour
         }
     }
 
+    // Error panels //
     public void panelNotClose(int index)
     {
         panels[index].SetActive(false);
     }
+
+    public void panelNotOpen(int index)
+    {
+        panels[index].SetActive(true);
+    }
+    // Error panels //
 
     IEnumerator ShakeImage()
     {
