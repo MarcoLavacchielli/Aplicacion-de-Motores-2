@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
             Debug.LogError("PlayerController1 not found in the scene.");
         }
 
-        // Preload enemy stats into the lookup table
+        // pre carga
         for (int i = 0; i < enemyStatsList.Count; i++)
         {
             enemyStatsLookup[i] = enemyStatsList[i];
@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
 
                 if (enemyType >= 0 && enemyType < enemyFactories.Length)
                 {
-                    // Get the stats from the lookup table
+                    // Stats del look up
                     if (enemyStatsLookup.TryGetValue(enemyType, out EnemyStats enemyStats))
                     {
                         GameObject enemy = enemyFactories[enemyType].CreateEnemy(

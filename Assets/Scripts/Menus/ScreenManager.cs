@@ -16,7 +16,7 @@ public class ScreenManager : MonoBehaviour
     void Awake()
     {
         staminaManager = FindObjectOfType<StaminaManager>();
-        ShowPanel(currentPanelIndex); // Mostrar un panel al inicio (puedes cambiar esto según tus necesidades)
+        //ShowPanel(currentPanelIndex); //prueba
     }
 
     public void SwitchPanel(int index)
@@ -26,7 +26,7 @@ public class ScreenManager : MonoBehaviour
             HideCurrentPanel();
             currentPanelIndex = index;
             ShowPanel(index);
-            AudioManager.Instance.PlaySFX(0); // Reproducir sonido del botón (actualmente, índice 0)
+            AudioManager.Instance.PlaySFX(0); 
         }
     }
 
