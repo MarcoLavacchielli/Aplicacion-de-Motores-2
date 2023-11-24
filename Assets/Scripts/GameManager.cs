@@ -87,11 +87,11 @@ public class GameManager : MonoBehaviour
                         {
                             ParticleSystem spawnedParticles = Instantiate(spawnParticle, randomSpawnPosition, Quaternion.identity);
                             spawnedParticles.Play();
-                            Debug.Log("Particles spawned at position: " + randomSpawnPosition);
+                            //Debug.Log("Particles spawned at position: " + randomSpawnPosition);
                         }
                         else
                         {
-                            Debug.LogError("Spawn Particle system not assigned to GameManager.");
+                            //Debug.LogError("Spawn Particle system not assigned to GameManager.");
                         }
                     }
                     else
