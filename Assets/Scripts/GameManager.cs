@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     private Dictionary<int, EnemyStats> enemyStatsLookup = new Dictionary<int, EnemyStats>();
 
+    [SerializeField] private ParticleSystem spawnParticle;
+
     [System.Serializable]
     public class EnemyStats
     {
@@ -79,6 +81,18 @@ public class GameManager : MonoBehaviour
                             enemyStats.health,
                             enemyStats.damage
                         );
+
+                        // Activar las partículas en la posición del enemigo
+                        if (spawnParticle != null)
+                        {
+                            ParticleSystem spawnedParticles = Instantiate(spawnParticle, randomSpawnPosition, Quaternion.identity);
+                            spawnedParticles.Play();
+                            Debug.Log("Particles spawned at position: " + randomSpawnPosition);
+                        }
+                        else
+                        {
+                            Debug.LogError("Spawn Particle system not assigned to GameManager.");
+                        }
                     }
                     else
                     {

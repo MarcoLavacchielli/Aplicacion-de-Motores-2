@@ -22,7 +22,6 @@ public class StaminaManager : MonoBehaviour
     [SerializeField] string _notifText = "Tenes la estamina llena";
     [SerializeField] IconSelecter _smallIcon = IconSelecter.icon_reminder;
     [SerializeField] IconSelecter _bigIcon = IconSelecter.icon_reminderbig;
-    TimeSpan timer;
     int id;
 
     private void Update()
@@ -38,14 +37,12 @@ public class StaminaManager : MonoBehaviour
         LoadGame();
         StartCoroutine(RechargeStamina());
 
-        if (_currentStamina < _maxStamina)
+        // Mostrar la notificación solo si la estamina estaba por debajo del máximo
+        if (_currentStamina == _maxStamina - 1)
         {
-            timer = _nextStaminaTime - DateTime.Now;
-            id = NotificationManager.Instance.DisplayNotification(_notifTitle, _notifText, _smallIcon, _bigIcon, AddDuration(DateTime.Now, ((_maxStamina - _currentStamina + 1) * _timerToRecharge) + 1 + (float)timer.TotalSeconds));
+            DisplayStaminaNotification();
         }
     }
-
-    //
 
     public bool HasEnoughStamina(int stamina) => _currentStamina * stamina >= 0;
 
@@ -57,20 +54,18 @@ public class StaminaManager : MonoBehaviour
             UpdateStaminaText();
 
             // Cancelar la notificación anterior
-            NotificationManager.Instance.CancelNotification(id);
+            CancelStaminaNotification();
 
             // Reiniciar el temporizador al valor completo si la currentStamina es 10
             if (_currentStamina >= 9)
             {
-
                 _nextStaminaTime = AddDuration(DateTime.Now, _timerToRecharge);
-
             }
 
-            // Mostrar la nueva notificación
-            if (_currentStamina < _maxStamina)
+            // Mostrar la nueva notificación solo si la estamina estaba por debajo del máximo
+            if (_currentStamina == _maxStamina - 1)
             {
-                id = NotificationManager.Instance.DisplayNotification(_notifTitle, _notifText, _smallIcon, _bigIcon, AddDuration(DateTime.Now, ((_maxStamina - _currentStamina + 1) * _timerToRecharge) + 1 + (float)timer.TotalSeconds));
+                DisplayStaminaNotification();
             }
 
             // Iniciar la recarga solo si no se está recargando actualmente
@@ -92,31 +87,23 @@ public class StaminaManager : MonoBehaviour
         UpdateStaminaText();
         recharging = true;
 
-        //
-        while(_currentStamina < _maxStamina)
+        while (_currentStamina < _maxStamina)
         {
             DateTime currentTime = DateTime.Now;
             DateTime nextTime = _nextStaminaTime;
 
-            //
             bool staminaAdd = false;
 
-            while(currentTime > nextTime)
+            while (currentTime > nextTime)
             {
                 if (_currentStamina >= _maxStamina) break;
 
                 _currentStamina += 1;
                 staminaAdd = true;
 
-                //
-
                 DateTime timeToAdd = nextTime;
 
-                //
-
                 if (_lastStaminaTime > nextTime) timeToAdd = _lastStaminaTime;
-
-                //
 
                 nextTime = AddDuration(timeToAdd, _timerToRecharge);
             }
@@ -125,23 +112,32 @@ public class StaminaManager : MonoBehaviour
             {
                 _nextStaminaTime = nextTime;
                 _lastStaminaTime = DateTime.Now;
+
+                // Cancelar la notificación anterior al llenar la estamina
+                CancelStaminaNotification();
+
+                // Mostrar la nueva notificación solo si la estamina estaba por debajo del máximo
+                if (_currentStamina == _maxStamina - 1)
+                {
+                    DisplayStaminaNotification();
+                }
             }
 
             UpdateTimerText();
             UpdateStaminaText();
-            SaveGame();  // duda esto
-             
+            SaveGame();
+
             yield return new WaitForEndOfFrame();
         }
 
-        NotificationManager.Instance.CancelNotification(id);
+        // Cancelar la notificación al salir del bucle
+        CancelStaminaNotification();
         recharging = true;
     }
 
     private DateTime AddDuration(DateTime date, float duration)
     {
         return date.AddSeconds(duration);
-        // return date.AddMinutes(duration);
     }
 
     private void UpdateStaminaText()
@@ -200,10 +196,30 @@ public class StaminaManager : MonoBehaviour
 
     public void fillStamina()
     {
-        _currentStamina = 10;
+        _currentStamina = _maxStamina;
         UpdateTimerText();
         UpdateStaminaText();
-        SaveGame();  
+        SaveGame();
     }
 
+    private void DisplayStaminaNotification()
+    {
+        // Mostrar la notificación solo si la estamina estaba por debajo del máximo
+        if (_currentStamina == _maxStamina - 1)
+        {
+            id = NotificationManager.Instance.DisplayNotification(_notifTitle, _notifText, _smallIcon, _bigIcon, AddDuration(DateTime.Now, ((_maxStamina - _currentStamina + 1) * _timerToRecharge) + 1));
+            Debug.Log("Notification displayed. ID: " + id);
+        }
+    }
+
+    private void CancelStaminaNotification()
+    {
+        // Cancelar la notificación solo si hay una notificación activa
+        if (id != -1)
+        {
+            NotificationManager.Instance.CancelNotification(id);
+            Debug.Log("Notification canceled. ID: " + id);
+            id = -1; // Restablecer el ID después de cancelar la notificación
+        }
+    }
 }
