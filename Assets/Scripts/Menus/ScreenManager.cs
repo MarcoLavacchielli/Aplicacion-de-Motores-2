@@ -12,6 +12,9 @@ public class ScreenManager : MonoBehaviour
     [SerializeField] private float intensityShake = 0.1f;
 
     private int currentPanelIndex = -1;
+    private readonly Stack<int> order = new Stack<int>();
+
+    private int previousPanelIndex = -1;
 
     void Awake()
     {
@@ -24,9 +27,21 @@ public class ScreenManager : MonoBehaviour
         if (index >= 0 && index < panels.Length && index != currentPanelIndex)
         {
             HideCurrentPanel();
+            previousPanelIndex = currentPanelIndex;
             currentPanelIndex = index;
             ShowPanel(index);
-            AudioManager.Instance.PlaySFX(0); 
+            AudioManager.Instance.PlaySFX(0);
+        }
+    }
+
+    public void GoBack()
+    {
+        if (previousPanelIndex != -1)
+        {
+            HideCurrentPanel();
+            ShowPanel(previousPanelIndex);
+            currentPanelIndex = previousPanelIndex;
+            previousPanelIndex = -1;
         }
     }
 

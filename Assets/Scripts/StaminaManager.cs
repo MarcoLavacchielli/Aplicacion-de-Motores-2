@@ -217,7 +217,7 @@ public class StaminaManager : MonoBehaviour
         // Cancelar la notificación solo si hay una notificación activa
         if (id != -1)
         {
-            NotificationManager.Instance.CancelNotification(id);
+            //NotificationManager.Instance.CancelNotification(id);
             Debug.Log("Notification canceled. ID: " + id);
             id = -1; // Restablecer el ID después de cancelar la notificación
         }
