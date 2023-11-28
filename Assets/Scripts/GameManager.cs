@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     private PlayerController1 playerController;
 
-    private Dictionary<int, EnemyStats> enemyStatsLookup = new Dictionary<int, EnemyStats>();
+    //private Dictionary<int, EnemyStats> enemyStatsLookup = new Dictionary<int, EnemyStats>();
 
     [SerializeField] private ParticleSystem spawnParticle;
 
@@ -34,10 +34,10 @@ public class GameManager : MonoBehaviour
         }
 
         // pre carga
-        for (int i = 0; i < enemyStatsList.Count; i++)
+        /*for (int i = 0; i < enemyStatsList.Count; i++)
         {
             enemyStatsLookup[i] = enemyStatsList[i];
-        }
+        }*/
 
         StartCoroutine(SpawnEnemyWithDelay());
     }
@@ -74,8 +74,9 @@ public class GameManager : MonoBehaviour
                 if (enemyType >= 0 && enemyType < enemyFactories.Length)
                 {
                     // Stats del look up
-                    if (enemyStatsLookup.TryGetValue(enemyType, out EnemyStats enemyStats))
+                    if (enemyStatsList.Count >= enemyType && enemyType >= 0 )
                     {
+                        EnemyStats enemyStats = enemyStatsList[enemyType];
                         GameObject enemy = enemyFactories[enemyType].CreateEnemy(
                             randomSpawnPosition,
                             enemyStats.health,

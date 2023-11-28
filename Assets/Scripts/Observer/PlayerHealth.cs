@@ -18,7 +18,7 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] private PlayerOriginator playerOriginator;
     //
-    private PlayerMemento savedmemento;
+    private PlayerOriginator.PlayerMemento savedmemento;
 
     private void Awake()
     {
@@ -96,8 +96,8 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
         NotifyObservers();
         playerOriginator.Restore(savedmemento);
-        Debug.Log("Memento restored"); 
-        Debug.Log("cargado");
+        //Debug.Log("Memento restored"); 
+        //Debug.Log("cargado");
     }
 
     private void NotifyObservers()
