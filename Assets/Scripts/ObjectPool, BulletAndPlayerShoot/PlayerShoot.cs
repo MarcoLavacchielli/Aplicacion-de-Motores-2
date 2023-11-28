@@ -13,7 +13,7 @@ public class PlayerShoot : MonoBehaviour
 
     //private List<Bullet> bulletPool = new List<Bullet>();  //Lista de balas prehechas
     //private int bulletIndex = 0; //Inidice para saber que bala se va a utilizar
-    private Pool<Bullet> bulletsPool = new Pool<Bullet>();
+    private Pool<IBullet> bulletsPool = new Pool<IBullet>();
 
     public bool shootingPriority;   // Esto es un booleano para sobreescribir la rotacion
     [SerializeField] private float shootingCooldown = 0.5f;  //Tiempo entre disparos
@@ -29,8 +29,8 @@ public class PlayerShoot : MonoBehaviour
 
         for (int i = 0; i < 12; i++)   //instancia 12 balas que son las de la bolsa
         {
-            Bullet item = CreateBullet();
-            item.gameObject.SetActive(false);
+            IBullet item = CreateBullet();
+            item.SetActive(false);
             bulletsPool.Return(item);
         }
     }
@@ -93,26 +93,59 @@ public class PlayerShoot : MonoBehaviour
     private void Shoot() //Metodo de disparo, obtiene una bala del pool y la lanza desde la posicion del controller
     {
         shootParticle.Play();
-        Bullet newBullet = GetNextBullet();
-        newBullet.transform.position = shootController.position;
-        newBullet.transform.rotation = shootController.rotation;
-        newBullet.gameObject.SetActive(true);
+        IBullet newBullet = GetNextBullet();
+        newBullet.SetPositionRotation(shootController.position, shootController.rotation);
+        newBullet.SetActive(true);
         newBullet.Launch();
     }
 
-    private Bullet GetNextBullet() // Obtiene la siguiente bala desde el pool
+    private IBullet GetNextBullet() // Obtiene la siguiente bala desde el pool
     {
-        if(bulletsPool.TryRent(out Bullet item))
+        if(bulletsPool.TryRent(out IBullet item))
         {
-            item.gameObject.SetActive(true);
+            item.SetActive(true);
             return item;
         }
         return CreateBullet();
     }
-    private Bullet CreateBullet()
+    private IBullet CreateBullet()
     {
-        Bullet bullet = Instantiate(bulletPrefab);
-        bullet.pool = bulletsPool;
-        return bullet;
+        IBullet bullet = Instantiate(bulletPrefab);
+        bullet.SetPool(bulletsPool);
+        return new SomeBulletDecorator(bullet, null);
     }
+}
+
+public class SomeBulletDecorator : IBullet
+{
+    private readonly IBullet bullet;
+    private readonly Material colorMaterial;
+
+    public SomeBulletDecorator(IBullet bullet, Material colorMaterial)
+    {
+        this.bullet = bullet;
+        this.colorMaterial = colorMaterial;
+    }
+
+    public void Launch()
+    {
+        bullet.GetComponent<Renderer>().material = colorMaterial;
+        bullet.Launch();
+    }
+
+    public void SetActive(bool active) => bullet.SetActive(active);
+
+    public void SetPool(Pool<IBullet> pool) => bullet.SetPool(pool);
+
+    public void SetPositionRotation(Vector3 position, Quaternion rotation) => bullet.SetPositionRotation(position, rotation);
+
+    T IBullet.GetComponent<T>() => bullet.GetComponent<T>();
+}
+public interface IBullet
+{
+    void Launch();
+    void SetPool(Pool<IBullet> pool);
+    void SetActive(bool active);
+    void SetPositionRotation(Vector3 position, Quaternion rotation);
+    T GetComponent<T>();
 }

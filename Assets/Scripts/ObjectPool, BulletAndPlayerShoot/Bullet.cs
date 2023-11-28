@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour, IBullet
 {
     [SerializeField] private int velocity;   //Velocidad de la bala
     [SerializeField] private int damage;  //Daño de la vala
     [SerializeField] private Rigidbody rb;  //Obtiene el rigid del enemigo
 
-    public Pool<Bullet> pool;
+    private Pool<IBullet> pool;
 
     [SerializeField] ParticleSystem bulletDestroyP;
     private Vector3 initialPosition;
@@ -24,6 +24,14 @@ public class Bullet : MonoBehaviour
         rb.velocity = transform.forward * velocity;
         StartCoroutine(ReturnAfterSeconds(3f)); // Return after 7 seconds
     }
+
+    void IBullet.SetActive(bool active) => gameObject.SetActive(active);
+
+    void IBullet.SetPool(Pool<IBullet> pool) => this.pool = pool;
+
+    void IBullet.SetPositionRotation(Vector3 position, Quaternion rotation) => transform.SetLocalPositionAndRotation(position, rotation);
+
+    T IBullet.GetComponent<T>() => GetComponent<T>();
 
     private IEnumerator ReturnAfterSeconds(float seconds) //corrutina para devolver la bala a la bolsa
     {
