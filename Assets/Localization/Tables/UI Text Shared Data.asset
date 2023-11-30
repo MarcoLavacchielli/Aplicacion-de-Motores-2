@@ -71,6 +71,46 @@ MonoBehaviour:
     m_Key: DeleteProBt
     m_Metadata:
       m_Items: []
+  - m_Id: 346025697034240
+    m_Key: Activated
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346114591113216
+    m_Key: BuyRed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346207293620224
+    m_Key: BuyBlue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346370187804672
+    m_Key: BuyGreen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346554028343296
+    m_Key: HasWhite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346584147640320
+    m_Key: HasRed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346605681197056
+    m_Key: HasBlue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346622689099776
+    m_Key: HasGreen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 600301371473920
+    m_Key: Resume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 600310431170560
+    m_Key: MainMenu
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

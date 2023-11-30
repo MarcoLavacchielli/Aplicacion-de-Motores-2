@@ -78,6 +78,46 @@ MonoBehaviour:
     m_Localized: Delete progress
     m_Metadata:
       m_Items: []
+  - m_Id: 346025697034240
+    m_Localized: Active
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346114591113216
+    m_Localized: Buy red bullet (0)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346207293620224
+    m_Localized: Buy blue bullet (100)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346370187804672
+    m_Localized: Buy green bullet (200)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346554028343296
+    m_Localized: Bought (White Bullet)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346584147640320
+    m_Localized: Bought (Red Bullet)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346605681197056
+    m_Localized: Bought (Blue Bullet)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346622689099776
+    m_Localized: Bought (Green Bullet)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 600301371473920
+    m_Localized: Resume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 600310431170560
+    m_Localized: Main Menu
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
