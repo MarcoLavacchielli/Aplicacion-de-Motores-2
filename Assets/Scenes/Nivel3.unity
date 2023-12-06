@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.032719627, g: 0.033817492, b: 0.08329144, a: 1}
+  m_IndirectSpecularColor: {r: 0.03270171, g: 0.033631776, b: 0.08323463, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3369,8 +3369,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveGameManager: {fileID: 871209758}
-  keyToActivate: 1
-  sceneToGo: MenuInicial
+  keyToActivate: 4
+  sceneToGo: LoadingMenu
 --- !u!65 &616998503
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4574,6 +4574,7 @@ MonoBehaviour:
     levelTutorialKey: 1
     level1Key: 0
     level2Key: 0
+    level3Key: 0
     colorRedBought: 0
     colorBlueBought: 0
     colorGreenBought: 0
@@ -10498,7 +10499,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: MenuInicial
+          m_StringArgument: LoadingMenu
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1745178498

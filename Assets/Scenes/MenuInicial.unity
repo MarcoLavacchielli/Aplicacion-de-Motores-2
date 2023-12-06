@@ -1564,7 +1564,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Nivel2(WIP)
+          m_StringArgument: LoadingLvl2
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 464607039}
@@ -1700,8 +1700,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2136936417}
   m_HandleRect: {fileID: 2136936416}
   m_Direction: 0
-  m_Value: -0.0000002179827
-  m_Size: 0.7407407
+  m_Value: -0.0000002179826
+  m_Size: 0.74074066
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2950,6 +2950,7 @@ MonoBehaviour:
     levelTutorialKey: 1
     level1Key: 1
     level2Key: 1
+    level3Key: 0
     colorRedBought: 0
     colorBlueBought: 0
     colorGreenBought: 0
@@ -6191,7 +6192,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: NivelPrototipo
+          m_StringArgument: LoadingTutorial
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 464607039}
@@ -14528,7 +14529,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Nivel1
+          m_StringArgument: LoadingLvl1
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 464607039}
