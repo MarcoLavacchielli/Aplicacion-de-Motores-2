@@ -111,6 +111,26 @@ MonoBehaviour:
     m_Key: MainMenu
     m_Metadata:
       m_Items: []
+  - m_Id: 2844029725261824
+    m_Key: Wanttoreturntomainmenu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2849679771516928
+    m_Key: ExitGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2850854730285056
+    m_Key: surered
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2850856957460480
+    m_Key: sureblue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2850858291249152
+    m_Key: suregreen
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

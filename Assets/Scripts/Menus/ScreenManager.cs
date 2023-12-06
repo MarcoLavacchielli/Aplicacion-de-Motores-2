@@ -22,6 +22,14 @@ public class ScreenManager : MonoBehaviour
         //ShowPanel(currentPanelIndex); //prueba
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SureToQuitGame();
+        }
+    }
+
     public void SwitchPanel(int index)
     {
         if (index >= 0 && index < panels.Length && index != currentPanelIndex)
@@ -68,7 +76,14 @@ public class ScreenManager : MonoBehaviour
 
     public void QuitGame()
     {
+        Debug.Log("salio");
         Application.Quit();
+    }
+
+    public void SureToQuitGame()
+    {
+        panels[1].SetActive(false);
+        panels[10].SetActive(true);
     }
 
     public void LoadLevel(string level)

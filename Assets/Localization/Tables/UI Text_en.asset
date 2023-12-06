@@ -118,6 +118,26 @@ MonoBehaviour:
     m_Localized: Main Menu
     m_Metadata:
       m_Items: []
+  - m_Id: 2844029725261824
+    m_Localized: Sure to go to the main menu?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2849679771516928
+    m_Localized: Exit game?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2850854730285056
+    m_Localized: want to buy red bullet?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2850856957460480
+    m_Localized: want to buy blue bullet?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2850858291249152
+    m_Localized: want to buy green bullet?
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

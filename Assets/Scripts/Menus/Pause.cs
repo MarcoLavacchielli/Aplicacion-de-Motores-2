@@ -9,6 +9,8 @@ public class Pause : MonoBehaviour
     [SerializeField] private Player playerInput;
     [SerializeField] private bool isPaused = false;
 
+    public GameObject confirmationCanvas;
+
     private void Awake()
     {
         playerInput = new Player();
@@ -47,6 +49,18 @@ public class Pause : MonoBehaviour
             Time.timeScale = 1f; // Reanudar el tiempo en el juego
             pauseCanvas.SetActive(false); // Ocultar el canvas de pausa
         }
+    }
+
+    public void securitycanvas()
+    {
+        pauseCanvas.SetActive(false);
+        confirmationCanvas.SetActive(true);
+    }
+
+    public void securityNO()
+    {
+        pauseCanvas.SetActive(true);
+        confirmationCanvas.SetActive(false);
     }
 
     public void loadscene(string scenename) //carga una escena especifica por nombre
