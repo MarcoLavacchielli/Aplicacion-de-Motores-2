@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour, IBullet
 {
     [SerializeField] private int velocity;   //Velocidad de la bala
-    [SerializeField] private int damage;  //Daño de la vala
+    [SerializeField] public int damage;  //Daño de la vala
     [SerializeField] private Rigidbody rb;  //Obtiene el rigid del enemigo
 
     private Pool<IBullet> pool;

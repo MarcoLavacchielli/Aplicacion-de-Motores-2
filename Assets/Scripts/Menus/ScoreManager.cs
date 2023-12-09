@@ -8,6 +8,7 @@ public class ScoreManager : MonoBehaviour
     public List<DoorBuy> doors = new List<DoorBuy>();
     public PowerUpVelocity velocity = new PowerUpVelocity();
     public PowerUpHealth health = new PowerUpHealth();
+    public PowerUpDamage damage = new PowerUpDamage();
     // Puedes usar doors para acceder a múltiples puertas.
 
     public void DoorBought(int index)
@@ -30,5 +31,10 @@ public class ScoreManager : MonoBehaviour
     public void BuyHealth()
     {
         health.PowerUpbuyed();
+    }
+
+    public void BuyDamage()
+    {
+        damage.PowerUpbuyed();
     }
 }
