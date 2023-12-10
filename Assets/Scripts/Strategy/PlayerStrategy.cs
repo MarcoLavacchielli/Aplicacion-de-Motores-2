@@ -22,10 +22,10 @@ public class PlayerStrategy : MonoBehaviour
     {
         if (other != null && other.CompareTag("TriggerObject"))
         {
-            currentStrategyIndex = (currentStrategyIndex + 1) % colorChangeStrategies.Length;
+            //currentStrategyIndex = (currentStrategyIndex + 1) % colorChangeStrategies.Length;
 
-            IColorChangeStrategy currentStrategy = colorChangeStrategies[currentStrategyIndex];
-            currentStrategy.ChangeColor(other.gameObject);
+            //IColorChangeStrategy currentStrategy = colorChangeStrategies[currentStrategyIndex];
+            //currentStrategy.ChangeColor(other.gameObject);
         }
     }
 }
