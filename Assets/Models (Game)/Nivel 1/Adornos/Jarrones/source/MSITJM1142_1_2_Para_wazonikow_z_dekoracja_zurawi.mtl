@@ -1,0 +1,30 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 25.10.2016 08:43:12
+
+newmtl wazon_A
+	Ns 1.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka H:\sketchfab\Manggha\MSITJM1142_1_2_Para_wazonikow_z_dekoracja_zurawi\03_publikacja\sketchfab\wazon_A.jpg
+	map_Kd H:\sketchfab\Manggha\MSITJM1142_1_2_Para_wazonikow_z_dekoracja_zurawi\03_publikacja\sketchfab\wazon_A.jpg
+
+newmtl wazon_B
+	Ns 1.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka H:\sketchfab\Manggha\MSITJM1142_1_2_Para_wazonikow_z_dekoracja_zurawi\03_publikacja\sketchfab\wazon_B.jpg
+	map_Kd H:\sketchfab\Manggha\MSITJM1142_1_2_Para_wazonikow_z_dekoracja_zurawi\03_publikacja\sketchfab\wazon_B.jpg
