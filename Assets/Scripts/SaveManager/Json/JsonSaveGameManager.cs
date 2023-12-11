@@ -10,6 +10,8 @@ public class JsonSaveGameManager : MonoBehaviour
     [SerializeField] public JsonSaveGameKey saveData = new JsonSaveGameKey();
     string path;
 
+    [SerializeField] private UIController uiController;
+
     void Awake()
     {
         //path = Application.dataPath + "/SaveData.save";
@@ -59,6 +61,9 @@ public class JsonSaveGameManager : MonoBehaviour
         Debug.Log("Archivo borrado");
 
         saveData = new JsonSaveGameKey(); //valores predeterminados
+
+        uiController._musicSlider.value = 1;
+        uiController._sfxSlider.value = 1;
     }
 
     private void OnApplicationQuit() //Cerrar la aplicacion

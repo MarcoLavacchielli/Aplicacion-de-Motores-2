@@ -3865,6 +3865,7 @@ MonoBehaviour:
     colorBlueBought: 0
     colorGreenBought: 0
     stamine: 10
+  uiController: {fileID: 1170472396}
 --- !u!114 &464607039
 MonoBehaviour:
   m_ObjectHideFlags: 0
