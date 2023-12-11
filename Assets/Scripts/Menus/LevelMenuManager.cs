@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class LevelMenuManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] BotonesLevels = new GameObject[3];
+    [SerializeField] private GameObject[] BotonesLevels = new GameObject[4];
     [SerializeField] private JsonSaveGameManager saveGameManager;
     [SerializeField] private Sprite botonDesactivadoSprite;
     private Sprite[] originalSprite;
@@ -38,6 +38,7 @@ public class LevelMenuManager : MonoBehaviour
         UpdateButton(0, saveGameManager.saveData.levelTutorialKey);
         UpdateButton(1, saveGameManager.saveData.level1Key);
         UpdateButton(2, saveGameManager.saveData.level2Key);
+        UpdateButton(3, saveGameManager.saveData.level3Key);
     }
 
     // Función genérica para actualizar botones
