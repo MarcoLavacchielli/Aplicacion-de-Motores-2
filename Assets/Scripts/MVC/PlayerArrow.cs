@@ -14,9 +14,31 @@ public class PlayerArrow : MonoBehaviour
     [SerializeField] Controller _controller;
 
     [SerializeField] private ParticleSystem runningParticle;
+    private Charview view;
+
+    private void Awake()
+    {
+        view = GetComponent<Charview>();
+    }
 
     void Update()
     {
         transform.position += _controller.GetmovementInput() * playerSpeed * Time.deltaTime;
+    }
+
+    public void PlayParticlesAndAnimation()
+    {
+        //runningParticle.Play();
+        view.Isrunning(true);
+    }
+
+    public void pp()
+    {
+        runningParticle.Play();
+    }
+
+    public void sp()
+    {
+        runningParticle.Stop();
     }
 }
