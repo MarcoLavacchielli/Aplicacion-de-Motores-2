@@ -131,14 +131,6 @@ MonoBehaviour:
     m_Key: suregreen
     m_Metadata:
       m_Items: []
-  - m_Id: 4656702012080128
-    m_Key: ChangeArrow
-    m_Metadata:
-      m_Items: []
-  - m_Id: 4656705363329024
-    m_Key: CahngeStick
-    m_Metadata:
-      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

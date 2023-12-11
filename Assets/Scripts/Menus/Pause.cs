@@ -11,9 +11,6 @@ public class Pause : MonoBehaviour
 
     public GameObject confirmationCanvas;
 
-    [SerializeField] private GameObject arrow;
-    [SerializeField] private GameObject joystick;
-
     private void Awake()
     {
         playerInput = new Player();
@@ -70,18 +67,6 @@ public class Pause : MonoBehaviour
     {
         Time.timeScale = 1f; // Reanudar el tiempo en el juego
         SceneManager.LoadScene(scenename);
-    }
-
-    public void changeArrow()
-    {
-        arrow.SetActive(true);
-        joystick.SetActive(false);
-    }
-
-    public void changeStick()
-    {
-        arrow.SetActive(false);
-        joystick.SetActive(true);
     }
 
 }

@@ -138,14 +138,6 @@ MonoBehaviour:
     m_Localized: want to buy green bullet?
     m_Metadata:
       m_Items: []
-  - m_Id: 4656702012080128
-    m_Localized: Change to buttons
-    m_Metadata:
-      m_Items: []
-  - m_Id: 4656705363329024
-    m_Localized: Change to joystick
-    m_Metadata:
-      m_Items: []
   references:
     version: 2
     RefIds: []

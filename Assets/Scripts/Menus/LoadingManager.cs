@@ -9,11 +9,6 @@ public class LoadingManager : MonoBehaviour
     public Slider barraProgreso;
     public string nombreEscena;
 
-    void Awake()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
     private void Start()
     {
         StartCoroutine(CargarJuego(nombreEscena));
@@ -30,24 +25,5 @@ public class LoadingManager : MonoBehaviour
             yield return null;
         }
         SceneManager.LoadScene(nombreEscena);
-    }
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        //Debug.Log("Checkeo");
-        // Verifica si la escena cargada es la que especificaste en sceneToGo
-        if (scene.name == nombreEscena)
-        {
-            // Encuentra el canvas en la escena cargada
-            Canvas canvas = FindObjectOfType<Canvas>();
-
-            // Encuentra los paneles que deseas activar/desactivar
-            GameObject initialScreenPanel = canvas.transform.Find("Panel(InitialScreen)").gameObject;
-            GameObject levelSelectorPanel = canvas.transform.Find("Panel(LevelSelector)").gameObject;
-
-            // Desactiva el panel inicial y activa el panel del selector de niveles
-            initialScreenPanel.SetActive(false);
-            levelSelectorPanel.SetActive(true);
-        }
     }
 }
