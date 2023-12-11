@@ -146,6 +146,10 @@ MonoBehaviour:
     m_Localized: Change to joystick
     m_Metadata:
       m_Items: []
+  - m_Id: 4690136264687616
+    m_Localized: Want to see a ad for 100 coin?
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

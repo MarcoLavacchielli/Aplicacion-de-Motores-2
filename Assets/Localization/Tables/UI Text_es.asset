@@ -150,6 +150,10 @@ MonoBehaviour:
     m_Localized: Cambiar a joystick
     m_Metadata:
       m_Items: []
+  - m_Id: 4690136264687616
+    m_Localized: "\xBFQuieres ver un anuncio por 100 monedas?"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -17,6 +17,8 @@ public class StorePanel : MonoBehaviour
     [SerializeField] private GameObject blueSecurity;
     [SerializeField] private GameObject greenSecurity;
 
+    [SerializeField] private GameObject canvasAds;
+
     void Awake()
     {
         saveGameManager = FindObjectOfType<JsonSaveGameManager>();
@@ -129,5 +131,11 @@ public class StorePanel : MonoBehaviour
     {
         canvasStore.gameObject.SetActive(false);
         canvasMoney.gameObject.SetActive(true);
+    }
+
+    public void adSure()
+    {
+        canvasStore.gameObject.SetActive(false);
+        canvasAds.gameObject.SetActive(true);
     }
 }

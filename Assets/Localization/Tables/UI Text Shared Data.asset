@@ -139,6 +139,10 @@ MonoBehaviour:
     m_Key: changejoystick
     m_Metadata:
       m_Items: []
+  - m_Id: 4690136264687616
+    m_Key: seeAd
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
