@@ -15,6 +15,7 @@ public class PlayerObserver : MonoBehaviour
     {
         // Maneja la notificación de la muerte del enemigo aquí.
         //Debug.Log("Un enemigo ha muerto.");
+        AudioManager.Instance.PlaySFX(2);
         playerScore.AddScore(100);
     }
 }

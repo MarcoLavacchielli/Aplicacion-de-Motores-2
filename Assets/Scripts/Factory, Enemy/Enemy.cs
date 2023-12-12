@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour, IDamage
     public void TakeDamage(int amount)
     {
         health -= amount;
+        AudioManager.Instance.PlaySFX(7);
         if (health <= 0)
         {
             Die();

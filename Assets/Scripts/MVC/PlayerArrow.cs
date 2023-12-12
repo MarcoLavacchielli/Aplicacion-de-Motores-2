@@ -30,6 +30,7 @@ public class PlayerArrow : MonoBehaviour
     {
         //runningParticle.Play();
         view.Isrunning(true);
+        AudioManager.Instance.PlaySFXLoop(1);
     }
 
     public void pp()
@@ -40,5 +41,6 @@ public class PlayerArrow : MonoBehaviour
     public void sp()
     {
         runningParticle.Stop();
+        AudioManager.Instance.PauseSFXLoop(1);
     }
 }

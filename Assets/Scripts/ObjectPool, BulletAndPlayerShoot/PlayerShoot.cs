@@ -93,6 +93,7 @@ public class PlayerShoot : MonoBehaviour
     private void Shoot() //Metodo de disparo, obtiene una bala del pool y la lanza desde la posicion del controller
     {
         shootParticle.Play();
+        AudioManager.Instance.PlaySFX(0);
         IBullet newBullet = GetNextBullet();
         newBullet.SetPositionRotation(shootController.position, shootController.rotation);
         newBullet.SetActive(true);

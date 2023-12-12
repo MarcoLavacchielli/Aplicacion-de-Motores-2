@@ -48,6 +48,7 @@ public class PlayerView : MonoBehaviour
         if (runningParticle != null && !runningParticle.isPlaying)
         {
             runningParticle.Play();
+            AudioManager.Instance.PlaySFXLoop(1);
         }
     }
 
@@ -56,6 +57,7 @@ public class PlayerView : MonoBehaviour
         if (runningParticle != null && runningParticle.isPlaying)
         {
             runningParticle.Stop();
+            AudioManager.Instance.PauseSFXLoop(1);
         }
     }
 }

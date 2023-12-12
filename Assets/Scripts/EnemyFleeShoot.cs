@@ -48,6 +48,7 @@ public class EnemyFleeShoot : MonoBehaviour
 
     void ShootAtPlayer()
     {
+        AudioManager.Instance.PlaySFX(5);
         Vector3 direction = player.position - bulletOrigin.position;
         Quaternion rotation = Quaternion.LookRotation(direction);
 

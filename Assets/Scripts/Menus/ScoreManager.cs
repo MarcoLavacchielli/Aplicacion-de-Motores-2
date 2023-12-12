@@ -16,6 +16,7 @@ public class ScoreManager : MonoBehaviour
         if (index >= 0 && index < doors.Count)
         {
             doors[index].Doorbuyed();
+            AudioManager.Instance.PlaySFX(4);
         }
         else
         {
@@ -26,15 +27,18 @@ public class ScoreManager : MonoBehaviour
     public void BuyVelocity()
     {
         velocity.PowerUpbuyed();
+        AudioManager.Instance.PlaySFX(3);
     }
 
     public void BuyHealth()
     {
         health.PowerUpbuyed();
+        AudioManager.Instance.PlaySFX(3);
     }
 
     public void BuyDamage()
     {
         damage.PowerUpbuyed();
+        AudioManager.Instance.PlaySFX(3);
     }
 }
