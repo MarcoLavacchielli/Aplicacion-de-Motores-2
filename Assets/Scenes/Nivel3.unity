@@ -8,8 +8,8 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 6a708c593d4bbba44a302a610de9f577
+  m_OcclusionCullingData: {fileID: 36300000, guid: 3cc0db3b076caab48bafc0b9a1ae880e, type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -2154,6 +2154,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 46c618115c7972c4dacad581e5f08e67, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46c618115c7972c4dacad581e5f08e67, type: 3}
 --- !u!4 &202429094 stripped
@@ -3715,6 +3719,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bodhi Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2b3b34849159f574ebdc2777ecc75323, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3b34849159f574ebdc2777ecc75323, type: 3}
 --- !u!4 &315685180 stripped
@@ -3954,6 +3962,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bodhi Tree (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2b3b34849159f574ebdc2777ecc75323, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3b34849159f574ebdc2777ecc75323, type: 3}
 --- !u!4 &355814636 stripped
@@ -4108,9 +4120,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 121712793109757091, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
       propertyPath: m_Name
       value: oak (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
@@ -4313,9 +4333,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 121712793109757091, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
       propertyPath: m_Name
       value: oak (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
@@ -4817,6 +4845,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bodhi Tree (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2b3b34849159f574ebdc2777ecc75323, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3b34849159f574ebdc2777ecc75323, type: 3}
 --- !u!4 &414877521 stripped
@@ -4886,6 +4918,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 46c618115c7972c4dacad581e5f08e67, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 46c618115c7972c4dacad581e5f08e67, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46c618115c7972c4dacad581e5f08e67, type: 3}
@@ -5756,7 +5792,7 @@ RectTransform:
   m_GameObject: {fileID: 524400665}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.1, y: 3.1, z: 3.1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1389142762}
@@ -7111,6 +7147,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bodhi Tree (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2b3b34849159f574ebdc2777ecc75323, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3b34849159f574ebdc2777ecc75323, type: 3}
 --- !u!4 &571574473 stripped
@@ -7798,6 +7838,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bodhi Tree (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2b3b34849159f574ebdc2777ecc75323, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3b34849159f574ebdc2777ecc75323, type: 3}
 --- !u!4 &623276164 stripped
@@ -7875,6 +7919,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 846ab976deae5834cb7570a1dcc49cf6, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 846ab976deae5834cb7570a1dcc49cf6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 846ab976deae5834cb7570a1dcc49cf6, type: 3}
@@ -8243,6 +8291,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bodhi Tree (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2b3b34849159f574ebdc2777ecc75323, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3b34849159f574ebdc2777ecc75323, type: 3}
 --- !u!4 &677859610 stripped
@@ -8544,9 +8596,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 121712793109757091, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
       propertyPath: m_Name
       value: oak (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
@@ -8698,7 +8758,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.4009434, g: 0.57262224, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -8998,6 +9058,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0ff618f2f8e5474418905bec4076175b, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0ff618f2f8e5474418905bec4076175b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ff618f2f8e5474418905bec4076175b, type: 3}
@@ -10016,6 +10080,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 46c618115c7972c4dacad581e5f08e67, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46c618115c7972c4dacad581e5f08e67, type: 3}
 --- !u!4 &772485897 stripped
@@ -10351,6 +10419,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2b3b34849159f574ebdc2777ecc75323, type: 3}
       propertyPath: m_Name
       value: Bodhi Tree (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2b3b34849159f574ebdc2777ecc75323, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3b34849159f574ebdc2777ecc75323, type: 3}
@@ -13562,6 +13634,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 57515b1fc7afba14ba396b1f42829538, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57515b1fc7afba14ba396b1f42829538, type: 3}
 --- !u!4 &1035607498 stripped
@@ -14057,9 +14133,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 121712793109757091, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
       propertyPath: m_Name
       value: oak (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
@@ -14311,6 +14395,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bodhi Tree (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2b3b34849159f574ebdc2777ecc75323, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3b34849159f574ebdc2777ecc75323, type: 3}
 --- !u!4 &1111405000 stripped
@@ -14384,6 +14472,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 57515b1fc7afba14ba396b1f42829538, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 57515b1fc7afba14ba396b1f42829538, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57515b1fc7afba14ba396b1f42829538, type: 3}
@@ -14473,9 +14565,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 121712793109757091, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
       propertyPath: m_Name
       value: oak (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
@@ -15243,6 +15343,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7098f79fc616230448489f374726892b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7098f79fc616230448489f374726892b, type: 3}
 --- !u!4 &1171419745 stripped
@@ -15426,6 +15530,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 14bda1b163e14c54b8d42f47503b5d96, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 14bda1b163e14c54b8d42f47503b5d96, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14bda1b163e14c54b8d42f47503b5d96, type: 3}
@@ -15864,6 +15972,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4df74af099b7a804c8afd18597e31835, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4df74af099b7a804c8afd18597e31835, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4df74af099b7a804c8afd18597e31835, type: 3}
@@ -16596,9 +16708,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 121712793109757091, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
       propertyPath: m_Name
       value: oak (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
@@ -17191,6 +17311,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2b3b34849159f574ebdc2777ecc75323, type: 3}
       propertyPath: m_Name
       value: Bodhi Tree (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2b3b34849159f574ebdc2777ecc75323, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3b34849159f574ebdc2777ecc75323, type: 3}
@@ -19964,6 +20088,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 57515b1fc7afba14ba396b1f42829538, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57515b1fc7afba14ba396b1f42829538, type: 3}
 --- !u!4 &1565663262 stripped
@@ -21960,6 +22088,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 57515b1fc7afba14ba396b1f42829538, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57515b1fc7afba14ba396b1f42829538, type: 3}
 --- !u!4 &1697341445 stripped
@@ -22073,6 +22205,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7098f79fc616230448489f374726892b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7098f79fc616230448489f374726892b, type: 3}
 --- !u!4 &1704546330 stripped
@@ -22161,9 +22297,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 121712793109757091, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
       propertyPath: m_Name
       value: oak (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
@@ -24178,6 +24322,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bodhi Tree (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2b3b34849159f574ebdc2777ecc75323, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3b34849159f574ebdc2777ecc75323, type: 3}
 --- !u!4 &1834033004 stripped
@@ -25408,7 +25556,7 @@ RectTransform:
   m_GameObject: {fileID: 1939778556}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.1, y: 3.1, z: 3.1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1319618011}
@@ -26094,9 +26242,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 121712793109757091, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
       propertyPath: m_Name
       value: oak
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
@@ -26212,9 +26368,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 121712793109757091, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
       propertyPath: m_Name
       value: oak (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ba4972507ed0934dad521e27dc28f93, type: 3}
@@ -26365,6 +26529,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 57515b1fc7afba14ba396b1f42829538, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 57515b1fc7afba14ba396b1f42829538, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57515b1fc7afba14ba396b1f42829538, type: 3}
@@ -27534,6 +27702,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2b3b34849159f574ebdc2777ecc75323, type: 3}
       propertyPath: m_Name
       value: Bodhi Tree (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2b3b34849159f574ebdc2777ecc75323, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3b34849159f574ebdc2777ecc75323, type: 3}
