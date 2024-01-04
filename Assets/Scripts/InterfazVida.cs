@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
 /*public interface IHealthObserver
 {
     void OnHealthChanged(float health);
 }*/
+
 public class InterfazVida : MonoBehaviour
 {
     [SerializeField] private Text textoVida;
@@ -42,6 +44,7 @@ public class InterfazVida : MonoBehaviour
         ActualizarInterfazVida();
     }
 
+    //Funcion para reducir?
     public void ReducirVida(float cantidad)
     {
         vidaActual -= cantidad;
@@ -49,18 +52,12 @@ public class InterfazVida : MonoBehaviour
         if (vidaActual <= 0)
         {
             vidaActual = 0;
-            ReiniciarEscena(); // Llama a la función para reiniciar la escena
         }
 
         ActualizarInterfazVida();
     }
 
-    private void ReiniciarEscena()
-    {
-        // Carga la escena actual para reiniciar el juego
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-    // Función para aumentar la vida del personaje
+    // Funcion para aumentar la vida del personaje
     public void AumentarVida(float cantidad)
     {
         vidaActual += cantidad;
